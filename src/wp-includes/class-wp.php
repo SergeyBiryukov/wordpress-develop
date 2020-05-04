@@ -664,23 +664,21 @@ class WP {
 
 		// Never 404 for the admin, robots, or favicon.
 		if ( is_admin() || is_robots() || is_favicon() ) {
-
 			$set_404 = false;
 
 			// If posts were found, check for paged content.
 		} elseif ( $wp_query->posts ) {
-
 			$content_found = true;
 
-			$post = isset( $wp_query->post ) ? $wp_query->post : null;
-
-			// Only set X-Pingback for single posts that allow pings.
-			if ( is_singular() && $post && pings_open( $post ) && ! headers_sent() ) {
-				header( 'X-Pingback: ' . get_bloginfo( 'pingback_url', 'display' ) );
-			}
-
-			// Check for paged content that exceeds the max number of pages.
 			if ( is_singular() ) {
+				$post = isset( $wp_query->post ) ? $wp_query->post : null;
+
+				// Only set X-Pingback for single posts that allow pings.
+				if ( $post && pings_open( $post ) && ! headers_sent() ) {
+					header( 'X-Pingback: ' . get_bloginfo( 'pingback_url', 'display' ) );
+				}
+
+				// Check for paged content that exceeds the max number of pages.
 				$next = '<!--nextpage-->';
 				if ( $post && ! empty( $this->query_vars['page'] ) ) {
 					// Check if content is actually intended to be paged.
@@ -693,13 +691,17 @@ class WP {
 				}
 			}
 
+			// The posts page does not support the <!--nextpage--> pagination.
+			if ( $wp_query->is_posts_page && ! empty( $this->query_vars['page'] ) ) {
+				$content_found = false;
+			}
+
 			if ( $content_found ) {
 				$set_404 = false;
 			}
 
 			// We will 404 for paged queries, as no posts were found.
 		} elseif ( ! is_paged() ) {
-
 			$author = get_query_var( 'author' );
 
 			// Don't 404 for authors without posts as long as they matched an author on this site.
