@@ -1120,8 +1120,8 @@ final class WP_Screen {
 				$welcome_checked = empty( $_GET['welcome'] ) ? 0 : 1;
 				update_user_meta( get_current_user_id(), 'show_welcome_panel', $welcome_checked );
 			} else {
-				$welcome_checked = get_user_meta( get_current_user_id(), 'show_welcome_panel', true );
-				if ( 2 == $welcome_checked && wp_get_current_user()->user_email !== get_option( 'admin_email' ) ) {
+				$welcome_checked = (int) get_user_meta( get_current_user_id(), 'show_welcome_panel', true );
+				if ( 2 === $welcome_checked && wp_get_current_user()->user_email !== get_option( 'admin_email' ) ) {
 					$welcome_checked = false;
 				}
 			}
