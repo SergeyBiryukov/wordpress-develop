@@ -1145,7 +1145,7 @@ function comment_type( $commenttxt = false, $trackbacktxt = false, $pingbacktxt 
  * @return string The trackback URL after being filtered.
  */
 function get_trackback_url() {
-	if ( '' !== get_option( 'permalink_structure' ) ) {
+	if ( get_option( 'permalink_structure' ) ) {
 		$tb_url = trailingslashit( get_permalink() ) . user_trailingslashit( 'trackback', 'single_trackback' );
 	} else {
 		$tb_url = get_option( 'siteurl' ) . '/wp-trackback.php?p=' . get_the_ID();

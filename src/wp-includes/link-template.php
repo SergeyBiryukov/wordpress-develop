@@ -165,7 +165,7 @@ function get_permalink( $post = 0, $leavename = false ) {
 	 */
 	$permalink = apply_filters( 'pre_post_link', $permalink, $post, $leavename );
 
-	if ( '' !== $permalink && ! in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft', 'future' ), true ) ) {
+	if ( $permalink && ! in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft', 'future' ), true ) ) {
 
 		$category = '';
 		if ( strpos( $permalink, '%category%' ) !== false ) {
@@ -682,7 +682,7 @@ function get_post_comments_feed_link( $post_id = 0, $feed = '' ) {
 	$post       = get_post( $post_id );
 	$unattached = 'attachment' === $post->post_type && 0 === (int) $post->post_parent;
 
-	if ( '' !== get_option( 'permalink_structure' ) ) {
+	if ( get_option( 'permalink_structure' ) ) {
 		if ( 'page' === get_option( 'show_on_front' ) && get_option( 'page_on_front' ) == $post_id ) {
 			$url = _get_page_link( $post_id );
 		} else {
@@ -795,7 +795,7 @@ function get_author_feed_link( $author_id, $feed = '' ) {
 		$feed = get_default_feed();
 	}
 
-	if ( '' === $permalink_structure ) {
+	if ( ! $permalink_structure ) {
 		$link = home_url( "?feed=$feed&amp;author=" . $author_id );
 	} else {
 		$link = get_author_posts_url( $author_id );
@@ -867,7 +867,7 @@ function get_term_feed_link( $term_id, $taxonomy = 'category', $feed = '' ) {
 
 	$permalink_structure = get_option( 'permalink_structure' );
 
-	if ( '' === $permalink_structure ) {
+	if ( ! $permalink_structure ) {
 		if ( 'category' === $taxonomy ) {
 			$link = home_url( "?feed=$feed&amp;cat=$term_id" );
 		} elseif ( 'post_tag' === $taxonomy ) {
@@ -3785,7 +3785,7 @@ function wp_get_canonical_url( $post = null ) {
 	if ( get_queried_object_id() === $post->ID ) {
 		$page = get_query_var( 'page', 0 );
 		if ( $page >= 2 ) {
-			if ( '' === get_option( 'permalink_structure' ) ) {
+			if ( ! get_option( 'permalink_structure' ) ) {
 				$canonical_url = add_query_arg( 'page', $page, $canonical_url );
 			} else {
 				$canonical_url = trailingslashit( $canonical_url ) . user_trailingslashit( $page, 'single_paged' );
