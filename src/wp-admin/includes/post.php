@@ -1245,7 +1245,7 @@ function wp_edit_attachments_query_vars( $q = false ) {
 	}
 
 	foreach ( array_keys( $post_mime_types ) as $type ) {
-		if ( isset( $q['attachment-filter'] ) && "post_mime_type:$type" == $q['attachment-filter'] ) {
+		if ( isset( $q['attachment-filter'] ) && "post_mime_type:$type" === $q['attachment-filter'] ) {
 			$q['post_mime_type'] = $type;
 			break;
 		}
