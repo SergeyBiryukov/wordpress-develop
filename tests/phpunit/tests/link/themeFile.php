@@ -5,39 +5,41 @@
 class Test_Theme_File extends WP_UnitTestCase {
 
 	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
-		global $wp_filesystem;
-
-		WP_Filesystem();
-
 		$themes = array(
 			'theme-file-parent',
 			'theme-file-child',
 		);
 
+		// Copy themes from tests/phpunit/data to wp-content/themes.
 		foreach ( $themes as $theme ) {
 			$source_dir = DIR_TESTDATA . '/' . $theme;
 			$dest_dir   = WP_CONTENT_DIR . '/themes/' . $theme;
 
-			$wp_filesystem->mkdir( $dest_dir );
+			mkdir( $dest_dir );
 
-			$result = copy_dir( $source_dir, $dest_dir );
+			foreach ( glob( $source_dir . '/*.*' ) as $theme_file ) {
+				$theme_file = basename( $theme_file );
 
-			if ( is_wp_error( $result ) ) {
-				self::markTestSkipped( $result->get_error_message() );
+				copy( $source_dir . '/' . $theme_file, $dest_dir . '/' . $theme_file );
 			}
 		}
 	}
 
 	public static function wpTearDownAfterClass() {
-		global $wp_filesystem;
-
 		$themes = array(
 			'theme-file-parent',
 			'theme-file-child',
 		);
 
+		// Remove previously copied themes from wp-content/themes.
 		foreach ( $themes as $theme ) {
-			$wp_filesystem->rmdir( WP_CONTENT_DIR . '/themes/' . $theme, true );
+			$dest_dir = WP_CONTENT_DIR . '/themes/' . $theme;
+
+			foreach ( glob( $dest_dir . '/*.*' ) as $theme_file ) {
+				unlink( $theme_file );
+			}
+
+			rmdir( $dest_dir );
 		}
 	}
 
@@ -128,10 +130,6 @@ class Test_Theme_File extends WP_UnitTestCase {
 	public function test_theme_file_uri_returns_valid_uri( $file, $expected_theme, $existence ) {
 		$uri        = get_theme_file_uri( $file );
 		$parent_uri = get_parent_theme_file_uri( $file );
-
-		$uri        = wp_normalize_path( $uri );
-		$parent_uri = wp_normalize_path( $parent_uri );
-		var_dump( $uri );
 
 		$this->assertSame( esc_url_raw( $uri ), $uri );
 		$this->assertSame( esc_url_raw( $parent_uri ), $parent_uri );
