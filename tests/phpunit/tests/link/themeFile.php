@@ -5,22 +5,40 @@
 class Test_Theme_File extends WP_UnitTestCase {
 
 	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
-		if ( ! function_exists( 'symlink' ) ) {
-			self::markTestSkipped( 'symlink() is not available.' );
-		}
-		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
-		if ( ! @symlink( DIR_TESTDATA . '/theme-file-parent', WP_CONTENT_DIR . '/themes/theme-file-parent' ) ) {
-			self::markTestSkipped( 'Could not create parent symlink.' );
-		}
-		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
-		if ( ! @symlink( DIR_TESTDATA . '/theme-file-child', WP_CONTENT_DIR . '/themes/theme-file-child' ) ) {
-			self::markTestSkipped( 'Could not create child symlink.' );
+		global $wp_filesystem;
+
+		WP_Filesystem();
+
+		$themes = array(
+			'theme-file-parent',
+			'theme-file-child',
+		);
+
+		foreach ( $themes as $theme ) {
+			$source_dir = DIR_TESTDATA . '/' . $theme;
+			$dest_dir   = WP_CONTENT_DIR . '/themes/' . $theme;
+
+			$wp_filesystem->mkdir( $dest_dir );
+
+			$result = copy_dir( $source_dir, $dest_dir );
+
+			if ( is_wp_error( $result ) ) {
+				self::markTestSkipped( $result->get_error_message() );
+			}
 		}
 	}
 
 	public static function wpTearDownAfterClass() {
-		unlink( WP_CONTENT_DIR . '/themes/theme-file-parent' );
-		unlink( WP_CONTENT_DIR . '/themes/theme-file-child' );
+		global $wp_filesystem;
+
+		$themes = array(
+			'theme-file-parent',
+			'theme-file-child',
+		);
+
+		foreach ( $themes as $theme ) {
+			$wp_filesystem->rmdir( WP_CONTENT_DIR . '/themes/' . $theme, true );
+		}
 	}
 
 	/**
@@ -110,6 +128,10 @@ class Test_Theme_File extends WP_UnitTestCase {
 	public function test_theme_file_uri_returns_valid_uri( $file, $expected_theme, $existence ) {
 		$uri        = get_theme_file_uri( $file );
 		$parent_uri = get_parent_theme_file_uri( $file );
+
+		$uri        = wp_normalize_path( $uri );
+		$parent_uri = wp_normalize_path( $parent_uri );
+		var_dump( $uri );
 
 		$this->assertSame( esc_url_raw( $uri ), $uri );
 		$this->assertSame( esc_url_raw( $parent_uri ), $parent_uri );
