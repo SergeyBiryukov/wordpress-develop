@@ -18,9 +18,7 @@ class Test_Theme_File extends WP_UnitTestCase {
 			mkdir( $dest_dir );
 
 			foreach ( glob( $source_dir . '/*.*' ) as $theme_file ) {
-				$theme_file = basename( $theme_file );
-
-				copy( $source_dir . '/' . $theme_file, $dest_dir . '/' . $theme_file );
+				copy( $theme_file, $dest_dir . '/' . basename( $theme_file ) );
 			}
 		}
 	}
