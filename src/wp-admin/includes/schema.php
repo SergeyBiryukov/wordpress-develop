@@ -74,7 +74,6 @@ function wp_get_db_schema( $scope = 'all', $blog_id = null ) {
 		$term_group_display_width = '';
 	}
 
-
 	// Blog-specific tables.
 	$blog_tables = "CREATE TABLE $wpdb->termmeta (
 	meta_id bigint{$bigint_display_width} unsigned NOT NULL auto_increment,
