@@ -333,10 +333,10 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 	 */
 	function test_settings_previewed() {
 		$wp_customize = new WP_Customize_Manager( array( 'settings_previewed' => false ) );
-		$this->assertSame( false, $wp_customize->settings_previewed() );
+		$this->assertFalse( $wp_customize->settings_previewed() );
 
 		$wp_customize = new WP_Customize_Manager();
-		$this->assertSame( true, $wp_customize->settings_previewed() );
+		$this->assertTrue( $wp_customize->settings_previewed() );
 	}
 
 	/**
