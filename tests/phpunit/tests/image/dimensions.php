@@ -46,36 +46,36 @@ class Tests_Image_Dimensions extends WP_UnitTestCase {
 		// Landscape: resize 640x480 to fit 800x800.
 		$out = image_resize_dimensions( 640, 480, 800, 800, false );
 		// dst_x, dst_y, src_x, src_y, dst_w, dst_h, src_w, src_h.
-		$this->assertSame( false, $out );
+		$this->assertFalse( $out );
 
 		// Portrait: resize 480x640 to fit 800x800.
 		$out = image_resize_dimensions( 480, 640, 800, 800, false );
 		// dst_x, dst_y, src_x, src_y, dst_w, dst_h, src_w, src_h.
-		$this->assertSame( false, $out );
+		$this->assertFalse( $out );
 	}
 
 	function test_800x0_no_crop() {
 		// Landscape: resize 640x480 to fit 800w.
 		$out = image_resize_dimensions( 640, 480, 800, 0, false );
 		// dst_x, dst_y, src_x, src_y, dst_w, dst_h, src_w, src_h.
-		$this->assertSame( false, $out );
+		$this->assertFalse( $out );
 
 		// Portrait: resize 480x640 to fit 800w.
 		$out = image_resize_dimensions( 480, 640, 800, 0, false );
 		// dst_x, dst_y, src_x, src_y, dst_w, dst_h, src_w, src_h.
-		$this->assertSame( false, $out );
+		$this->assertFalse( $out );
 	}
 
 	function test_0x800_no_crop() {
 		// Landscape: resize 640x480 to fit 800h.
 		$out = image_resize_dimensions( 640, 480, 0, 800, false );
 		// dst_x, dst_y, src_x, src_y, dst_w, dst_h, src_w, src_h.
-		$this->assertSame( false, $out );
+		$this->assertFalse( $out );
 
 		// Portrait: resize 480x640 to fit 800h.
 		$out = image_resize_dimensions( 480, 640, 0, 800, false );
 		// dst_x, dst_y, src_x, src_y, dst_w, dst_h, src_w, src_h.
-		$this->assertSame( false, $out );
+		$this->assertFalse( $out );
 	}
 
 	// Cropped versions.
