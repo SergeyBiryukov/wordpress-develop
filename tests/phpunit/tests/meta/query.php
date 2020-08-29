@@ -10,7 +10,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 	public function test_empty_meta_query_param() {
 		$query = new WP_Meta_Query();
-		$this->assertSame( null, $query->relation );
+		$this->assertNull( $query->relation );
 	}
 
 	public function test_default_relation() {
