@@ -156,8 +156,8 @@ if ( is_multisite() ) :
 			$this->assertSame( 'http://' . $details->domain . $details->path, get_blogaddress_by_name( trim( $details->path, '/' ) ) );
 
 			// These are empty until get_blog_details() is called with $get_all = true.
-			$this->assertSame( false, wp_cache_get( $blog_id, 'blog-details' ) );
-			$this->assertSame( false, wp_cache_get( $key, 'blog-lookup' ) );
+			$this->assertFalse( wp_cache_get( $blog_id, 'blog-details' ) );
+			$this->assertFalse( wp_cache_get( $key, 'blog-lookup' ) );
 
 			// $get_all = true, populate the full blog-details cache and the blog slug lookup cache.
 			$details = get_blog_details( $blog_id, true );
@@ -230,10 +230,10 @@ if ( is_multisite() ) :
 			// Delete the site without forcing a table drop.
 			wpmu_delete_blog( $blog_id, false );
 
-			$this->assertSame( false, wp_cache_get( $blog_id, 'blog-details' ) );
-			$this->assertSame( false, wp_cache_get( $blog_id . 'short', 'blog-details' ) );
-			$this->assertSame( false, wp_cache_get( $key, 'blog-lookup' ) );
-			$this->assertSame( false, wp_cache_get( $key, 'blog-id-cache' ) );
+			$this->assertFalse( wp_cache_get( $blog_id, 'blog-details' ) );
+			$this->assertFalse( wp_cache_get( $blog_id . 'short', 'blog-details' ) );
+			$this->assertFalse( wp_cache_get( $key, 'blog-lookup' ) );
+			$this->assertFalse( wp_cache_get( $key, 'blog-id-cache' ) );
 		}
 
 		/**
@@ -271,10 +271,10 @@ if ( is_multisite() ) :
 			// Delete the site and force a table drop.
 			wpmu_delete_blog( $blog_id, true );
 
-			$this->assertSame( false, wp_cache_get( $blog_id, 'blog-details' ) );
-			$this->assertSame( false, wp_cache_get( $blog_id . 'short', 'blog-details' ) );
-			$this->assertSame( false, wp_cache_get( $key, 'blog-lookup' ) );
-			$this->assertSame( false, wp_cache_get( $key, 'blog-id-cache' ) );
+			$this->assertFalse( wp_cache_get( $blog_id, 'blog-details' ) );
+			$this->assertFalse( wp_cache_get( $blog_id . 'short', 'blog-details' ) );
+			$this->assertFalse( wp_cache_get( $key, 'blog-lookup' ) );
+			$this->assertFalse( wp_cache_get( $key, 'blog-id-cache' ) );
 		}
 
 		/**
@@ -312,10 +312,10 @@ if ( is_multisite() ) :
 			// Delete the site and force a table drop.
 			wpmu_delete_blog( $blog_id, true );
 
-			$this->assertSame( false, wp_cache_get( $blog_id, 'blog-details' ) );
-			$this->assertSame( false, wp_cache_get( $blog_id . 'short', 'blog-details' ) );
-			$this->assertSame( false, wp_cache_get( $key, 'blog-lookup' ) );
-			$this->assertSame( false, wp_cache_get( $key, 'blog-id-cache' ) );
+			$this->assertFalse( wp_cache_get( $blog_id, 'blog-details' ) );
+			$this->assertFalse( wp_cache_get( $blog_id . 'short', 'blog-details' ) );
+			$this->assertFalse( wp_cache_get( $key, 'blog-lookup' ) );
+			$this->assertFalse( wp_cache_get( $key, 'blog-id-cache' ) );
 		}
 
 		/**
@@ -763,7 +763,7 @@ if ( is_multisite() ) :
 			$key     = md5( $details->domain . $details->path );
 			wpmu_delete_blog( $blog_id, true );
 
-			$this->assertSame( false, wp_cache_get( $key, 'blog-id-cache' ) );
+			$this->assertFalse( wp_cache_get( $key, 'blog-id-cache' ) );
 			$this->assertSame( 0, get_blog_id_from_url( $details->domain, $details->path ) );
 			$this->assertSame( -1, wp_cache_get( $key, 'blog-id-cache' ) );
 		}
@@ -895,11 +895,11 @@ if ( is_multisite() ) :
 		function test_domain_does_not_exist_with_invalid_site_id() {
 			$details = get_site( 1 );
 
-			$this->assertSame( null, domain_exists( $details->domain, $details->path, 999 ) );
+			$this->assertNull( domain_exists( $details->domain, $details->path, 999 ) );
 		}
 
 		function test_invalid_domain_does_not_exist_with_default_site_id() {
-			$this->assertSame( null, domain_exists( 'foo', 'bar' ) );
+			$this->assertNull( domain_exists( 'foo', 'bar' ) );
 		}
 
 		function test_domain_filtered_to_exist() {
