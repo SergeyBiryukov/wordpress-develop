@@ -337,7 +337,7 @@ class Test_WP_Customize_Nav_Menu_Setting extends WP_UnitTestCase {
 		$this->assertSame( 'Hello \\o/ &lt;b&gt;world&lt;/b&gt;', $sanitized['name'] );
 		$this->assertSame( 'New line \\o/', $sanitized['description'] );
 		$this->assertSame( 0, $sanitized['parent'] );
-		$this->assertSame( true, $sanitized['auto_add'] );
+		$this->assertTrue( $sanitized['auto_add'] );
 		$this->assertEqualSets( array( 'name', 'description', 'parent', 'auto_add' ), array_keys( $sanitized ) );
 
 		$value['name'] = '    '; // Blank spaces.
