@@ -819,7 +819,7 @@ class Tests_DB_Charset extends WP_UnitTestCase {
 
 		$columns = array_keys( $columns );
 		foreach ( $columns as $column => $charset ) {
-			$this->assertSame( false, self::$_wpdb->get_col_charset( $table, $column ) );
+			$this->assertFalse( self::$_wpdb->get_col_charset( $table, $column ) );
 		}
 
 		self::$_wpdb->query( $drop );
@@ -845,7 +845,7 @@ class Tests_DB_Charset extends WP_UnitTestCase {
 
 		$columns = array_keys( $columns );
 		foreach ( $columns as $column => $charset ) {
-			$this->assertSame( false, self::$_wpdb->get_col_charset( $table, $column ) );
+			$this->assertFalse( self::$_wpdb->get_col_charset( $table, $column ) );
 		}
 
 		self::$_wpdb->query( $drop );
