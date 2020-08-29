@@ -404,7 +404,7 @@ class WP_Test_REST_Post_Meta_Fields extends WP_Test_REST_TestCase {
 
 		$this->assertArrayHasKey( 'test_bool', $meta );
 		$this->assertInternalType( 'boolean', $meta['test_bool'] );
-		$this->assertSame( true, $meta['test_bool'] );
+		$this->assertTrue( $meta['test_bool'] );
 	}
 
 	public function test_get_value_custom_name() {
