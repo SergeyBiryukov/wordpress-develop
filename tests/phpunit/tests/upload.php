@@ -27,7 +27,7 @@ class Tests_Upload extends WP_UnitTestCase {
 		$this->assertSame( get_option( 'siteurl' ) . '/wp-content/uploads' . $subdir, $info['url'] );
 		$this->assertSame( ABSPATH . 'wp-content/uploads' . $subdir, $info['path'] );
 		$this->assertSame( $subdir, $info['subdir'] );
-		$this->assertSame( false, $info['error'] );
+		$this->assertFalse( $info['error'] );
 	}
 
 	function test_upload_dir_relative() {
@@ -39,7 +39,7 @@ class Tests_Upload extends WP_UnitTestCase {
 		$this->assertSame( get_option( 'siteurl' ) . '/foo/bar' . $subdir, $info['url'] );
 		$this->assertSame( ABSPATH . 'foo/bar' . $subdir, $info['path'] );
 		$this->assertSame( $subdir, $info['subdir'] );
-		$this->assertSame( false, $info['error'] );
+		$this->assertFalse( $info['error'] );
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Tests_Upload extends WP_UnitTestCase {
 		$this->assertSame( '/baz' . $subdir, $info['url'] );
 		$this->assertSame( $path . $subdir, $info['path'] );
 		$this->assertSame( $subdir, $info['subdir'] );
-		$this->assertSame( false, $info['error'] );
+		$this->assertFalse( $info['error'] );
 	}
 
 	function test_upload_dir_no_yearnum() {
@@ -74,7 +74,7 @@ class Tests_Upload extends WP_UnitTestCase {
 		$this->assertSame( get_option( 'siteurl' ) . '/wp-content/uploads', $info['url'] );
 		$this->assertSame( ABSPATH . 'wp-content/uploads', $info['path'] );
 		$this->assertSame( '', $info['subdir'] );
-		$this->assertSame( false, $info['error'] );
+		$this->assertFalse( $info['error'] );
 	}
 
 	function test_upload_path_absolute() {
@@ -88,7 +88,7 @@ class Tests_Upload extends WP_UnitTestCase {
 		$this->assertSame( 'http://' . WP_TESTS_DOMAIN . '/asdf' . $subdir, $info['url'] );
 		$this->assertSame( ABSPATH . 'wp-content/uploads' . $subdir, $info['path'] );
 		$this->assertSame( $subdir, $info['subdir'] );
-		$this->assertSame( false, $info['error'] );
+		$this->assertFalse( $info['error'] );
 	}
 
 	function test_upload_dir_empty() {
@@ -103,7 +103,7 @@ class Tests_Upload extends WP_UnitTestCase {
 		$this->assertSame( get_option( 'siteurl' ) . '/wp-content/uploads' . $subdir, $info['url'] );
 		$this->assertSame( ABSPATH . 'wp-content/uploads' . $subdir, $info['path'] );
 		$this->assertSame( $subdir, $info['subdir'] );
-		$this->assertSame( false, $info['error'] );
+		$this->assertFalse( $info['error'] );
 	}
 
 }
