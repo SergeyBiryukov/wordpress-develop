@@ -1029,7 +1029,7 @@ class Tests_Functions extends WP_UnitTestCase {
 		$this->assertTrue( is_string( $date_return ), 'The date return must be a string' );
 		$this->assertNotEmpty( $date_return, 'The date return could not be an empty string' );
 		$this->assertSame( $expected, $date_return, 'The date does not match' );
-		$this->assertSame( new DateTime( $expected ), new DateTime( $date_return ), 'The date is not the same after the call method' );
+		$this->assertEquals( new DateTime( $expected ), new DateTime( $date_return ), 'The date is not the same after the call method' );
 	}
 
 	function datetime_provider() {
