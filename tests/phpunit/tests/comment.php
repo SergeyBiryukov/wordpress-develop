@@ -162,7 +162,7 @@ class Tests_Comment extends WP_UnitTestCase {
 				'comment_post_ID' => self::$post_id,
 			)
 		);
-		$this->assertSame( false, $update );
+		$this->assertFalse( $update );
 
 		$update = wp_update_comment(
 			array(
@@ -170,7 +170,7 @@ class Tests_Comment extends WP_UnitTestCase {
 				'comment_post_ID' => -1,
 			)
 		);
-		$this->assertSame( false, $update );
+		$this->assertFalse( $update );
 	}
 
 	/**
