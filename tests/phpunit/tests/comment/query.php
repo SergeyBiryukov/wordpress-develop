@@ -1293,26 +1293,29 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 
 		$post_id = self::factory()->post->create();
 		self::factory()->comment->create_post_comments( $post_id, $limit );
+
 		$comments = get_comments( array( 'post_id' => $post_id ) );
 		$this->assertSame( $limit, count( $comments ) );
 		foreach ( $comments as $comment ) {
-			$this->assertSame( $post_id, $comment->comment_post_ID );
+			$this->assertEquals( $post_id, $comment->comment_post_ID );
 		}
 
 		$post_id2 = self::factory()->post->create();
 		self::factory()->comment->create_post_comments( $post_id2, $limit );
+
 		$comments = get_comments( array( 'post_id' => $post_id2 ) );
 		$this->assertSame( $limit, count( $comments ) );
 		foreach ( $comments as $comment ) {
-			$this->assertSame( $post_id2, $comment->comment_post_ID );
+			$this->assertEquals( $post_id2, $comment->comment_post_ID );
 		}
 
 		$post_id3 = self::factory()->post->create();
 		self::factory()->comment->create_post_comments( $post_id3, $limit, array( 'comment_approved' => '0' ) );
+
 		$comments = get_comments( array( 'post_id' => $post_id3 ) );
 		$this->assertSame( $limit, count( $comments ) );
 		foreach ( $comments as $comment ) {
-			$this->assertSame( $post_id3, $comment->comment_post_ID );
+			$this->assertEquals( $post_id3, $comment->comment_post_ID );
 		}
 
 		$comments = get_comments(
@@ -1323,7 +1326,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		);
 		$this->assertSame( $limit, count( $comments ) );
 		foreach ( $comments as $comment ) {
-			$this->assertSame( $post_id3, $comment->comment_post_ID );
+			$this->assertEquals( $post_id3, $comment->comment_post_ID );
 		}
 
 		$comments = get_comments(
@@ -1338,7 +1341,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		$comments = get_comments( array( 'post_id' => $post_id3 ) );
 		$this->assertSame( $limit * 2, count( $comments ) );
 		foreach ( $comments as $comment ) {
-			$this->assertSame( $post_id3, $comment->comment_post_ID );
+			$this->assertEquals( $post_id3, $comment->comment_post_ID );
 		}
 	}
 
