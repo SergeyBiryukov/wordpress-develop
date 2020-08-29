@@ -47,7 +47,7 @@ class Tests_Formatting_MapDeep extends WP_UnitTestCase {
 	}
 
 	public function test_map_deep_should_map_each_object_element_of_an_array() {
-		$this->assertSame(
+		$this->assertEquals(
 			array(
 				'var0' => 'ababa',
 				'var1' => (object) array(
@@ -75,7 +75,7 @@ class Tests_Formatting_MapDeep extends WP_UnitTestCase {
 	}
 
 	public function test_map_deep_should_map_each_property_of_an_object() {
-		$this->assertSame(
+		$this->assertEquals(
 			(object) array(
 				'var0' => 'ababa',
 				'var1' => 'xbaba',
@@ -91,7 +91,7 @@ class Tests_Formatting_MapDeep extends WP_UnitTestCase {
 	}
 
 	public function test_map_deep_should_map_each_array_property_of_an_object() {
-		$this->assertSame(
+		$this->assertEquals(
 			(object) array(
 				'var0' => 'ababa',
 				'var1' => array(
@@ -111,7 +111,7 @@ class Tests_Formatting_MapDeep extends WP_UnitTestCase {
 	}
 
 	public function test_map_deep_should_map_each_object_property_of_an_object() {
-		$this->assertSame(
+		$this->assertEquals(
 			(object) array(
 				'var0' => 'ababa',
 				'var1' => (object) array(
@@ -139,7 +139,7 @@ class Tests_Formatting_MapDeep extends WP_UnitTestCase {
 			'var0' => &$object_a->var0,
 			'var1' => 'x',
 		);
-		$this->assertSame(
+		$this->assertEquals(
 			(object) array(
 				'var0' => 'ababa',
 				'var1' => 'xbaba',
