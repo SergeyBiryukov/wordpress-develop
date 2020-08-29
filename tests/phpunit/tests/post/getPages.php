@@ -428,7 +428,7 @@ class Tests_Post_getPages extends WP_UnitTestCase {
 			)
 		);
 		// Confirm the defaults.
-		$this->assertSame( $pages, $pages_default_args );
+		$this->assertEquals( $pages, $pages_default_args );
 
 		/*
 		 * Here's the tree we are testing:
@@ -472,7 +472,7 @@ class Tests_Post_getPages extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSame( $pages, $default_args );
+		$this->assertEquals( $pages, $default_args );
 
 		/*
 		 * Page tree:
