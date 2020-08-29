@@ -47,13 +47,13 @@ class WP_Test_REST_Schema_Sanitization extends WP_UnitTestCase {
 		$schema = array(
 			'type' => 'boolean',
 		);
-		$this->assertSame( true, rest_sanitize_value_from_schema( '1', $schema ) );
-		$this->assertSame( true, rest_sanitize_value_from_schema( 'true', $schema ) );
-		$this->assertSame( true, rest_sanitize_value_from_schema( '100', $schema ) );
-		$this->assertSame( true, rest_sanitize_value_from_schema( 1, $schema ) );
-		$this->assertSame( false, rest_sanitize_value_from_schema( '0', $schema ) );
-		$this->assertSame( false, rest_sanitize_value_from_schema( 'false', $schema ) );
-		$this->assertSame( false, rest_sanitize_value_from_schema( 0, $schema ) );
+		$this->assertTrue( rest_sanitize_value_from_schema( '1', $schema ) );
+		$this->assertTrue( rest_sanitize_value_from_schema( 'true', $schema ) );
+		$this->assertTrue( rest_sanitize_value_from_schema( '100', $schema ) );
+		$this->assertTrue( rest_sanitize_value_from_schema( 1, $schema ) );
+		$this->assertFalse( rest_sanitize_value_from_schema( '0', $schema ) );
+		$this->assertFalse( rest_sanitize_value_from_schema( 'false', $schema ) );
+		$this->assertFalse( rest_sanitize_value_from_schema( 0, $schema ) );
 	}
 
 	public function test_format_email() {
