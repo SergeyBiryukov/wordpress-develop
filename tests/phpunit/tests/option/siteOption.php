@@ -130,7 +130,7 @@ class Tests_Option_SiteOption extends WP_UnitTestCase {
 		$value->foo = true;
 		$value->bar = true;
 		add_site_option( $key, $value );
-		$this->assertSame( $value, get_site_option( $key ) );
+		$this->assertEquals( $value, get_site_option( $key ) );
 	}
 
 	/**
