@@ -305,8 +305,8 @@ class Tests_Admin_includesScreen extends WP_UnitTestCase {
 	function test_help_tabs() {
 		$tab      = __FUNCTION__;
 		$tab_args = array(
-			'id'       => $tab,
 			'title'    => 'Help!',
+			'id'       => $tab,
 			'content'  => 'Some content',
 			'callback' => false,
 		);
@@ -316,8 +316,8 @@ class Tests_Admin_includesScreen extends WP_UnitTestCase {
 		$this->assertSame(
 			$screen->get_help_tab( $tab ),
 			array(
-				'id'       => $tab,
 				'title'    => 'Help!',
+				'id'       => $tab,
 				'content'  => 'Some content',
 				'callback' => false,
 				'priority' => 10,
@@ -340,8 +340,8 @@ class Tests_Admin_includesScreen extends WP_UnitTestCase {
 	function test_help_tabs_priority() {
 		$tab_1      = 'tab1';
 		$tab_1_args = array(
-			'id'       => $tab_1,
 			'title'    => 'Help!',
+			'id'       => $tab_1,
 			'content'  => 'Some content',
 			'callback' => false,
 			'priority' => 10,
@@ -349,24 +349,24 @@ class Tests_Admin_includesScreen extends WP_UnitTestCase {
 
 		$tab_2      = 'tab2';
 		$tab_2_args = array(
-			'id'       => $tab_2,
 			'title'    => 'Help!',
+			'id'       => $tab_2,
 			'content'  => 'Some content',
 			'callback' => false,
 			'priority' => 2,
 		);
 		$tab_3      = 'tab3';
 		$tab_3_args = array(
-			'id'       => $tab_3,
 			'title'    => 'help!',
+			'id'       => $tab_3,
 			'content'  => 'some content',
 			'callback' => false,
 			'priority' => 40,
 		);
 		$tab_4      = 'tab4';
 		$tab_4_args = array(
-			'id'       => $tab_4,
 			'title'    => 'help!',
+			'id'       => $tab_4,
 			'content'  => 'some content',
 			'callback' => false,
 			// Don't include a priority.
