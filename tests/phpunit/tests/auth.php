@@ -45,15 +45,15 @@ class Tests_Auth extends WP_UnitTestCase {
 		// as an ajax test may have defined DOING_AJAX, failing the test.
 
 		$cookie = wp_generate_auth_cookie( self::$user_id, time() - 7200, 'auth' );
-		$this->assertSame( false, wp_validate_auth_cookie( $cookie, 'auth' ), 'expired cookie' );
+		$this->assertFalse( wp_validate_auth_cookie( $cookie, 'auth' ), 'expired cookie' );
 
 		$cookie = wp_generate_auth_cookie( self::$user_id, time() + 3600, 'auth' );
-		$this->assertSame( false, wp_validate_auth_cookie( $cookie, 'logged_in' ), 'wrong auth scheme' );
+		$this->assertFalse( wp_validate_auth_cookie( $cookie, 'logged_in' ), 'wrong auth scheme' );
 
 		$cookie          = wp_generate_auth_cookie( self::$user_id, time() + 3600, 'auth' );
 		list($a, $b, $c) = explode( '|', $cookie );
 		$cookie          = $a . '|' . ( $b + 1 ) . '|' . $c;
-		$this->assertSame( false, wp_validate_auth_cookie( self::$user_id, 'auth' ), 'altered cookie' );
+		$this->assertFalse( wp_validate_auth_cookie( self::$user_id, 'auth' ), 'altered cookie' );
 	}
 
 	function test_auth_cookie_scheme() {
@@ -63,7 +63,7 @@ class Tests_Auth extends WP_UnitTestCase {
 
 		// Wrong scheme name - should fail.
 		$cookie = wp_generate_auth_cookie( self::$user_id, time() + 3600, 'foo' );
-		$this->assertSame( false, wp_validate_auth_cookie( $cookie, 'bar' ) );
+		$this->assertFalse( wp_validate_auth_cookie( $cookie, 'bar' ) );
 	}
 
 	/**
