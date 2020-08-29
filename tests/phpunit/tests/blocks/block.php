@@ -115,8 +115,8 @@ class WP_Block_Test extends WP_UnitTestCase {
 
 		$this->assertSame(
 			array(
-				'defaulted' => 10,
 				'explicit'  => 20,
+				'defaulted' => 10,
 			),
 			$block->attributes
 		);
