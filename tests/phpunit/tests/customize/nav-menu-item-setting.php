@@ -175,7 +175,7 @@ class Test_WP_Customize_Nav_Menu_Item_Setting extends WP_UnitTestCase {
 		$value = $setting->value();
 		$this->assertSame( $menu_item->title, $value['title'] );
 		$this->assertSame( $menu_item->type, $value['type'] );
-		$this->assertSame( $menu_item->object_id, $value['object_id'] );
+		$this->assertEquals( $menu_item->object_id, $value['object_id'] );
 		$this->assertSame( $menu_id, $value['nav_menu_term_id'] );
 		$this->assertSame( 'Hello World', $value['original_title'] );
 
@@ -258,7 +258,7 @@ class Test_WP_Customize_Nav_Menu_Item_Setting extends WP_UnitTestCase {
 		$value = $setting->value();
 		$this->assertSame( $menu_item->title, $value['title'] );
 		$this->assertSame( $menu_item->type, $value['type'] );
-		$this->assertSame( $menu_item->object_id, $value['object_id'] );
+		$this->assertEquals( $menu_item->object_id, $value['object_id'] );
 		$this->assertSame( $menu_id, $value['nav_menu_term_id'] );
 		$this->assertSame( 'Salutations', $value['original_title'] );
 	}
@@ -615,7 +615,7 @@ class Test_WP_Customize_Nav_Menu_Item_Setting extends WP_UnitTestCase {
 		$post          = get_post( $nav_menu_item_id );
 		$nav_menu_item = wp_setup_nav_menu_item( clone $post );
 
-		$this->assertSame( $expected_sanitized['object_id'], $nav_menu_item->object_id );
+		$this->assertEquals( $expected_sanitized['object_id'], $nav_menu_item->object_id );
 		$this->assertSame( $expected_sanitized['object'], $nav_menu_item->object );
 		$this->assertSame( $expected_sanitized['menu_item_parent'], $nav_menu_item->menu_item_parent );
 		$this->assertSame( $expected_sanitized['position'], $post->menu_order );
@@ -681,7 +681,7 @@ class Test_WP_Customize_Nav_Menu_Item_Setting extends WP_UnitTestCase {
 		$post_value['post_status'] = $post_value['status'];
 		unset( $post_value['status'] );
 		foreach ( $post_value as $key => $value ) {
-			$this->assertSame( $value, $updated_item->$key, "Key $key mismatch" );
+			$this->assertEquals( $value, $updated_item->$key, "Key $key mismatch" );
 		}
 
 		// Verify the Ajax responses is being amended.
@@ -754,7 +754,7 @@ class Test_WP_Customize_Nav_Menu_Item_Setting extends WP_UnitTestCase {
 		$post_value['menu_order'] = $post_value['position'];
 		unset( $post_value['position'] );
 		foreach ( $post_value as $key => $value ) {
-			$this->assertSame( $value, $last_item->$key, "Mismatch for $key property." );
+			$this->assertEquals( $value, $last_item->$key, "Mismatch for $key property." );
 		}
 
 		// Verify the Ajax responses is being amended.
