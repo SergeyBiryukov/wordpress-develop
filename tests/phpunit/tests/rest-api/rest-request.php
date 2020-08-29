@@ -733,7 +733,7 @@ class Tests_REST_Request extends WP_UnitTestCase {
 		);
 		$request->set_param( 'param', null );
 
-		$this->assertSame( null, $request->get_param( 'param' ) );
+		$this->assertNull( $request->get_param( 'param' ) );
 		$this->assertSame( array(), $request->get_body_params() );
 		$this->assertSame( array( 'param' => null ), $request->get_json_params() );
 		$this->assertSame( array( 'param' => null ), $request->get_query_params() );
