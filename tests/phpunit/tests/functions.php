@@ -1095,7 +1095,7 @@ class Tests_Functions extends WP_UnitTestCase {
 		$ini_limit_after  = ini_get( 'memory_limit' );
 
 		$this->assertSame( $ini_limit_before, $ini_limit_after );
-		$this->assertSame( false, $raised_limit );
+		$this->assertFalse( $raised_limit );
 		$this->assertSame( WP_MAX_MEMORY_LIMIT, $ini_limit_after );
 	}
 
