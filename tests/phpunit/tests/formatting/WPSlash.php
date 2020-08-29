@@ -68,8 +68,8 @@ class Tests_Formatting_WPSlash extends WP_UnitTestCase {
 	 */
 	function test_preserves_original_datatype() {
 
-		$this->assertSame( true, wp_slash( true ) );
-		$this->assertSame( false, wp_slash( false ) );
+		$this->assertTrue( wp_slash( true ) );
+		$this->assertFalse( wp_slash( false ) );
 		$this->assertSame( 4, wp_slash( 4 ) );
 		$this->assertSame( 'foo', wp_slash( 'foo' ) );
 		$arr      = array(
