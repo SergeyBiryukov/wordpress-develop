@@ -498,25 +498,25 @@ class Tests_User extends WP_UnitTestCase {
 
 		// @ticket 23480
 		$user1 = WP_User::get_data_by( 'id', -1 );
-		$this->assertSame( false, $user1 );
+		$this->assertFalse( $user1 );
 
 		$user2 = WP_User::get_data_by( 'id', 0 );
-		$this->assertSame( false, $user2 );
+		$this->assertFalse( $user2 );
 
 		$user3 = WP_User::get_data_by( 'id', null );
-		$this->assertSame( false, $user3 );
+		$this->assertFalse( $user3 );
 
 		$user4 = WP_User::get_data_by( 'id', '' );
-		$this->assertSame( false, $user4 );
+		$this->assertFalse( $user4 );
 
 		$user5 = WP_User::get_data_by( 'id', false );
-		$this->assertSame( false, $user5 );
+		$this->assertFalse( $user5 );
 
 		$user6 = WP_User::get_data_by( 'id', $user->user_nicename );
-		$this->assertSame( false, $user6 );
+		$this->assertFalse( $user6 );
 
 		$user7 = WP_User::get_data_by( 'id', 99999 );
-		$this->assertSame( false, $user7 );
+		$this->assertFalse( $user7 );
 	}
 
 	/**
