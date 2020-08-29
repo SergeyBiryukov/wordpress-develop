@@ -255,7 +255,7 @@ class Tests_Functions extends WP_UnitTestCase {
 		}
 
 		if ( is_object( $expected ) ) {
-			$this->assertSame( $expected, maybe_unserialize( $value ) );
+			$this->assertEquals( $expected, maybe_unserialize( $value ) );
 		} else {
 			$this->assertSame( $expected, maybe_unserialize( $value ) );
 		}
