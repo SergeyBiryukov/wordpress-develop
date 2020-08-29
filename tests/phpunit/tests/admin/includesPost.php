@@ -253,7 +253,7 @@ class Tests_Admin_Includes_Post extends WP_UnitTestCase {
 
 		// Check that the first post's values don't stomp the second post.
 		$this->assertSame( 'draft', $post->post_status );
-		$this->assertSame( self::$author_ids[1], $post->post_author );
+		$this->assertEquals( self::$author_ids[1], $post->post_author );
 		$this->assertSame( 'closed', $post->comment_status );
 		$this->assertSame( 'closed', $post->ping_status );
 	}
@@ -825,8 +825,8 @@ class Tests_Admin_Includes_Post extends WP_UnitTestCase {
 	function test_get_block_editor_server_block_settings() {
 		$name     = 'core/test';
 		$settings = array(
-			'category'        => 'common',
 			'icon'            => 'text',
+			'category'        => 'common',
 			'render_callback' => 'foo',
 		);
 
@@ -841,8 +841,8 @@ class Tests_Admin_Includes_Post extends WP_UnitTestCase {
 			array(
 				'title'       => '',
 				'description' => '',
-				'category'    => 'common',
 				'icon'        => 'text',
+				'category'    => 'common',
 				'keywords'    => array(),
 				'usesContext' => array(),
 				'styles'      => array(),
