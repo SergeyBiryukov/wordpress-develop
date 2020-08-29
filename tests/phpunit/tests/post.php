@@ -271,7 +271,7 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertSame( $post['post_date'], $out->post_date );
 
 		// There should be a publish_future_post hook scheduled on the future date.
-		$this->assertSame( false, $this->_next_schedule_for_post( 'publish_future_post', $id ) );
+		$this->assertFalse( $this->_next_schedule_for_post( 'publish_future_post', $id ) );
 
 	}
 
@@ -313,7 +313,7 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertSame( $post['post_date'], $out->post_date );
 
 		// And the correct date on the cron job.
-		$this->assertSame( false, $this->_next_schedule_for_post( 'publish_future_post', $id ) );
+		$this->assertFalse( $this->_next_schedule_for_post( 'publish_future_post', $id ) );
 	}
 
 	/**
@@ -357,7 +357,7 @@ class Tests_Post extends WP_UnitTestCase {
 			$this->assertSame( $post['post_date'], $out->post_date );
 
 			// And the correct date on the cron job.
-			$this->assertSame( false, $this->_next_schedule_for_post( 'publish_future_post', $id ) );
+			$this->assertFalse( $this->_next_schedule_for_post( 'publish_future_post', $id ) );
 		}
 	}
 
@@ -392,7 +392,7 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertSame( $post['post_date'], $out->post_date );
 
 		// There should be a publish_future_post hook scheduled on the future date.
-		$this->assertSame( false, $this->_next_schedule_for_post( 'publish_future_post', $id ) );
+		$this->assertFalse( $this->_next_schedule_for_post( 'publish_future_post', $id ) );
 	}
 
 	/**
@@ -456,7 +456,7 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertSame( $post['post_date'], $out->post_date );
 
 		// And the correct date on the cron job.
-		$this->assertSame( false, $this->_next_schedule_for_post( 'publish_future_post', $id ) );
+		$this->assertFalse( $this->_next_schedule_for_post( 'publish_future_post', $id ) );
 	}
 
 	/**
