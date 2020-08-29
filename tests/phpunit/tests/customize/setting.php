@@ -45,7 +45,7 @@ class Tests_WP_Customize_Setting extends WP_UnitTestCase {
 		$this->assertFalse( has_filter( "customize_validate_{$setting->id}" ) );
 		$this->assertFalse( has_filter( "customize_sanitize_{$setting->id}" ) );
 		$this->assertFalse( has_filter( "customize_sanitize_js_{$setting->id}" ) );
-		$this->assertSame( false, $setting->dirty );
+		$this->assertFalse( $setting->dirty );
 	}
 
 	/**
