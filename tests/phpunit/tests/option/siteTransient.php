@@ -41,7 +41,7 @@ class Tests_Option_SiteTransient extends WP_UnitTestCase {
 
 		$value = (object) $value;
 		$this->assertTrue( set_site_transient( $key, $value ) );
-		$this->assertSame( $value, get_site_transient( $key ) );
+		$this->assertEquals( $value, get_site_transient( $key ) );
 		$this->assertTrue( delete_site_transient( $key ) );
 	}
 
