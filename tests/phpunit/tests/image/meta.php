@@ -95,7 +95,7 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( '', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
-		$this->assertSame( 0, $out['created_timestamp'] );
+		$this->assertSame( '0', $out['created_timestamp'] );
 		$this->assertSame( '', $out['copyright'] );
 		$this->assertSame( 0, $out['focal_length'] );
 		$this->assertSame( 0, $out['iso'] );
@@ -111,7 +111,7 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( '', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
-		$this->assertSame( 0, $out['created_timestamp'] );
+		$this->assertSame( '0', $out['created_timestamp'] );
 		$this->assertSame( '', $out['copyright'] );
 		$this->assertSame( 0, $out['focal_length'] );
 		$this->assertSame( 0, $out['iso'] );
@@ -148,7 +148,7 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		$this->assertSame( 'Photoshop Author', $out['credit'] );
 		$this->assertSame( 'DMC-LX2', $out['camera'] );
 		$this->assertSame( 'Photoshop Description', $out['caption'] );
-		$this->assertSame( 1306315327, $out['created_timestamp'] );
+		$this->assertSame( '1306315327', $out['created_timestamp'] );
 		$this->assertSame( 'Photoshop Copyrright Notice', $out['copyright'] );
 		$this->assertSame( '6.3', $out['focal_length'] );
 		$this->assertSame( '100', $out['iso'] );
