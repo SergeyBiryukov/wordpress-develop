@@ -18,7 +18,7 @@ class Tests_POMO_NOOPTranslations extends WP_UnitTestCase {
 	}
 
 	function test_get_header() {
-		$this->assertSame( false, $this->noop->get_header( 'Content-Type' ) );
+		$this->assertFalse( $this->noop->get_header( 'Content-Type' ) );
 	}
 
 	function test_add_entry() {
@@ -33,7 +33,7 @@ class Tests_POMO_NOOPTranslations extends WP_UnitTestCase {
 
 	function test_translate_entry() {
 		$this->noop->add_entry( $this->entry );
-		$this->assertSame( false, $this->noop->translate_entry( $this->entry ) );
+		$this->assertFalse( $this->noop->translate_entry( $this->entry ) );
 	}
 
 	function test_translate() {
