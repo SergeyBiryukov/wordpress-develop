@@ -2828,7 +2828,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		);
 
 		// $comments is ASC by default.
-		$this->assertSame( $comments, wp_list_pluck( $found, 'comment_ID' ) );
+		$this->assertEquals( $comments, wp_list_pluck( $found, 'comment_ID' ) );
 	}
 
 	/**
@@ -2855,7 +2855,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		// $comments is ASC by default.
 		rsort( $comments );
 
-		$this->assertSame( $comments, wp_list_pluck( $found, 'comment_ID' ) );
+		$this->assertEquals( $comments, wp_list_pluck( $found, 'comment_ID' ) );
 	}
 
 	public function test_meta_vars_should_be_converted_to_meta_query() {
@@ -3339,7 +3339,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		$query2 = new WP_Comment_Query( array( 'status' => 'all' ) );
 		$this->assertNotEmpty( $query2->query_vars );
 		$this->assertNotEmpty( $query2->comments );
-		$this->assertSame( $query2->comments, $query1->get_comments() );
+		$this->assertEquals( $query2->comments, $query1->get_comments() );
 	}
 
 	/**
