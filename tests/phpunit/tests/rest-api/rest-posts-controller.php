@@ -2185,9 +2185,9 @@ class WP_Test_REST_Posts_Controller extends WP_Test_REST_Post_Type_Controller_Te
 		$response = rest_get_server()->dispatch( $request );
 
 		$new_data = $response->get_data();
-		$this->assertSame( true, $new_data['sticky'] );
+		$this->assertTrue( $new_data['sticky'] );
 		$post = get_post( $new_data['id'] );
-		$this->assertSame( true, is_sticky( $post->ID ) );
+		$this->assertTrue( is_sticky( $post->ID ) );
 	}
 
 	public function test_create_post_sticky_as_contributor() {
@@ -3220,9 +3220,9 @@ class WP_Test_REST_Posts_Controller extends WP_Test_REST_Post_Type_Controller_Te
 		$response = rest_get_server()->dispatch( $request );
 
 		$new_data = $response->get_data();
-		$this->assertSame( true, $new_data['sticky'] );
+		$this->assertTrue( $new_data['sticky'] );
 		$post = get_post( $new_data['id'] );
-		$this->assertSame( true, is_sticky( $post->ID ) );
+		$this->assertTrue( is_sticky( $post->ID ) );
 
 		// Updating another field shouldn't change sticky status.
 		$request = new WP_REST_Request( 'PUT', sprintf( '/wp/v2/posts/%d', self::$post_id ) );
@@ -3235,9 +3235,9 @@ class WP_Test_REST_Posts_Controller extends WP_Test_REST_Post_Type_Controller_Te
 		$response = rest_get_server()->dispatch( $request );
 
 		$new_data = $response->get_data();
-		$this->assertSame( true, $new_data['sticky'] );
+		$this->assertTrue( $new_data['sticky'] );
 		$post = get_post( $new_data['id'] );
-		$this->assertSame( true, is_sticky( $post->ID ) );
+		$this->assertTrue( is_sticky( $post->ID ) );
 	}
 
 	public function test_update_post_excerpt() {
