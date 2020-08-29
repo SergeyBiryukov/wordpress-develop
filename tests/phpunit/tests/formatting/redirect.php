@@ -80,7 +80,7 @@ class Tests_Formatting_Redirect extends WP_UnitTestCase {
 	 * @dataProvider invalid_url_provider
 	 */
 	function test_wp_validate_redirect_invalid_url( $url ) {
-		$this->assertSame( false, wp_validate_redirect( $url, false ) );
+		$this->assertFalse( wp_validate_redirect( $url, false ) );
 	}
 
 	function valid_url_provider() {
