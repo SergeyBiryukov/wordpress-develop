@@ -50,34 +50,34 @@ class Tests_Admin_IncludesComment extends WP_UnitTestCase {
 	 */
 	public function test_must_match_date_and_author() {
 		$this->assertNull( comment_exists( 1, '2004-01-02 12:00:00' ) );
-		$this->assertSame( self::$post_id, comment_exists( 1, '2014-05-06 12:00:00' ) );
+		$this->assertEquals( self::$post_id, comment_exists( 1, '2014-05-06 12:00:00' ) );
 	}
 
 	/**
 	 * @ticket 33871
 	 */
 	public function test_default_value_of_timezone_should_be_blog() {
-		$this->assertSame( self::$post_id, comment_exists( 1, '2014-05-06 12:00:00' ) );
+		$this->assertEquals( self::$post_id, comment_exists( 1, '2014-05-06 12:00:00' ) );
 	}
 
 	/**
 	 * @ticket 33871
 	 */
 	public function test_should_respect_timezone_blog() {
-		$this->assertSame( self::$post_id, comment_exists( 1, '2014-05-06 12:00:00', 'blog' ) );
+		$this->assertEquals( self::$post_id, comment_exists( 1, '2014-05-06 12:00:00', 'blog' ) );
 	}
 
 	/**
 	 * @ticket 33871
 	 */
 	public function test_should_respect_timezone_gmt() {
-		$this->assertSame( self::$post_id, comment_exists( 1, '2014-05-06 07:00:00', 'gmt' ) );
+		$this->assertEquals( self::$post_id, comment_exists( 1, '2014-05-06 07:00:00', 'gmt' ) );
 	}
 
 	/**
 	 * @ticket 33871
 	 */
 	public function test_invalid_timezone_should_fall_back_on_blog() {
-		$this->assertSame( self::$post_id, comment_exists( 1, '2014-05-06 12:00:00', 'not_a_valid_value' ) );
+		$this->assertEquals( self::$post_id, comment_exists( 1, '2014-05-06 12:00:00', 'not_a_valid_value' ) );
 	}
 }
