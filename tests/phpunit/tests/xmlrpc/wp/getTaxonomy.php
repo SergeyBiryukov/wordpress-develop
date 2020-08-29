@@ -52,7 +52,7 @@ class Tests_XMLRPC_wp_getTaxonomy extends WP_XMLRPC_UnitTestCase {
 		$this->assertNotIXRError( $result );
 		$taxonomy = get_taxonomy( 'category' );
 		$this->assertSame( 'category', $result['name'], 'name' );
-		$this->assertSame( true, $result['_builtin'], '_builtin' );
+		$this->assertTrue( $result['_builtin'], '_builtin' );
 		$this->assertSame( $taxonomy->show_ui, $result['show_ui'], 'show_ui' );
 		$this->assertSame( $taxonomy->public, $result['public'], 'public' );
 		$this->assertSame( $taxonomy->hierarchical, $result['hierarchical'], 'hierarchical' );
