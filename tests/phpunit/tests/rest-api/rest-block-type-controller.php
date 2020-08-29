@@ -233,11 +233,11 @@ class REST_Block_Type_Controller_Test extends WP_Test_REST_Controller_Testcase {
 		$this->assertSame( $block_type, $data['name'] );
 		$this->assertSame( '1', $data['title'] );
 		$this->assertSame( '1', $data['description'] );
-		$this->assertSame( null, $data['icon'] );
-		$this->assertSame( null, $data['editor_script'] );
-		$this->assertSame( null, $data['script'] );
-		$this->assertSame( null, $data['editor_style'] );
-		$this->assertSame( null, $data['style'] );
+		$this->assertNull( $data['icon'] );
+		$this->assertNull( $data['editor_script'] );
+		$this->assertNull( $data['script'] );
+		$this->assertNull( $data['editor_style'] );
+		$this->assertNull( $data['style'] );
 		$this->assertEqualSets( array(), $data['provides_context'] );
 		$this->assertEqualSets( array(), $data['attributes'] );
 		$this->assertEqualSets( array( 'invalid_uses_context' ), $data['uses_context'] );
@@ -245,10 +245,10 @@ class REST_Block_Type_Controller_Test extends WP_Test_REST_Controller_Testcase {
 		$this->assertEqualSets( array( 'invalid_parent' ), $data['parent'] );
 		$this->assertEqualSets( array(), $data['supports'] );
 		$this->assertEqualSets( array(), $data['styles'] );
-		$this->assertSame( null, $data['example'] );
-		$this->assertSame( null, $data['category'] );
-		$this->assertSame( null, $data['textdomain'] );
-		$this->assertFalse( false, $data['is_dynamic'] );
+		$this->assertNull( $data['example'] );
+		$this->assertNull( $data['category'] );
+		$this->assertNull( $data['textdomain'] );
+		$this->assertFalse( $data['is_dynamic'] );
 	}
 
 	/**
@@ -284,11 +284,11 @@ class REST_Block_Type_Controller_Test extends WP_Test_REST_Controller_Testcase {
 		$this->assertSame( $block_type, $data['name'] );
 		$this->assertSame( '', $data['title'] );
 		$this->assertSame( '', $data['description'] );
-		$this->assertSame( null, $data['icon'] );
-		$this->assertSame( null, $data['editor_script'] );
-		$this->assertSame( null, $data['script'] );
-		$this->assertSame( null, $data['editor_style'] );
-		$this->assertSame( null, $data['style'] );
+		$this->assertNull( $data['icon'] );
+		$this->assertNull( $data['editor_script'] );
+		$this->assertNull( $data['script'] );
+		$this->assertNull( $data['editor_style'] );
+		$this->assertNull( $data['style'] );
 		$this->assertEqualSets( array(), $data['attributes'] );
 		$this->assertEqualSets( array(), $data['provides_context'] );
 		$this->assertEqualSets( array(), $data['uses_context'] );
@@ -296,11 +296,11 @@ class REST_Block_Type_Controller_Test extends WP_Test_REST_Controller_Testcase {
 		$this->assertEqualSets( array(), $data['parent'] );
 		$this->assertEqualSets( array(), $data['supports'] );
 		$this->assertEqualSets( array(), $data['styles'] );
-		$this->assertSame( null, $data['example'] );
-		$this->assertSame( null, $data['category'] );
-		$this->assertSame( null, $data['example'] );
-		$this->assertSame( null, $data['textdomain'] );
-		$this->assertFalse( false, $data['is_dynamic'] );
+		$this->assertNull( $data['example'] );
+		$this->assertNull( $data['category'] );
+		$this->assertNull( $data['example'] );
+		$this->assertNull( $data['textdomain'] );
+		$this->assertFalse( $data['is_dynamic'] );
 	}
 
 	/**
