@@ -54,8 +54,8 @@ class Test_WP_Customize_Partial extends WP_UnitTestCase {
 		$this->assertSame( array( $partial_id ), $partial->settings );
 		$this->assertSame( $partial_id, $partial->primary_setting );
 		$this->assertSame( array( $partial, 'render_callback' ), $partial->render_callback );
-		$this->assertSame( false, $partial->container_inclusive );
-		$this->assertSame( true, $partial->fallback_refresh );
+		$this->assertFalse( $partial->container_inclusive );
+		$this->assertTrue( $partial->fallback_refresh );
 	}
 
 	/**
@@ -109,8 +109,8 @@ class Test_WP_Customize_Partial extends WP_UnitTestCase {
 		$this->assertEqualSets( $args['settings'], $partial->settings );
 		$this->assertSame( $args['primary_setting'], $partial->primary_setting );
 		$this->assertSame( $args['render_callback'], $partial->render_callback );
-		$this->assertSame( false, $partial->container_inclusive );
-		$this->assertSame( false, $partial->fallback_refresh );
+		$this->assertFalse( $partial->container_inclusive );
+		$this->assertFalse( $partial->fallback_refresh );
 		$this->assertContains( 'Lorem Ipsum', $partial->render() );
 
 		$partial = new WP_Customize_Partial(
