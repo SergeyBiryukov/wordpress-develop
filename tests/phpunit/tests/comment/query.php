@@ -1408,7 +1408,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 				'orderby'    => array( 'key' ),
 			)
 		);
-		$this->assertSame( array( $comment_id3, $comment_id ), wp_list_pluck( $comments, 'comment_ID' ) );
+		$this->assertEquals( array( $comment_id3, $comment_id ), wp_list_pluck( $comments, 'comment_ID' ) );
 
 		$comments = get_comments(
 			array(
@@ -1416,7 +1416,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 				'orderby'    => array( 'meta_value' ),
 			)
 		);
-		$this->assertSame( array( $comment_id3, $comment_id ), wp_list_pluck( $comments, 'comment_ID' ) );
+		$this->assertEquals( array( $comment_id3, $comment_id ), wp_list_pluck( $comments, 'comment_ID' ) );
 
 		// 'value1' is present on two different keys for $comment_id,
 		// yet we should get only one instance of that comment in the results.
