@@ -274,7 +274,7 @@ class Tests_Feeds_Atom extends WP_UnitTestCase {
 			foreach ( (array) $links as $link ) {
 				if ( 'enclosure' === $link['attributes']['rel'] ) {
 					$this->assertSame( $enclosures[ $i ]['expected']['href'], $link['attributes']['href'] );
-					$this->assertSame( $enclosures[ $i ]['expected']['length'], $link['attributes']['length'] );
+					$this->assertEquals( $enclosures[ $i ]['expected']['length'], $link['attributes']['length'] );
 					$this->assertSame( $enclosures[ $i ]['expected']['type'], $link['attributes']['type'] );
 					$i++;
 				}
