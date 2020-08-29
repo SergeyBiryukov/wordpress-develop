@@ -469,7 +469,7 @@ class Tests_Cron extends WP_UnitTestCase {
 			'args'      => array(),
 		);
 
-		$this->assertSame( $expected, $actual );
+		$this->assertEquals( $expected, $actual );
 		$this->assertSame( $expected->timestamp, $actual2 );
 	}
 
@@ -516,13 +516,13 @@ class Tests_Cron extends WP_UnitTestCase {
 		wp_schedule_single_event( $ts_next, $hook, $args );
 
 		// Late running, timestamp specified.
-		$this->assertSame( $expected1, wp_get_scheduled_event( $hook, $args, $ts_late ) );
+		$this->assertEquals( $expected1, wp_get_scheduled_event( $hook, $args, $ts_late ) );
 
 		// Next running, timestamp specified.
-		$this->assertSame( $expected2, wp_get_scheduled_event( $hook, $args, $ts_next ) );
+		$this->assertEquals( $expected2, wp_get_scheduled_event( $hook, $args, $ts_next ) );
 
 		// Next running, no timestamp specified.
-		$this->assertSame( $expected2, wp_get_scheduled_event( $hook, $args ) );
+		$this->assertEquals( $expected2, wp_get_scheduled_event( $hook, $args ) );
 	}
 
 	/**
@@ -563,13 +563,13 @@ class Tests_Cron extends WP_UnitTestCase {
 		wp_schedule_event( $ts_next, $schedule, $hook, $args );
 
 		// Late running, timestamp specified.
-		$this->assertSame( $expected1, wp_get_scheduled_event( $hook, $args, $ts_late ) );
+		$this->assertEquals( $expected1, wp_get_scheduled_event( $hook, $args, $ts_late ) );
 
 		// Next running, timestamp specified.
-		$this->assertSame( $expected2, wp_get_scheduled_event( $hook, $args, $ts_next ) );
+		$this->assertEquals( $expected2, wp_get_scheduled_event( $hook, $args, $ts_next ) );
 
 		// Next running, no timestamp specified.
-		$this->assertSame( $expected2, wp_get_scheduled_event( $hook, $args ) );
+		$this->assertEquals( $expected2, wp_get_scheduled_event( $hook, $args ) );
 	}
 
 	/**
