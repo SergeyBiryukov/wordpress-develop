@@ -113,25 +113,25 @@ $commentary
 DATA;
 		$link_post_id         = self::factory()->post->create( array( 'post_content' => $link ) );
 		$content_link         = get_url_in_content( get_post_field( 'post_content', $link_post_id ) );
-		$this->assertSame( false, $content_link );
+		$this->assertFalse( $content_link );
 
 		$link_with_post_id = self::factory()->post->create( array( 'post_content' => $link_with_commentary ) );
 		$content_link      = get_url_in_content( get_post_field( 'post_content', $link_with_post_id ) );
-		$this->assertSame( false, $content_link );
+		$this->assertFalse( $content_link );
 
 		$content_link = get_url_in_content( get_post_field( 'post_content', $link_post_id ) );
-		$this->assertSame( false, $content_link );
+		$this->assertFalse( $content_link );
 
 		$content_link = get_url_in_content( get_post_field( 'post_content', $link_with_post_id ) );
-		$this->assertSame( false, $content_link );
+		$this->assertFalse( $content_link );
 
 		$empty_post_id = self::factory()->post->create( array( 'post_content' => '' ) );
 		$content_link  = get_url_in_content( get_post_field( 'post_content', $empty_post_id ) );
-		$this->assertSame( false, $content_link );
+		$this->assertFalse( $content_link );
 
 		$comm_post_id = self::factory()->post->create( array( 'post_content' => $commentary ) );
 		$content_link = get_url_in_content( get_post_field( 'post_content', $comm_post_id ) );
-		$this->assertSame( false, $content_link );
+		$this->assertFalse( $content_link );
 
 		// Now with an href.
 		$href_post_id = self::factory()->post->create( array( 'post_content' => $href ) );
@@ -150,10 +150,10 @@ DATA;
 
 		$empty_post_id = self::factory()->post->create( array( 'post_content' => '' ) );
 		$content_link  = get_url_in_content( get_post_field( 'post_content', $empty_post_id ) );
-		$this->assertSame( false, $content_link );
+		$this->assertFalse( $content_link );
 
 		$comm_post_id = self::factory()->post->create( array( 'post_content' => $commentary ) );
 		$content_link = get_url_in_content( get_post_field( 'post_content', $comm_post_id ) );
-		$this->assertSame( false, $content_link );
+		$this->assertFalse( $content_link );
 	}
 }
