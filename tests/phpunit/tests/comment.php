@@ -55,7 +55,7 @@ class Tests_Comment extends WP_UnitTestCase {
 		$this->assertSame( 1, $result );
 
 		$comment = get_comment( $comments[0] );
-		$this->assertSame( $comments[1], $comment->comment_parent );
+		$this->assertEquals( $comments[1], $comment->comment_parent );
 
 		$result = wp_update_comment(
 			array(
@@ -126,7 +126,7 @@ class Tests_Comment extends WP_UnitTestCase {
 		);
 
 		$comment = get_comment( $comment_id );
-		$this->assertSame( 1, $comment->user_id );
+		$this->assertEquals( 1, $comment->user_id );
 	}
 
 	/**
@@ -252,7 +252,7 @@ class Tests_Comment extends WP_UnitTestCase {
 		$found = get_approved_comments( self::$post_id );
 
 		// All comment types will be returned.
-		$this->assertSame( array( $ca1, $ca2, $c2, $c3, $c4, $c5 ), wp_list_pluck( $found, 'comment_ID' ) );
+		$this->assertEquals( array( $ca1, $ca2, $c2, $c3, $c4, $c5 ), wp_list_pluck( $found, 'comment_ID' ) );
 	}
 
 	/**
