@@ -21,7 +21,7 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// Exif from a Nikon D70.
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/2004-07-22-DSC_0008.jpg' );
 
-		$this->assertSame( 6.3, $out['aperture'] );
+		$this->assertSame( '6.3', $out['aperture'] );
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( 'NIKON D70', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
@@ -37,7 +37,7 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// Exif from a Nikon D70 - manual focus lens, so some data is unavailable.
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/2007-06-17DSC_4173.JPG' );
 
-		$this->assertSame( 0, $out['aperture'] );
+		$this->assertSame( '0', $out['aperture'] );
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( 'NIKON D70', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
@@ -54,7 +54,7 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// Exif from a Nikon D70 with IPTC data added later.
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/2004-07-22-DSC_0007.jpg' );
 
-		$this->assertSame( 6.3, $out['aperture'] );
+		$this->assertSame( '6.3', $out['aperture'] );
 		$this->assertSame( 'IPTC Creator', $out['credit'] );
 		$this->assertSame( 'NIKON D70', $out['camera'] );
 		$this->assertSame( 'IPTC Caption', $out['caption'] );
@@ -70,7 +70,7 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// Exif from a Fuji FinePix S5600 (thanks Mark).
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/a2-small.jpg' );
 
-		$this->assertSame( 4.5, $out['aperture'] );
+		$this->assertSame( '4.5', $out['aperture'] );
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( 'FinePix S5600', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
@@ -91,7 +91,7 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// This triggers a warning mesage when reading the Exif block.
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/waffles.jpg' );
 
-		$this->assertSame( 0, $out['aperture'] );
+		$this->assertSame( '0', $out['aperture'] );
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( '', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
@@ -107,7 +107,7 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// No Exif data in this image (from burningwell.org).
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/canola.jpg' );
 
-		$this->assertSame( 0, $out['aperture'] );
+		$this->assertSame( '0', $out['aperture'] );
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( '', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
