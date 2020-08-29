@@ -204,14 +204,14 @@ class WP_Test_REST_Settings_Controller extends WP_Test_REST_Controller_Testcase 
 		$request  = new WP_REST_Request( 'GET', '/wp/v2/settings' );
 		$response = rest_get_server()->dispatch( $request );
 		$data     = $response->get_data();
-		$this->assertSame( null, $data['mycustomsetting'] );
+		$this->assertNull( $data['mycustomsetting'] );
 
 		// No option value.
 		delete_option( 'mycustomsetting' );
 		$request  = new WP_REST_Request( 'GET', '/wp/v2/settings' );
 		$response = rest_get_server()->dispatch( $request );
 		$data     = $response->get_data();
-		$this->assertSame( null, $data['mycustomsetting'] );
+		$this->assertNull( $data['mycustomsetting'] );
 	}
 
 	public function test_get_item_with_custom_object_setting() {
@@ -264,7 +264,7 @@ class WP_Test_REST_Settings_Controller extends WP_Test_REST_Controller_Testcase 
 		$request  = new WP_REST_Request( 'GET', '/wp/v2/settings' );
 		$response = rest_get_server()->dispatch( $request );
 		$data     = $response->get_data();
-		$this->assertSame( null, $data['mycustomsetting'] );
+		$this->assertNull( $data['mycustomsetting'] );
 	}
 
 	public function get_setting_custom_callback( $result, $name, $args ) {
@@ -343,7 +343,7 @@ class WP_Test_REST_Settings_Controller extends WP_Test_REST_Controller_Testcase 
 		$request  = new WP_REST_Request( 'GET', '/wp/v2/settings' );
 		$response = rest_get_server()->dispatch( $request );
 		$data     = $response->get_data();
-		$this->assertSame( null, $data['mycustomsettinginrest'] );
+		$this->assertNull( $data['mycustomsettinginrest'] );
 	}
 
 	public function test_get_item_with_invalid_object_array_in_options() {
@@ -369,7 +369,7 @@ class WP_Test_REST_Settings_Controller extends WP_Test_REST_Controller_Testcase 
 		$request  = new WP_REST_Request( 'GET', '/wp/v2/settings' );
 		$response = rest_get_server()->dispatch( $request );
 		$data     = $response->get_data();
-		$this->assertSame( null, $data['mycustomsettinginrest'] );
+		$this->assertNull( $data['mycustomsettinginrest'] );
 	}
 
 
