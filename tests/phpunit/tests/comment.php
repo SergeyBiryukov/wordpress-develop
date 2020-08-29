@@ -73,7 +73,7 @@ class Tests_Comment extends WP_UnitTestCase {
 		);
 
 		$comment = get_comment( $comments[0] );
-		$this->assertSame( $post2->ID, $comment->comment_post_ID );
+		$this->assertEquals( $post2->ID, $comment->comment_post_ID );
 	}
 
 	/**
