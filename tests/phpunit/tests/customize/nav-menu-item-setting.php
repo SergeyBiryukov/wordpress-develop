@@ -617,7 +617,7 @@ class Test_WP_Customize_Nav_Menu_Item_Setting extends WP_UnitTestCase {
 
 		$this->assertEquals( $expected_sanitized['object_id'], $nav_menu_item->object_id );
 		$this->assertSame( $expected_sanitized['object'], $nav_menu_item->object );
-		$this->assertSame( $expected_sanitized['menu_item_parent'], $nav_menu_item->menu_item_parent );
+		$this->assertEquals( $expected_sanitized['menu_item_parent'], $nav_menu_item->menu_item_parent );
 		$this->assertSame( $expected_sanitized['position'], $post->menu_order );
 		$this->assertSame( $expected_sanitized['type'], $nav_menu_item->type );
 		$this->assertSame( $expected_sanitized['title'], $post->post_title );
