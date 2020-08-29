@@ -471,7 +471,7 @@ https://w.org</a>',
 		);
 
 		$images = get_attached_media( 'image', $post_id );
-		$this->assertSame( $images, array( $attachment_id => get_post( $attachment_id ) ) );
+		$this->assertEquals( $images, array( $attachment_id => get_post( $attachment_id ) ) );
 	}
 
 	/**
