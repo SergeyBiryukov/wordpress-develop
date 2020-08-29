@@ -83,7 +83,7 @@ class Tests_Option_Option extends WP_UnitTestCase {
 
 		$value = (object) $value;
 		$this->assertTrue( update_option( $key, $value ) );
-		$this->assertSame( $value, get_option( $key ) );
+		$this->assertEquals( $value, get_option( $key ) );
 		$this->assertTrue( delete_option( $key ) );
 	}
 
