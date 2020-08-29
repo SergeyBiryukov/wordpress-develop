@@ -26,7 +26,7 @@ class Tests_POMO_Translations extends WP_UnitTestCase {
 			$po->entries
 		);
 		// Add empty entry.
-		$this->assertSame( false, $po->add_entry( $empty ) );
+		$this->assertFalse( $po->add_entry( $empty ) );
 		$this->assertSame(
 			array(
 				$entry->key()  => $entry,
