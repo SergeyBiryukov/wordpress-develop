@@ -1367,8 +1367,8 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 			)
 		);
 		$this->assertSame( 2, count( $comments ) );
-		$this->assertSame( $comment_id2, $comments[0]->comment_ID );
-		$this->assertSame( $comment_id, $comments[1]->comment_ID );
+		$this->assertEquals( $comment_id2, $comments[0]->comment_ID );
+		$this->assertEquals( $comment_id, $comments[1]->comment_ID );
 
 		$comments = get_comments(
 			array(
@@ -1377,8 +1377,8 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 			)
 		);
 		$this->assertSame( 2, count( $comments ) );
-		$this->assertSame( $comment_id2, $comments[0]->comment_ID );
-		$this->assertSame( $comment_id, $comments[1]->comment_ID );
+		$this->assertEquals( $comment_id2, $comments[0]->comment_ID );
+		$this->assertEquals( $comment_id, $comments[1]->comment_ID );
 
 		$comments = get_comments(
 			array(
@@ -1388,8 +1388,8 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 			)
 		);
 		$this->assertSame( 2, count( $comments ) );
-		$this->assertSame( $comment_id, $comments[0]->comment_ID );
-		$this->assertSame( $comment_id2, $comments[1]->comment_ID );
+		$this->assertEquals( $comment_id, $comments[0]->comment_ID );
+		$this->assertEquals( $comment_id2, $comments[1]->comment_ID );
 
 		$comments = get_comments(
 			array(
@@ -1399,8 +1399,8 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 			)
 		);
 		$this->assertSame( 2, count( $comments ) );
-		$this->assertSame( $comment_id, $comments[0]->comment_ID );
-		$this->assertSame( $comment_id2, $comments[1]->comment_ID );
+		$this->assertEquals( $comment_id, $comments[0]->comment_ID );
+		$this->assertEquals( $comment_id2, $comments[1]->comment_ID );
 
 		$comments = get_comments(
 			array(
@@ -1633,8 +1633,8 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		);
 
 		$this->assertCount( 2, $comments );
-		$this->assertSame( $users[0], $comments[0]->user_id );
-		$this->assertSame( $users[0], $comments[1]->user_id );
+		$this->assertEquals( $users[0], $comments[0]->user_id );
+		$this->assertEquals( $users[0], $comments[1]->user_id );
 
 		$comments = get_comments(
 			array(
@@ -1645,9 +1645,9 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		);
 
 		$this->assertCount( 3, $comments );
-		$this->assertSame( $users[0], $comments[0]->user_id );
-		$this->assertSame( $users[0], $comments[1]->user_id );
-		$this->assertSame( $users[1], $comments[2]->user_id );
+		$this->assertEquals( $users[0], $comments[0]->user_id );
+		$this->assertEquals( $users[0], $comments[1]->user_id );
+		$this->assertEquals( $users[1], $comments[2]->user_id );
 
 	}
 
@@ -3729,7 +3729,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		);
 
 		$this->assertSame( 3, $q->found_comments );
-		$this->assertSame( 2, $q->max_num_pages );
+		$this->assertEquals( 2, $q->max_num_pages );
 	}
 
 	/**
@@ -3755,8 +3755,8 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSame( 3, $q->found_comments );
-		$this->assertSame( 2, $q->max_num_pages );
+		$this->assertEquals( 3, $q->found_comments );
+		$this->assertEquals( 2, $q->max_num_pages );
 	}
 
 	/**
