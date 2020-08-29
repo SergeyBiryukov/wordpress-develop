@@ -164,7 +164,7 @@ class Test_WP_Customize_Selective_Refresh_Ajax extends WP_UnitTestCase {
 		$this->assertArrayHasKey( 'contents', $output['data'] );
 		$this->assertArrayHasKey( 'errors', $output['data'] );
 		$this->assertArrayHasKey( 'foo', $output['data']['contents'] );
-		$this->assertSame( null, $output['data']['contents']['foo'] );
+		$this->assertNull( $output['data']['contents']['foo'] );
 	}
 
 	/**
