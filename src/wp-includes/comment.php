@@ -1046,9 +1046,9 @@ function get_comment_pages_count( $comments = null, $per_page = null, $threaded 
 
 	if ( $threaded ) {
 		$walker = new Walker_Comment;
-		$count  = (int) ceil( $walker->get_number_of_root_elements( $comments ) / $per_page );
+		$count  = ceil( $walker->get_number_of_root_elements( $comments ) / $per_page );
 	} else {
-		$count = (int) ceil( count( $comments ) / $per_page );
+		$count = ceil( count( $comments ) / $per_page );
 	}
 
 	return $count;
@@ -1189,7 +1189,7 @@ function get_page_of_comment( $comment_ID, $args = array() ) {
 
 			// Divide comments older than this one by comments per page to get this comment's page number.
 		} else {
-			$page = (int) ceil( ( $older_comment_count + 1 ) / $args['per_page'] );
+			$page = ceil( ( $older_comment_count + 1 ) / $args['per_page'] );
 		}
 	}
 
