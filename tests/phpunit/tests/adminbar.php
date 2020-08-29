@@ -463,7 +463,7 @@ class Tests_AdminBar extends WP_UnitTestCase {
 		$about_node   = $wp_admin_bar->get_node( 'about' );
 
 		$this->assertNotNull( $wp_logo_node );
-		$this->assertSame( false, $wp_logo_node->href );
+		$this->assertFalse(, $wp_logo_node->href );
 		$this->assertArrayHasKey( 'tabindex', $wp_logo_node->meta );
 		$this->assertSame( 0, $wp_logo_node->meta['tabindex'] );
 		$this->assertNull( $about_node );
