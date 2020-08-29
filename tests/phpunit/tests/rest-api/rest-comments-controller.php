@@ -3108,8 +3108,8 @@ class WP_Test_REST_Comments_Controller extends WP_Test_REST_Controller_Testcase 
 		$this->assertSame( 0, $properties['parent']['default'] );
 		$this->assertSame( 0, $properties['post']['default'] );
 
-		$this->assertSame( true, $properties['link']['readonly'] );
-		$this->assertSame( true, $properties['type']['readonly'] );
+		$this->assertTrue( $properties['link']['readonly'] );
+		$this->assertTrue( $properties['type']['readonly'] );
 	}
 
 	public function test_get_item_schema_show_avatar() {
