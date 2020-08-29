@@ -134,7 +134,7 @@ if ( is_multisite() ) :
 			$result       = get_id_from_blogname( 'bar' );
 			$current_site = $original_network;
 
-			$this->assertSame( null, $result );
+			$this->assertNull( $result );
 		}
 
 	}
