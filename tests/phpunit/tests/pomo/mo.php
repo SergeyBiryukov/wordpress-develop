@@ -189,6 +189,6 @@ class Tests_POMO_MO extends WP_UnitTestCase {
 
 	function test_load_pot_file() {
 		$mo = new MO();
-		$this->assertSame( false, $mo->import_from_file( DIR_TESTDATA . '/pomo/mo.pot' ) );
+		$this->assertFalse( $mo->import_from_file( DIR_TESTDATA . '/pomo/mo.pot' ) );
 	}
 }
