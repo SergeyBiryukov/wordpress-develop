@@ -10,8 +10,8 @@ class Tests_Formatting_StripSlashesDeep extends WP_UnitTestCase {
 	 */
 	function test_preserves_original_datatype() {
 
-		$this->assertSame( true, stripslashes_deep( true ) );
-		$this->assertSame( false, stripslashes_deep( false ) );
+		$this->assertTrue( stripslashes_deep( true ) );
+		$this->assertFalse( stripslashes_deep( false ) );
 		$this->assertSame( 4, stripslashes_deep( 4 ) );
 		$this->assertSame( 'foo', stripslashes_deep( 'foo' ) );
 		$arr      = array(
