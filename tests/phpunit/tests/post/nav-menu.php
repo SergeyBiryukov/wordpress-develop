@@ -199,7 +199,7 @@ class Test_Nav_Menus extends WP_UnitTestCase {
 
 		$menu_items = wp_get_nav_menu_items( $this->menu_id );
 		$this->assertSame( $term->name, $menu_items[0]->title );
-		$this->assertSame( $t, $menu_items[0]->object_id );
+		$this->assertEquals( $t, $menu_items[0]->object_id );
 	}
 
 	/**
