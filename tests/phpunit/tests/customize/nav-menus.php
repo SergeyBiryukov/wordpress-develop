@@ -600,36 +600,36 @@ class Test_WP_Customize_Nav_Menus extends WP_UnitTestCase {
 		$expected = array(
 			array(
 				'title'      => 'Posts',
+				'type_label' => __( 'Post' ),
 				'type'       => 'post_type',
 				'object'     => 'post',
-				'type_label' => __( 'Post' ),
 			),
 			array(
 				'title'      => 'Pages',
+				'type_label' => __( 'Page' ),
 				'type'       => 'post_type',
 				'object'     => 'page',
-				'type_label' => __( 'Page' ),
 			),
 			array(
 				'title'      => 'Categories',
+				'type_label' => __( 'Category' ),
 				'type'       => 'taxonomy',
 				'object'     => 'category',
-				'type_label' => __( 'Category' ),
 			),
 			array(
 				'title'      => 'Tags',
+				'type_label' => __( 'Tag' ),
 				'type'       => 'taxonomy',
 				'object'     => 'post_tag',
-				'type_label' => __( 'Tag' ),
 			),
 		);
 
 		if ( current_theme_supports( 'post-formats' ) ) {
 			$expected[] = array(
 				'title'      => 'Format',
+				'type_label' => __( 'Format' ),
 				'type'       => 'taxonomy',
 				'object'     => 'post_format',
-				'type_label' => __( 'Format' ),
 			);
 		}
 
@@ -638,18 +638,18 @@ class Test_WP_Customize_Nav_Menus extends WP_UnitTestCase {
 		register_taxonomy( 'wptests_tax', array( 'post' ), array( 'labels' => array( 'name' => 'Foo' ) ) );
 		$expected[] = array(
 			'title'      => 'Foo',
+			'type_label' => 'Foo',
 			'type'       => 'taxonomy',
 			'object'     => 'wptests_tax',
-			'type_label' => 'Foo',
 		);
 
 		$this->assertSame( $expected, $menus->available_item_types() );
 
 		$expected[] = array(
 			'title'      => 'Custom',
+			'type_label' => 'Custom Type',
 			'type'       => 'custom_type',
 			'object'     => 'custom_object',
-			'type_label' => 'Custom Type',
 		);
 
 		add_filter( 'customize_nav_menu_available_item_types', array( $this, 'filter_item_types' ) );
