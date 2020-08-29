@@ -3034,8 +3034,8 @@ class WP_Test_REST_Users_Controller extends WP_Test_REST_Controller_Testcase {
 			$this->assertSame( $user->last_name, $data['last_name'] );
 			$this->assertSame( $user->nickname, $data['nickname'] );
 			$this->assertSame( $user->user_email, $data['email'] );
-			$this->assertSame( (object) $user->allcaps, $data['capabilities'] );
-			$this->assertSame( (object) $user->caps, $data['extra_capabilities'] );
+			$this->assertEquals( (object) $user->allcaps, $data['capabilities'] );
+			$this->assertEquals( (object) $user->caps, $data['extra_capabilities'] );
 			$this->assertSame( gmdate( 'c', strtotime( $user->user_registered ) ), $data['registered_date'] );
 			$this->assertSame( $user->user_login, $data['username'] );
 			$this->assertSame( $user->roles, $data['roles'] );
