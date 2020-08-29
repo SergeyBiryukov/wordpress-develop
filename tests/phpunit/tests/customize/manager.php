@@ -1570,7 +1570,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 		);
 		$this->assertInternalType( 'array', $r );
 		$this->assertSame(
-			array_fill_keys( array( 'scratchpad', 'blogname' ), true ),
+			array_fill_keys( array( 'blogname', 'scratchpad' ), true ),
 			$r['setting_validities']
 		);
 		$data = json_decode( get_post( $post_id )->post_content, true );
@@ -2527,8 +2527,8 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 
 		$post_value = '42';
 		$this->manager->set_post_value( 'numeric', $post_value );
-		$this->assertSame( $post_value, $this->manager->post_value( $setting, $default_value ) );
-		$this->assertSame( $post_value, $setting->post_value( $default_value ) );
+		$this->assertEquals( $post_value, $this->manager->post_value( $setting, $default_value ) );
+		$this->assertEquals( $post_value, $setting->post_value( $default_value ) );
 	}
 
 	/**
