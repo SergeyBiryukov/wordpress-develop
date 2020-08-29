@@ -373,7 +373,7 @@ class Tests_Filters extends WP_UnitTestCase {
 		do_action( 'test_current_priority' );
 		remove_action( 'test_current_priority', array( $this, '_other_priority_action' ), 99 );
 
-		$this->assertSame( false, $this->current_priority );
+		$this->assertFalse( $this->current_priority );
 	}
 
 	public function _other_priority_action() {
