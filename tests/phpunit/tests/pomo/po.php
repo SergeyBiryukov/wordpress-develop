@@ -253,7 +253,7 @@ msgstr[2] "бабаяга"',
 	function test_import_from_file() {
 		$po  = new PO();
 		$res = $po->import_from_file( DIR_TESTDATA . '/pomo/simple.po' );
-		$this->assertSame( true, $res );
+		$this->assertTrue( $res );
 
 		$this->assertSame(
 			array(
