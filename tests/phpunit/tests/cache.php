@@ -27,7 +27,7 @@ class Tests_Cache extends WP_UnitTestCase {
 	}
 
 	function test_miss() {
-		$this->assertNull( $this->cache->get( 'test_miss' ) );
+		$this->assertEquals( null, $this->cache->get( 'test_miss' ) );
 	}
 
 	function test_add_get() {
@@ -53,7 +53,7 @@ class Tests_Cache extends WP_UnitTestCase {
 
 		$this->assertTrue( $this->cache->add( $key, $val ) );
 		// Null is converted to empty string.
-		$this->assertSame( '', $this->cache->get( $key ) );
+		$this->assertEquals( '', $this->cache->get( $key ) );
 	}
 
 	function test_add() {
