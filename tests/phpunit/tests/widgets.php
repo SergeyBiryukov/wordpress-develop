@@ -288,7 +288,7 @@ class Tests_Widgets extends WP_UnitTestCase {
 		 * If the sidebar ID is invalid, the second argument passed to
 		 * the 'dynamic_sidebar_before' hook will be false.
 		 */
-		$this->assertSame( false, $this->valid_sidebar );
+		$this->assertFalse( $this->valid_sidebar );
 	}
 
 	/**
