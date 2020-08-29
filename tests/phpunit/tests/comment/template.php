@@ -8,13 +8,13 @@ class Tests_Comment_Template extends WP_UnitTestCase {
 		$post_id = self::factory()->post->create();
 
 		$this->assertSame( 0, get_comments_number( 0 ) );
-		$this->assertSame( 0, get_comments_number( $post_id ) );
-		$this->assertSame( 0, get_comments_number( get_post( $post_id ) ) );
+		$this->assertSame( '0', get_comments_number( $post_id ) );
+		$this->assertSame( '0', get_comments_number( get_post( $post_id ) ) );
 
 		self::factory()->comment->create_post_comments( $post_id, 12 );
 
-		$this->assertSame( 12, get_comments_number( $post_id ) );
-		$this->assertSame( 12, get_comments_number( get_post( $post_id ) ) );
+		$this->assertSame( '12', get_comments_number( $post_id ) );
+		$this->assertSame( '12', get_comments_number( get_post( $post_id ) ) );
 	}
 
 	function test_get_comments_number_without_arg() {
@@ -22,12 +22,12 @@ class Tests_Comment_Template extends WP_UnitTestCase {
 		$permalink = get_permalink( $post_id );
 		$this->go_to( $permalink );
 
-		$this->assertSame( 0, get_comments_number() );
+		$this->assertSame( '0', get_comments_number() );
 
 		self::factory()->comment->create_post_comments( $post_id, 12 );
 		$this->go_to( $permalink );
 
-		$this->assertSame( 12, get_comments_number() );
+		$this->assertSame( '12', get_comments_number() );
 	}
 
 	/**
