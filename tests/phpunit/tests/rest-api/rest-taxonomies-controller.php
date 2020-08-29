@@ -55,10 +55,10 @@ class WP_Test_REST_Taxonomies_Controller extends WP_Test_REST_Controller_Testcas
 		$this->assertSame( count( $taxonomies ), count( $data ) );
 		$this->assertSame( 'Categories', $data['category']['name'] );
 		$this->assertSame( 'category', $data['category']['slug'] );
-		$this->assertSame( true, $data['category']['hierarchical'] );
+		$this->assertTrue( $data['category']['hierarchical'] );
 		$this->assertSame( 'Tags', $data['post_tag']['name'] );
 		$this->assertSame( 'post_tag', $data['post_tag']['slug'] );
-		$this->assertSame( false, $data['post_tag']['hierarchical'] );
+		$this->assertFalse( $data['post_tag']['hierarchical'] );
 		$this->assertSame( 'tags', $data['post_tag']['rest_base'] );
 	}
 
@@ -72,10 +72,10 @@ class WP_Test_REST_Taxonomies_Controller extends WP_Test_REST_Controller_Testcas
 		$this->assertSame( count( $taxonomies ), count( $data ) );
 		$this->assertSame( 'Categories', $data['category']['name'] );
 		$this->assertSame( 'category', $data['category']['slug'] );
-		$this->assertSame( true, $data['category']['hierarchical'] );
+		$this->assertTrue( $data['category']['hierarchical'] );
 		$this->assertSame( 'Tags', $data['post_tag']['name'] );
 		$this->assertSame( 'post_tag', $data['post_tag']['slug'] );
-		$this->assertSame( false, $data['post_tag']['hierarchical'] );
+		$this->assertFalse( $data['post_tag']['hierarchical'] );
 		$this->assertSame( 'tags', $data['post_tag']['rest_base'] );
 	}
 
