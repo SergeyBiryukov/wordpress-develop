@@ -38,7 +38,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$this->assertEmpty( get_site_icon_url() );
 
 		$this->_set_site_icon();
-		$this->assertEquals( $this->site_icon_url, get_site_icon_url() );
+		$this->assertSame( $this->site_icon_url, get_site_icon_url() );
 
 		$this->_remove_site_icon();
 		$this->assertEmpty( get_site_icon_url() );
@@ -323,7 +323,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		restore_current_blog();
 
 		$expected_custom_logo = '<a href="' . $home_url . '" class="custom-logo-link" rel="home">' . $image . '</a>';
-		$this->assertEquals( $expected_custom_logo, get_custom_logo( $blog_id ) );
+		$this->assertSame( $expected_custom_logo, get_custom_logo( $blog_id ) );
 	}
 
 	/**
@@ -437,7 +437,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$expected = '1453390476';
 		$format   = 'G';
 		$actual   = get_the_modified_time( $format );
-		$this->assertEquals( $expected, $actual );
+		$this->assertSame( $expected, $actual );
 	}
 
 	/**
@@ -454,14 +454,14 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$expected = 'filtered modified time failure result';
 		add_filter( 'get_the_modified_time', array( $this, '_filter_get_the_modified_time_failure' ) );
 		$actual = get_the_modified_time();
-		$this->assertEquals( $expected, $actual );
+		$this->assertSame( $expected, $actual );
 		remove_filter( 'get_the_modified_time', array( $this, '_filter_get_the_modified_time_failure' ) );
 	}
 
 	function _filter_get_the_modified_time_failure( $the_time ) {
 		$expected = false;
 		$actual   = $the_time;
-		$this->assertEquals( $expected, $actual );
+		$this->assertSame( $expected, $actual );
 
 		if ( false === $the_time ) {
 			return 'filtered modified time failure result';
@@ -485,7 +485,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$format   = 'Y-m-d';
 		$expected = '2016-01-21';
 		$actual   = get_the_modified_date( $format, $post_id );
-		$this->assertEquals( $expected, $actual );
+		$this->assertSame( $expected, $actual );
 	}
 
 	/**
@@ -508,7 +508,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$expected = '2016-01-21';
 		$format   = 'Y-m-d';
 		$actual   = get_the_modified_date( $format );
-		$this->assertEquals( $expected, $actual );
+		$this->assertSame( $expected, $actual );
 	}
 
 	/**
@@ -525,14 +525,14 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$expected = 'filtered modified date failure result';
 		add_filter( 'get_the_modified_date', array( $this, '_filter_get_the_modified_date_failure' ) );
 		$actual = get_the_modified_date();
-		$this->assertEquals( $expected, $actual );
+		$this->assertSame( $expected, $actual );
 		remove_filter( 'get_the_modified_date', array( $this, '_filter_get_the_modified_date_failure' ) );
 	}
 
 	function _filter_get_the_modified_date_failure( $the_date ) {
 		$expected = false;
 		$actual   = $the_date;
-		$this->assertEquals( $expected, $actual );
+		$this->assertSame( $expected, $actual );
 
 		if ( false === $the_date ) {
 			return 'filtered modified date failure result';
@@ -556,7 +556,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$format   = 'G';
 		$expected = '1453390476';
 		$actual   = get_the_modified_time( $format, $post_id );
-		$this->assertEquals( $expected, $actual );
+		$this->assertSame( $expected, $actual );
 	}
 
 	/**

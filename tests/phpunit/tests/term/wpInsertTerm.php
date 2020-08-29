@@ -31,7 +31,7 @@ class Tests_Term_WpInsertTerm extends WP_UnitTestCase {
 		$this->assertNotWPError( $t );
 		$this->assertTrue( $t['term_id'] > 0 );
 		$this->assertTrue( $t['term_taxonomy_id'] > 0 );
-		$this->assertEquals( $initial_count + 1, wp_count_terms( array( 'taxonomy' => $taxonomy ) ) );
+		$this->assertSame( $initial_count + 1, wp_count_terms( array( 'taxonomy' => $taxonomy ) ) );
 
 		// Make sure the term exists.
 		$this->assertTrue( term_exists( $term ) > 0 );
@@ -43,7 +43,7 @@ class Tests_Term_WpInsertTerm extends WP_UnitTestCase {
 		remove_filter( 'delete_term', array( $this, 'deleted_term_cb' ), 10, 5 );
 		$this->assertNull( term_exists( $term ) );
 		$this->assertNull( term_exists( $t['term_id'] ) );
-		$this->assertEquals( $initial_count, wp_count_terms( array( 'taxonomy' => $taxonomy ) ) );
+		$this->assertSame( $initial_count, wp_count_terms( array( 'taxonomy' => $taxonomy ) ) );
 	}
 
 	public function test_wp_insert_term_taxonomy_does_not_exist() {
@@ -211,7 +211,7 @@ class Tests_Term_WpInsertTerm extends WP_UnitTestCase {
 		$term7 = self::factory()->tag->create( array( 'name' => 'T$$$$' ) );
 		$this->assertWPError( $term7 );
 		$this->assertNotEmpty( $term7->errors );
-		$this->assertEquals( $term6, $term7->error_data['term_exists'] );
+		$this->assertSame( $term6, $term7->error_data['term_exists'] );
 
 		$terms = array_map( 'get_tag', array( $term3, $term4, $term5, $term6 ) );
 		$this->assertCount( 4, array_unique( wp_list_pluck( $terms, 'slug' ) ) );
@@ -224,7 +224,7 @@ class Tests_Term_WpInsertTerm extends WP_UnitTestCase {
 		$term12 = self::factory()->tag->create( array( 'name' => '$$$$' ) );
 		$this->assertWPError( $term12 );
 		$this->assertNotEmpty( $term12->errors );
-		$this->assertEquals( $term11, $term12->error_data['term_exists'] );
+		$this->assertSame( $term11, $term12->error_data['term_exists'] );
 
 		$terms = array_map( 'get_tag', array( $term8, $term9, $term10, $term11 ) );
 		$this->assertCount( 4, array_unique( wp_list_pluck( $terms, 'slug' ) ) );
@@ -780,8 +780,8 @@ class Tests_Term_WpInsertTerm extends WP_UnitTestCase {
 		$this->assertNotEmpty( $found['term_id'] );
 		$this->assertNotEmpty( $found['term_taxonomy_id'] );
 		$this->assertNotEmpty( $term_by_id );
-		$this->assertEquals( $term_by_id, $term_by_slug );
-		$this->assertEquals( $term_by_id, $term_by_ttid );
+		$this->assertSame( $term_by_id, $term_by_slug );
+		$this->assertSame( $term_by_id, $term_by_ttid );
 	}
 
 	public function test_wp_insert_term_should_clean_term_cache() {
@@ -904,9 +904,9 @@ class Tests_Term_WpInsertTerm extends WP_UnitTestCase {
 		$this->assertInternalType( 'int', $term );
 		$this->assertInternalType( 'array', $object_ids );
 		// Pesky string $this->assertInternalType( 'int', $tt_id );
-		$this->assertEquals( $term, $deleted_term->term_id );
-		$this->assertEquals( $taxonomy, $deleted_term->taxonomy );
-		$this->assertEquals( $tt_id, $deleted_term->term_taxonomy_id );
+		$this->assertSame( $term, $deleted_term->term_id );
+		$this->assertSame( $taxonomy, $deleted_term->taxonomy );
+		$this->assertSame( $tt_id, $deleted_term->term_taxonomy_id );
 		$this->assertEmpty( $object_ids );
 	}
 

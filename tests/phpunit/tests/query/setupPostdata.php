@@ -78,7 +78,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 		setup_postdata( $p );
 
 		$this->assertNotEmpty( $GLOBALS['authordata'] );
-		$this->assertEquals( $u, $GLOBALS['authordata'] );
+		$this->assertSame( $u, $GLOBALS['authordata'] );
 	}
 
 	public function test_currentday() {
@@ -125,7 +125,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 		// Main loop.
 		$this->assertSame( $post1->ID, $GLOBALS['id'] );
-		$this->assertEquals( get_userdata( $users[0] ), $GLOBALS['authordata'] );
+		$this->assertSame( get_userdata( $users[0] ), $GLOBALS['authordata'] );
 		$this->assertSame( '02.02.12', $GLOBALS['currentday'] );
 		$this->assertSame( '02', $GLOBALS['currentmonth'] );
 
@@ -141,7 +141,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 				// Should refer to the current loop.
 				$this->assertSame( $post2->ID, $GLOBALS['id'] );
-				$this->assertEquals( get_userdata( $users[1] ), $GLOBALS['authordata'] );
+				$this->assertSame( get_userdata( $users[1] ), $GLOBALS['authordata'] );
 				$this->assertSame( '03.03.13', $GLOBALS['currentday'] );
 				$this->assertSame( '03', $GLOBALS['currentmonth'] );
 			}
@@ -150,7 +150,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 		// Should be reset to main loop.
 		$this->assertSame( $post1->ID, $GLOBALS['id'] );
-		$this->assertEquals( get_userdata( $users[0] ), $GLOBALS['authordata'] );
+		$this->assertSame( get_userdata( $users[0] ), $GLOBALS['authordata'] );
 		$this->assertSame( '02.02.12', $GLOBALS['currentday'] );
 		$this->assertSame( '02', $GLOBALS['currentmonth'] );
 	}
@@ -165,7 +165,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 		$this->assertSame( 0, $GLOBALS['multipage'] );
 		$this->assertSame( 1, $GLOBALS['numpages'] );
-		$this->assertEquals( array( 'Page 0' ), $GLOBALS['pages'] );
+		$this->assertSame( array( 'Page 0' ), $GLOBALS['pages'] );
 	}
 
 	public function test_multi_page() {
@@ -178,7 +178,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 		$this->assertSame( 1, $GLOBALS['multipage'] );
 		$this->assertSame( 4, $GLOBALS['numpages'] );
-		$this->assertEquals( array( 'Page 0', 'Page 1', 'Page 2', 'Page 3' ), $GLOBALS['pages'] );
+		$this->assertSame( array( 'Page 0', 'Page 1', 'Page 2', 'Page 3' ), $GLOBALS['pages'] );
 	}
 
 	/**
@@ -194,7 +194,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 		$this->assertSame( 1, $GLOBALS['multipage'] );
 		$this->assertSame( 3, $GLOBALS['numpages'] );
-		$this->assertEquals( array( 'Page 1', 'Page 2', 'Page 3' ), $GLOBALS['pages'] );
+		$this->assertSame( array( 'Page 1', 'Page 2', 'Page 3' ), $GLOBALS['pages'] );
 	}
 
 	public function test_trim_nextpage_linebreaks() {
@@ -205,7 +205,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 		);
 		setup_postdata( $post );
 
-		$this->assertEquals( array( 'Page 0', "Page 1\nhas a line break", 'Page 2', "\nPage 3" ), $GLOBALS['pages'] );
+		$this->assertSame( array( 'Page 0', "Page 1\nhas a line break", 'Page 2', "\nPage 3" ), $GLOBALS['pages'] );
 	}
 
 	/**
@@ -411,7 +411,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 		setup_postdata( $a_post );
 		$content = get_echo( 'the_content' );
-		$this->assertEquals( $post_id, $GLOBALS['post']->ID );
+		$this->assertSame( $post_id, $GLOBALS['post']->ID );
 		$this->assertNotEquals( '<p>global post</p>', strip_ws( $content ) );
 		wp_reset_postdata();
 	}
@@ -427,7 +427,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 		setup_postdata( $post );
 
-		$this->assertEquals( $GLOBALS['pages'], $this->pages_global );
+		$this->assertSame( $GLOBALS['pages'], $this->pages_global );
 	}
 
 	/**

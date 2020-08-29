@@ -110,7 +110,7 @@ class Tests_Admin_Includes_Schema extends WP_UnitTestCase {
 
 		$wpdb->options = $orig_options;
 
-		$this->assertEquals( $expected, $results );
+		$this->assertSame( $expected, $results );
 	}
 
 	public function data_populate_options() {
@@ -200,7 +200,7 @@ class Tests_Admin_Includes_Schema extends WP_UnitTestCase {
 
 		$wpdb->blogmeta = $orig_blogmeta;
 
-		$this->assertEquals( $expected, $results );
+		$this->assertSame( $expected, $results );
 	}
 
 	public function data_populate_site_meta() {
@@ -248,7 +248,7 @@ class Tests_Admin_Includes_Schema extends WP_UnitTestCase {
 
 		$wpdb->sitemeta = $orig_sitemeta;
 
-		$this->assertEquals( $expected, $results );
+		$this->assertSame( $expected, $results );
 	}
 
 	public function data_populate_network_meta() {

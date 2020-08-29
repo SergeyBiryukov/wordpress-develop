@@ -138,10 +138,10 @@ class Tests_Sanitize_Option extends WP_UnitTestCase {
 			$this->assertEmpty( $errors );
 		} else {
 			$this->assertNotEmpty( $errors );
-			$this->assertEquals( 'invalid_permalink_structure', $errors[0]['code'] );
+			$this->assertSame( 'invalid_permalink_structure', $errors[0]['code'] );
 		}
 
-		$this->assertEquals( $expected, $actual );
+		$this->assertSame( $expected, $actual );
 	}
 
 	public function permalink_structure_provider() {

@@ -15,7 +15,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 	public function test_default_relation() {
 		$query = new WP_Meta_Query( array( array( 'key' => 'abc' ) ) );
-		$this->assertEquals( 'AND', $query->relation );
+		$this->assertSame( 'AND', $query->relation );
 	}
 
 	public function test_set_relation() {
@@ -27,7 +27,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertEquals( 'AND', $query->relation );
+		$this->assertSame( 'AND', $query->relation );
 
 		$query = new WP_Meta_Query(
 			array(
@@ -36,7 +36,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertEquals( 'OR', $query->relation );
+		$this->assertSame( 'OR', $query->relation );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 		$sql = $query->get_sql( 'post', $wpdb->posts, 'ID' );
 
-		$this->assertEquals( 1, substr_count( $sql['join'], 'INNER JOIN' ) );
+		$this->assertSame( 1, substr_count( $sql['join'], 'INNER JOIN' ) );
 
 		// Also check mixing key and key => value.
 
@@ -92,7 +92,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 		$sql = $query->get_sql( 'post', $wpdb->posts, 'ID' );
 
-		$this->assertEquals( 1, substr_count( $sql['join'], 'INNER JOIN' ) );
+		$this->assertSame( 1, substr_count( $sql['join'], 'INNER JOIN' ) );
 	}
 
 	/**
@@ -120,7 +120,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			'compare' => 'bar',
 			'value'   => 'baz',
 		);
-		$this->assertEquals( $expected0, $query->queries[0] );
+		$this->assertSame( $expected0, $query->queries[0] );
 
 		$expected1 = array(
 			'relation' => 'OR',
@@ -130,7 +130,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 				'value'   => 'bar1',
 			),
 		);
-		$this->assertEquals( $expected1, $query->queries[1] );
+		$this->assertSame( $expected1, $query->queries[1] );
 	}
 
 	/**
@@ -186,7 +186,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 				'meta_key' => 'abc',
 			)
 		);
-		$this->assertEquals( $expected, $query->queries );
+		$this->assertSame( $expected, $query->queries );
 
 		// meta_key & meta_value.
 		$expected = array(
@@ -202,7 +202,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 				'meta_value' => 'def',
 			)
 		);
-		$this->assertEquals( $expected, $query->queries );
+		$this->assertSame( $expected, $query->queries );
 
 		// meta_compare.
 		$expected = array(
@@ -218,7 +218,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 				'meta_compare' => '=>',
 			)
 		);
-		$this->assertEquals( $expected, $query->queries );
+		$this->assertSame( $expected, $query->queries );
 	}
 
 	/**
@@ -226,33 +226,33 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 	 */
 	public function test_get_cast_for_type() {
 		$query = new WP_Meta_Query();
-		$this->assertEquals( 'BINARY', $query->get_cast_for_type( 'BINARY' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'CHAR' ) );
-		$this->assertEquals( 'DATE', $query->get_cast_for_type( 'DATE' ) );
-		$this->assertEquals( 'DATETIME', $query->get_cast_for_type( 'DATETIME' ) );
-		$this->assertEquals( 'SIGNED', $query->get_cast_for_type( 'SIGNED' ) );
-		$this->assertEquals( 'UNSIGNED', $query->get_cast_for_type( 'UNSIGNED' ) );
-		$this->assertEquals( 'TIME', $query->get_cast_for_type( 'TIME' ) );
-		$this->assertEquals( 'SIGNED', $query->get_cast_for_type( 'NUMERIC' ) );
-		$this->assertEquals( 'NUMERIC(10)', $query->get_cast_for_type( 'NUMERIC(10)' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'NUMERIC( 10)' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'NUMERIC( 10 )' ) );
-		$this->assertEquals( 'NUMERIC(10, 5)', $query->get_cast_for_type( 'NUMERIC(10, 5)' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'NUMERIC(10,  5)' ) );
-		$this->assertEquals( 'NUMERIC(10,5)', $query->get_cast_for_type( 'NUMERIC(10,5)' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'NUMERIC( 10, 5 )' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'NUMERIC(10, 5 )' ) );
-		$this->assertEquals( 'DECIMAL', $query->get_cast_for_type( 'DECIMAL' ) );
-		$this->assertEquals( 'DECIMAL(10)', $query->get_cast_for_type( 'DECIMAL(10)' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'DECIMAL( 10 )' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'DECIMAL( 10)' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'DECIMAL(10 )' ) );
-		$this->assertEquals( 'DECIMAL(10, 5)', $query->get_cast_for_type( 'DECIMAL(10, 5)' ) );
-		$this->assertEquals( 'DECIMAL(10,5)', $query->get_cast_for_type( 'DECIMAL(10,5)' ) );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'DECIMAL(10,  5)' ) );
+		$this->assertSame( 'BINARY', $query->get_cast_for_type( 'BINARY' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'CHAR' ) );
+		$this->assertSame( 'DATE', $query->get_cast_for_type( 'DATE' ) );
+		$this->assertSame( 'DATETIME', $query->get_cast_for_type( 'DATETIME' ) );
+		$this->assertSame( 'SIGNED', $query->get_cast_for_type( 'SIGNED' ) );
+		$this->assertSame( 'UNSIGNED', $query->get_cast_for_type( 'UNSIGNED' ) );
+		$this->assertSame( 'TIME', $query->get_cast_for_type( 'TIME' ) );
+		$this->assertSame( 'SIGNED', $query->get_cast_for_type( 'NUMERIC' ) );
+		$this->assertSame( 'NUMERIC(10)', $query->get_cast_for_type( 'NUMERIC(10)' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'NUMERIC( 10)' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'NUMERIC( 10 )' ) );
+		$this->assertSame( 'NUMERIC(10, 5)', $query->get_cast_for_type( 'NUMERIC(10, 5)' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'NUMERIC(10,  5)' ) );
+		$this->assertSame( 'NUMERIC(10,5)', $query->get_cast_for_type( 'NUMERIC(10,5)' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'NUMERIC( 10, 5 )' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'NUMERIC(10, 5 )' ) );
+		$this->assertSame( 'DECIMAL', $query->get_cast_for_type( 'DECIMAL' ) );
+		$this->assertSame( 'DECIMAL(10)', $query->get_cast_for_type( 'DECIMAL(10)' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'DECIMAL( 10 )' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'DECIMAL( 10)' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'DECIMAL(10 )' ) );
+		$this->assertSame( 'DECIMAL(10, 5)', $query->get_cast_for_type( 'DECIMAL(10, 5)' ) );
+		$this->assertSame( 'DECIMAL(10,5)', $query->get_cast_for_type( 'DECIMAL(10,5)' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'DECIMAL(10,  5)' ) );
 
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type() );
-		$this->assertEquals( 'CHAR', $query->get_cast_for_type( 'ANYTHING ELSE' ) );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type() );
+		$this->assertSame( 'CHAR', $query->get_cast_for_type( 'ANYTHING ELSE' ) );
 	}
 
 	public function test_sanitize_query_single_query() {
@@ -274,7 +274,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertEquals( $expected, $found );
+		$this->assertSame( $expected, $found );
 	}
 
 	public function test_sanitize_query_multiple_first_order_queries_relation_default() {
@@ -304,7 +304,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertEquals( $expected, $found );
+		$this->assertSame( $expected, $found );
 	}
 
 	public function test_sanitize_query_multiple_first_order_queries_relation_or() {
@@ -335,7 +335,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertEquals( $expected, $found );
+		$this->assertSame( $expected, $found );
 	}
 
 	public function test_sanitize_query_multiple_first_order_queries_relation_or_lowercase() {
@@ -366,7 +366,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertEquals( $expected, $found );
+		$this->assertSame( $expected, $found );
 	}
 
 	public function test_sanitize_query_multiple_first_order_queries_invalid_relation() {
@@ -397,7 +397,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertEquals( $expected, $found );
+		$this->assertSame( $expected, $found );
 	}
 
 	public function test_sanitize_query_single_query_which_is_a_nested_query() {
@@ -432,7 +432,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertEquals( $expected, $found );
+		$this->assertSame( $expected, $found );
 	}
 
 	public function test_sanitize_query_multiple_nested_queries() {
@@ -489,7 +489,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertEquals( $expected, $found );
+		$this->assertSame( $expected, $found );
 	}
 
 	/**
@@ -528,7 +528,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 		$sql = $query->get_sql( 'post', $wpdb->posts, 'ID', $this );
 
-		$this->assertEquals( 3, substr_count( $sql['join'], 'JOIN' ) );
+		$this->assertSame( 3, substr_count( $sql['join'], 'JOIN' ) );
 	}
 
 	/**
@@ -548,7 +548,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 		);
 		$sql   = $query->get_sql( 'post', $wpdb->posts, 'ID', $this );
 
-		$this->assertEquals( 1, substr_count( $sql['where'], "$wpdb->postmeta.meta_value = ''" ) );
+		$this->assertSame( 1, substr_count( $sql['where'], "$wpdb->postmeta.meta_value = ''" ) );
 	}
 
 	/**

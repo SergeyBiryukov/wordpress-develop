@@ -27,7 +27,7 @@ class Tests_Canonical_HTTPS extends WP_Canonical_UnitTestCase {
 
 		$redirect = redirect_canonical( $this->http, false );
 
-		$this->assertEquals( $redirect, false );
+		$this->assertSame( $redirect, false );
 
 	}
 
@@ -38,7 +38,7 @@ class Tests_Canonical_HTTPS extends WP_Canonical_UnitTestCase {
 
 		$redirect = redirect_canonical( $this->https, false );
 
-		$this->assertEquals( $redirect, false );
+		$this->assertSame( $redirect, false );
 
 	}
 
@@ -51,7 +51,7 @@ class Tests_Canonical_HTTPS extends WP_Canonical_UnitTestCase {
 
 		$redirect = redirect_canonical( $this->https, false );
 
-		$this->assertEquals( $redirect, false );
+		$this->assertSame( $redirect, false );
 
 		remove_filter( 'home_url', array( $this, 'set_https' ) );
 

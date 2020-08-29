@@ -115,7 +115,7 @@ class Tests_Term_WpUpdateTerm extends WP_UnitTestCase {
 		$this->assertSame( 'missing_parent', $found->get_error_code() );
 
 		$term = get_term( $t, 'wptests_tax' );
-		$this->assertEquals( 0, $term->parent );
+		$this->assertSame( 0, $term->parent );
 		_unregister_taxonomy( 'wptests_tax' );
 	}
 
@@ -616,8 +616,8 @@ class Tests_Term_WpUpdateTerm extends WP_UnitTestCase {
 		$this->assertNotEmpty( $found['term_id'] );
 		$this->assertNotEmpty( $found['term_taxonomy_id'] );
 		$this->assertNotEmpty( $term_by_id );
-		$this->assertEquals( $term_by_id, $term_by_slug );
-		$this->assertEquals( $term_by_id, $term_by_ttid );
+		$this->assertSame( $term_by_id, $term_by_slug );
+		$this->assertSame( $term_by_id, $term_by_ttid );
 	}
 
 	/**

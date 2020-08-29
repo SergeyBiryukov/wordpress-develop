@@ -49,8 +49,8 @@ class Tests_Link_GetAdjacentPost extends WP_UnitTestCase {
 		// Test normal post adjacency.
 		$this->go_to( get_permalink( $post_two->ID ) );
 
-		$this->assertEquals( $post_one, get_adjacent_post( false, '', true ) );
-		$this->assertEquals( $post_three, get_adjacent_post( false, '', false ) );
+		$this->assertSame( $post_one, get_adjacent_post( false, '', true ) );
+		$this->assertSame( $post_three, get_adjacent_post( false, '', false ) );
 
 		$this->assertNotEquals( $post_two, get_adjacent_post( false, '', true ) );
 		$this->assertNotEquals( $post_two, get_adjacent_post( false, '', false ) );
@@ -58,32 +58,32 @@ class Tests_Link_GetAdjacentPost extends WP_UnitTestCase {
 		// Test category adjacency.
 		$this->go_to( get_permalink( $post_one->ID ) );
 
-		$this->assertEquals( '', get_adjacent_post( true, '', true, 'category' ) );
-		$this->assertEquals( $post_three, get_adjacent_post( true, '', false, 'category' ) );
+		$this->assertSame( '', get_adjacent_post( true, '', true, 'category' ) );
+		$this->assertSame( $post_three, get_adjacent_post( true, '', false, 'category' ) );
 
 		// Test tag adjacency.
 		$this->go_to( get_permalink( $post_two->ID ) );
 
-		$this->assertEquals( '', get_adjacent_post( true, '', true, 'post_tag' ) );
-		$this->assertEquals( $post_four, get_adjacent_post( true, '', false, 'post_tag' ) );
+		$this->assertSame( '', get_adjacent_post( true, '', true, 'post_tag' ) );
+		$this->assertSame( $post_four, get_adjacent_post( true, '', false, 'post_tag' ) );
 
 		// Test normal boundary post.
 		$this->go_to( get_permalink( $post_two->ID ) );
 
-		$this->assertEquals( array( $post_one ), get_boundary_post( false, '', true ) );
-		$this->assertEquals( array( $post_four ), get_boundary_post( false, '', false ) );
+		$this->assertSame( array( $post_one ), get_boundary_post( false, '', true ) );
+		$this->assertSame( array( $post_four ), get_boundary_post( false, '', false ) );
 
 		// Test category boundary post.
 		$this->go_to( get_permalink( $post_one->ID ) );
 
-		$this->assertEquals( array( $post_one ), get_boundary_post( true, '', true, 'category' ) );
-		$this->assertEquals( array( $post_three ), get_boundary_post( true, '', false, 'category' ) );
+		$this->assertSame( array( $post_one ), get_boundary_post( true, '', true, 'category' ) );
+		$this->assertSame( array( $post_three ), get_boundary_post( true, '', false, 'category' ) );
 
 		// Test tag boundary post.
 		$this->go_to( get_permalink( $post_two->ID ) );
 
-		$this->assertEquals( array( $post_two ), get_boundary_post( true, '', true, 'post_tag' ) );
-		$this->assertEquals( array( $post_four ), get_boundary_post( true, '', false, 'post_tag' ) );
+		$this->assertSame( array( $post_two ), get_boundary_post( true, '', true, 'post_tag' ) );
+		$this->assertSame( array( $post_four ), get_boundary_post( true, '', false, 'post_tag' ) );
 	}
 
 	/**
@@ -146,30 +146,30 @@ class Tests_Link_GetAdjacentPost extends WP_UnitTestCase {
 
 		// First post.
 		$this->go_to( get_permalink( $one ) );
-		$this->assertEquals( $two, get_adjacent_post( false, array(), false ) );
-		$this->assertEquals( $three, get_adjacent_post( true, array(), false ) );
-		$this->assertEquals( $two, get_adjacent_post( false, array( $exclude ), false ) );
-		$this->assertEquals( $four, get_adjacent_post( true, array( $exclude ), false ) );
+		$this->assertSame( $two, get_adjacent_post( false, array(), false ) );
+		$this->assertSame( $three, get_adjacent_post( true, array(), false ) );
+		$this->assertSame( $two, get_adjacent_post( false, array( $exclude ), false ) );
+		$this->assertSame( $four, get_adjacent_post( true, array( $exclude ), false ) );
 		$this->assertEmpty( get_adjacent_post( false, array(), true ) );
 
 		// Fourth post.
 		$this->go_to( get_permalink( $four ) );
-		$this->assertEquals( $five, get_adjacent_post( false, array(), false ) );
-		$this->assertEquals( $five, get_adjacent_post( true, array(), false ) );
+		$this->assertSame( $five, get_adjacent_post( false, array(), false ) );
+		$this->assertSame( $five, get_adjacent_post( true, array(), false ) );
 		$this->assertEmpty( get_adjacent_post( false, array( $exclude ), false ) );
 		$this->assertEmpty( get_adjacent_post( true, array( $exclude ), false ) );
 
-		$this->assertEquals( $three, get_adjacent_post( false, array(), true ) );
-		$this->assertEquals( $three, get_adjacent_post( true, array(), true ) );
-		$this->assertEquals( $two, get_adjacent_post( false, array( $exclude ), true ) );
+		$this->assertSame( $three, get_adjacent_post( false, array(), true ) );
+		$this->assertSame( $three, get_adjacent_post( true, array(), true ) );
+		$this->assertSame( $two, get_adjacent_post( false, array( $exclude ), true ) );
 		$this->assertEmpty( get_adjacent_post( true, array( $exclude ), true ) );
 
 		// Last post.
 		$this->go_to( get_permalink( $five ) );
-		$this->assertEquals( $four, get_adjacent_post( false, array(), true ) );
-		$this->assertEquals( $four, get_adjacent_post( true, array(), true ) );
-		$this->assertEquals( $four, get_adjacent_post( false, array( $exclude ), true ) );
-		$this->assertEquals( $four, get_adjacent_post( true, array( $exclude ), true ) );
+		$this->assertSame( $four, get_adjacent_post( false, array(), true ) );
+		$this->assertSame( $four, get_adjacent_post( true, array(), true ) );
+		$this->assertSame( $four, get_adjacent_post( false, array( $exclude ), true ) );
+		$this->assertSame( $four, get_adjacent_post( true, array( $exclude ), true ) );
 		$this->assertEmpty( get_adjacent_post( false, array(), false ) );
 	}
 
@@ -204,7 +204,7 @@ class Tests_Link_GetAdjacentPost extends WP_UnitTestCase {
 		}
 
 		// Should skip $p2, which belongs to $t.
-		$this->assertEquals( $p3, $found->ID );
+		$this->assertSame( $p3, $found->ID );
 	}
 
 	/**
@@ -241,7 +241,7 @@ class Tests_Link_GetAdjacentPost extends WP_UnitTestCase {
 		}
 
 		// Should skip $p2, which belongs to $t.
-		$this->assertEquals( $p3, $found->ID );
+		$this->assertSame( $p3, $found->ID );
 	}
 
 	/**
