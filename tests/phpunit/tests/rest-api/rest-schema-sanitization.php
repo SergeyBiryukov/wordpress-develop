@@ -19,7 +19,7 @@ class WP_Test_REST_Schema_Sanitization extends WP_UnitTestCase {
 		$this->assertSame( 1.10, rest_sanitize_value_from_schema( '1.10', $schema ) );
 		$this->assertEquals( 1, rest_sanitize_value_from_schema( '1abc', $schema ) );
 		$this->assertEquals( 0, rest_sanitize_value_from_schema( 'abc', $schema ) );
-		$this->assertSame( 0, rest_sanitize_value_from_schema( array(), $schema ) );
+		$this->assertEquals( 0, rest_sanitize_value_from_schema( array(), $schema ) );
 	}
 
 	public function test_type_integer() {
