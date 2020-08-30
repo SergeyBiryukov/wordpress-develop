@@ -307,10 +307,10 @@ class Tests_REST_Request extends WP_UnitTestCase {
 
 		$expected = array(
 			'source'             => 'body',
+			'has_default_params' => true,
 			'has_url_params'     => true,
 			'has_query_params'   => true,
 			'has_body_params'    => true,
-			'has_default_params' => true,
 		);
 		$this->assertSame( $expected, $this->request->get_params() );
 	}
