@@ -75,7 +75,7 @@ class Tests_Rewrite_NumericSlugs extends WP_UnitTestCase {
 			array( 'ID' => $id )
 		);
 
-		$this->assertSame( '2015', url_to_postid( get_permalink( '2015' ) ) );
+		$this->assertSame( 2015, url_to_postid( get_permalink( '2015' ) ) );
 	}
 
 	public function test_go_to_year_segment_collision_with_title() {
