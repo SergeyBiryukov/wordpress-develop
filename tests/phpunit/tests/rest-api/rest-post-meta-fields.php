@@ -846,12 +846,12 @@ class WP_Test_REST_Post_Meta_Fields extends WP_Test_REST_TestCase {
 		$meta = get_post_meta( self::$post_id, 'test_custom_schema', false );
 		$this->assertNotEmpty( $meta );
 		$this->assertCount( 1, $meta );
-		$this->assertSame( 3, $meta[0] );
+		$this->assertEquals( 3, $meta[0] );
 
 		$data = $response->get_data();
 		$meta = (array) $data['meta'];
 		$this->assertArrayHasKey( 'test_custom_schema', $meta );
-		$this->assertSame( 3, $meta['test_custom_schema'] );
+		$this->assertEquals( 3, $meta['test_custom_schema'] );
 	}
 
 	public function test_set_value_multiple_custom_schema() {
@@ -875,7 +875,7 @@ class WP_Test_REST_Post_Meta_Fields extends WP_Test_REST_TestCase {
 		$meta = get_post_meta( self::$post_id, 'test_custom_schema_multi', false );
 		$this->assertNotEmpty( $meta );
 		$this->assertCount( 1, $meta );
-		$this->assertSame( 2, $meta[0] );
+		$this->assertEquals( 2, $meta[0] );
 
 		// Add another value.
 		$data = array(
