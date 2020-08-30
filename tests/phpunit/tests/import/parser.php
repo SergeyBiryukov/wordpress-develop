@@ -62,7 +62,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame( 'http://localhost/', $result['base_url'], $message );
 			$this->assertSame(
 				array(
-					'author_id'           => 2,
+					'author_id'           => '2',
 					'author_login'        => 'john',
 					'author_email'        => 'johndoe@example.org',
 					'author_display_name' => 'John Doe',
@@ -167,9 +167,9 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame(
 				array(
 					array(
-						'name'   => 'Uncategorized',
-						'slug'   => 'uncategorized',
 						'domain' => 'category',
+						'slug'   => 'uncategorized',
+						'name'   => 'Uncategorized',
 					),
 				),
 				$result['posts'][0]['terms'],
@@ -178,19 +178,19 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame(
 				array(
 					array(
-						'name'   => 'alpha',
-						'slug'   => 'alpha',
 						'domain' => 'category',
+						'slug'   => 'alpha',
+						'name'   => 'alpha',
 					),
 					array(
-						'name'   => 'news',
+						'domain' => 'tag',
 						'slug'   => 'news',
-						'domain' => 'tag',
+						'name'   => 'news',
 					),
 					array(
-						'name'   => 'roar',
-						'slug'   => 'roar',
 						'domain' => 'tag',
+						'slug'   => 'roar',
+						'name'   => 'roar',
 					),
 				),
 				$result['posts'][2]['terms'],
@@ -199,19 +199,19 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame(
 				array(
 					array(
-						'name'   => 'chicken',
+						'domain' => 'tag',
 						'slug'   => 'chicken',
-						'domain' => 'tag',
+						'name'   => 'chicken',
 					),
 					array(
-						'name'   => 'child',
-						'slug'   => 'child',
 						'domain' => 'category',
+						'slug'   => 'child',
+						'name'   => 'child',
 					),
 					array(
-						'name'   => 'face',
-						'slug'   => 'face',
 						'domain' => 'tag',
+						'slug'   => 'face',
+						'name'   => 'face',
 					),
 				),
 				$result['posts'][3]['terms'],
