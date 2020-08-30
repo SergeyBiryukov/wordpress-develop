@@ -1901,7 +1901,7 @@ class Tests_User_Capabilities extends WP_UnitTestCase {
 
 		$role = $wp_roles->get_role( $this->_role_test_wp_roles_init['role'] );
 
-		$this->assertSame( $expected, $role );
+		$this->assertEquals( $expected, $role );
 		$this->assertContains( $this->_role_test_wp_roles_init['info']['name'], $wp_roles->role_names );
 	}
 
