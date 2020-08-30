@@ -21,15 +21,15 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// Exif from a Nikon D70.
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/2004-07-22-DSC_0008.jpg' );
 
-		$this->assertSame( '6.3', $out['aperture'] );
+		$this->assertEquals( 6.3, $out['aperture'] );
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( 'NIKON D70', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
-		$this->assertSame( strtotime( '2004-07-22 17:14:59' ), $out['created_timestamp'] );
+		$this->assertEquals( strtotime( '2004-07-22 17:14:59' ), $out['created_timestamp'] );
 		$this->assertSame( '', $out['copyright'] );
-		$this->assertSame( 27, $out['focal_length'] );
-		$this->assertSame( 400, $out['iso'] );
-		$this->assertSame( 1 / 40, $out['shutter_speed'] );
+		$this->assertEquals( 27, $out['focal_length'] );
+		$this->assertEquals( 400, $out['iso'] );
+		$this->assertEquals( 1 / 40, $out['shutter_speed'] );
 		$this->assertSame( '', $out['title'] );
 	}
 
@@ -41,11 +41,11 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( 'NIKON D70', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
-		$this->assertSame( strtotime( '2007-06-17 21:18:00' ), $out['created_timestamp'] );
+		$this->assertEquals( strtotime( '2007-06-17 21:18:00' ), $out['created_timestamp'] );
 		$this->assertSame( '', $out['copyright'] );
-		$this->assertSame( 0, $out['focal_length'] );
-		$this->assertSame( 0, $out['iso'] ); // Interesting - a Nikon bug?
-		$this->assertSame( 1 / 500, $out['shutter_speed'] );
+		$this->assertEquals( 0, $out['focal_length'] );
+		$this->assertEquals( 0, $out['iso'] ); // Interesting - a Nikon bug?
+		$this->assertEquals( 1 / 500, $out['shutter_speed'] );
 		$this->assertSame( '', $out['title'] );
 		// $this->assertSame( array( 'Flowers' ), $out['keywords'] );
 	}
@@ -54,15 +54,15 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// Exif from a Nikon D70 with IPTC data added later.
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/2004-07-22-DSC_0007.jpg' );
 
-		$this->assertSame( '6.3', $out['aperture'] );
+		$this->assertEquals( 6.3, $out['aperture'] );
 		$this->assertSame( 'IPTC Creator', $out['credit'] );
 		$this->assertSame( 'NIKON D70', $out['camera'] );
 		$this->assertSame( 'IPTC Caption', $out['caption'] );
-		$this->assertSame( strtotime( '2004-07-22 17:14:35' ), $out['created_timestamp'] );
+		$this->assertEquals( strtotime( '2004-07-22 17:14:35' ), $out['created_timestamp'] );
 		$this->assertSame( 'IPTC Copyright', $out['copyright'] );
-		$this->assertSame( 18, $out['focal_length'] );
-		$this->assertSame( 200, $out['iso'] );
-		$this->assertSame( 1 / 25, $out['shutter_speed'] );
+		$this->assertEquals( 18, $out['focal_length'] );
+		$this->assertEquals( 200, $out['iso'] );
+		$this->assertEquals( 1 / 25, $out['shutter_speed'] );
 		$this->assertSame( 'IPTC Headline', $out['title'] );
 	}
 
@@ -70,15 +70,15 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// Exif from a Fuji FinePix S5600 (thanks Mark).
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/a2-small.jpg' );
 
-		$this->assertSame( '4.5', $out['aperture'] );
+		$this->assertEquals( 4.5, $out['aperture'] );
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( 'FinePix S5600', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
-		$this->assertSame( strtotime( '2007-09-03 10:17:03' ), $out['created_timestamp'] );
+		$this->assertEquals( strtotime( '2007-09-03 10:17:03' ), $out['created_timestamp'] );
 		$this->assertSame( '', $out['copyright'] );
-		$this->assertSame( 6.3, $out['focal_length'] );
-		$this->assertSame( 64, $out['iso'] );
-		$this->assertSame( 1 / 320, $out['shutter_speed'] );
+		$this->assertEquals( 6.3, $out['focal_length'] );
+		$this->assertEquals( 64, $out['iso'] );
+		$this->assertEquals( 1 / 320, $out['shutter_speed'] );
 		$this->assertSame( '', $out['title'] );
 
 	}
@@ -91,15 +91,15 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// This triggers a warning mesage when reading the Exif block.
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/waffles.jpg' );
 
-		$this->assertSame( '0', $out['aperture'] );
+		$this->assertEquals( 0, $out['aperture'] );
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( '', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
-		$this->assertSame( 0, $out['created_timestamp'] );
+		$this->assertEquals( 0, $out['created_timestamp'] );
 		$this->assertSame( '', $out['copyright'] );
-		$this->assertSame( 0, $out['focal_length'] );
-		$this->assertSame( 0, $out['iso'] );
-		$this->assertSame( 0, $out['shutter_speed'] );
+		$this->assertEquals( 0, $out['focal_length'] );
+		$this->assertEquals( 0, $out['iso'] );
+		$this->assertEquals( 0, $out['shutter_speed'] );
 		$this->assertSame( '', $out['title'] );
 	}
 
@@ -107,15 +107,15 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		// No Exif data in this image (from burningwell.org).
 		$out = wp_read_image_metadata( DIR_TESTDATA . '/images/canola.jpg' );
 
-		$this->assertSame( '0', $out['aperture'] );
+		$this->assertEquals( 0, $out['aperture'] );
 		$this->assertSame( '', $out['credit'] );
 		$this->assertSame( '', $out['camera'] );
 		$this->assertSame( '', $out['caption'] );
-		$this->assertSame( 0, $out['created_timestamp'] );
+		$this->assertEquals( 0, $out['created_timestamp'] );
 		$this->assertSame( '', $out['copyright'] );
-		$this->assertSame( 0, $out['focal_length'] );
-		$this->assertSame( 0, $out['iso'] );
-		$this->assertSame( 0, $out['shutter_speed'] );
+		$this->assertEquals( 0, $out['focal_length'] );
+		$this->assertEquals( 0, $out['iso'] );
+		$this->assertEquals( 0, $out['shutter_speed'] );
 		$this->assertSame( '', $out['title'] );
 	}
 
@@ -148,13 +148,13 @@ class Tests_Image_Meta extends WP_UnitTestCase {
 		$this->assertSame( 'Photoshop Author', $out['credit'] );
 		$this->assertSame( 'DMC-LX2', $out['camera'] );
 		$this->assertSame( 'Photoshop Description', $out['caption'] );
-		$this->assertSame( 1306315327, $out['created_timestamp'] );
+		$this->assertEquals( 1306315327, $out['created_timestamp'] );
 		$this->assertSame( 'Photoshop Copyrright Notice', $out['copyright'] );
 		$this->assertSame( '6.3', $out['focal_length'] );
 		$this->assertSame( '100', $out['iso'] );
 		$this->assertSame( '0.0025', $out['shutter_speed'] );
 		$this->assertSame( 'Photoshop Document Ttitle', $out['title'] );
-		$this->assertSame( 1, $out['orientation'] );
+		$this->assertEquals( 1, $out['orientation'] );
 		$this->assertSame( array( 'beach', 'baywatch', 'LA', 'sunset' ), $out['keywords'] );
 	}
 
