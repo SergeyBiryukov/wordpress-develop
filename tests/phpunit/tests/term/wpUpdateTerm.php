@@ -616,8 +616,8 @@ class Tests_Term_WpUpdateTerm extends WP_UnitTestCase {
 		$this->assertNotEmpty( $found['term_id'] );
 		$this->assertNotEmpty( $found['term_taxonomy_id'] );
 		$this->assertNotEmpty( $term_by_id );
-		$this->assertSame( $term_by_id, $term_by_slug );
-		$this->assertSame( $term_by_id, $term_by_ttid );
+		$this->assertEquals( $term_by_id, $term_by_slug );
+		$this->assertEquals( $term_by_id, $term_by_ttid );
 	}
 
 	/**
