@@ -68,7 +68,7 @@ class Tests_POMO_MO extends WP_UnitTestCase {
 				'context'      => 'not so dragon',
 			)
 		);
-		$this->assertSame( $single_entry, $mo->entries[ $single_entry->key() ] );
+		$this->assertEquals( $single_entry, $mo->entries[ $single_entry->key() ] );
 		$this->assertSame( 'not so dragon', $mo->entries[ $single_entry->key() ]->context );
 
 	}
