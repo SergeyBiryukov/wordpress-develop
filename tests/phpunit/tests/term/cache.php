@@ -154,7 +154,7 @@ class Tests_Term_Cache extends WP_UnitTestCase {
 
 		// No new queries should have fired.
 		$this->assertSame( $num_queries + 1, $wpdb->num_queries );
-		$this->assertSame( $term_object, $term_object_2 );
+		$this->assertEquals( $term_object, $term_object_2 );
 	}
 
 	public function test_get_term_by_should_update_term_cache_when_passed_a_valid_term_identifier() {
@@ -183,7 +183,7 @@ class Tests_Term_Cache extends WP_UnitTestCase {
 
 		// No new queries should have fired.
 		$this->assertSame( $num_queries + 1, $wpdb->num_queries );
-		$this->assertSame( $term_object, $term_object_2 );
+		$this->assertEquals( $term_object, $term_object_2 );
 	}
 
 	/**
