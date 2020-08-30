@@ -605,8 +605,8 @@ class Test_oEmbed_Controller extends WP_UnitTestCase {
 		$this->assertInternalType( 'object', $data );
 		$this->assertSame( 'YouTube', $data->provider_name );
 		$this->assertSame( 'https://i.ytimg.com/vi/' . self::YOUTUBE_VIDEO_ID . '/hqdefault.jpg', $data->thumbnail_url );
-		$this->assertSame( $data->width, $request['maxwidth'] );
-		$this->assertSame( $data->height, $request['maxheight'] );
+		$this->assertEquals( $data->width, $request['maxwidth'] );
+		$this->assertEquals( $data->height, $request['maxheight'] );
 	}
 
 	/**
