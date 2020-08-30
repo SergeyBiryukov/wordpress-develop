@@ -78,7 +78,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 		setup_postdata( $p );
 
 		$this->assertNotEmpty( $GLOBALS['authordata'] );
-		$this->assertEqual( $u, $GLOBALS['authordata'] );
+		$this->assertEquals( $u, $GLOBALS['authordata'] );
 	}
 
 	public function test_currentday() {
