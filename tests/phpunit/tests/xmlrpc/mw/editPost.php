@@ -88,7 +88,7 @@ class Tests_XMLRPC_mw_editPost extends WP_XMLRPC_UnitTestCase {
 		$this->assertTrue( $result );
 
 		$out = get_post( $post_id );
-		$this->assertSame( $author_id, $out->post_author );
+		$this->assertEquals( $author_id, $out->post_author );
 	}
 
 	function test_incapable_reassign_author() {
@@ -107,7 +107,7 @@ class Tests_XMLRPC_mw_editPost extends WP_XMLRPC_UnitTestCase {
 		$this->assertSame( 401, $result->code );
 
 		$out = get_post( $post_id );
-		$this->assertSame( $contributor_id, $out->post_author );
+		$this->assertEquals( $contributor_id, $out->post_author );
 	}
 
 	/**
@@ -129,7 +129,7 @@ class Tests_XMLRPC_mw_editPost extends WP_XMLRPC_UnitTestCase {
 		$this->assertTrue( $result );
 
 		$out = get_post( $post_id );
-		$this->assertSame( $editor_id, $out->post_author );
+		$this->assertEquals( $editor_id, $out->post_author );
 	}
 
 	function test_post_thumbnail() {
@@ -153,7 +153,7 @@ class Tests_XMLRPC_mw_editPost extends WP_XMLRPC_UnitTestCase {
 		$post2  = array( 'wp_post_thumbnail' => $attachment_id );
 		$result = $this->myxmlrpcserver->mw_editPost( array( $post_id, 'author', 'author', $post2 ) );
 		$this->assertNotIXRError( $result );
-		$this->assertSame( $attachment_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
+		$this->assertEquals( $attachment_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
 
 		// Edit the post without supplying a post_thumbnail and check that it didn't change.
 		$post3  = array( 'post_content' => 'Updated post' );
