@@ -67,7 +67,7 @@ class Tests_Post_Revisions extends WP_UnitTestCase {
 		wp_restore_post_revision( $lastrevision->ID );
 
 		// Is post_meta correctly set to revision author after restoring user?
-		$this->assertSame( self::$admin_user_id, get_post_meta( $post_id, '_edit_last', true ) );
+		$this->assertEquals( self::$admin_user_id, get_post_meta( $post_id, '_edit_last', true ) );
 	}
 
 	/**
