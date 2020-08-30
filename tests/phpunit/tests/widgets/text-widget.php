@@ -852,7 +852,7 @@ class Test_WP_Widget_Text extends WP_UnitTestCase {
 			)
 		);
 		$result   = $widget->update( $instance, array() );
-		$this->assertSame( $expected, $result, 'Updating a widget with explicit visual=true and absent filter prop causes filter to be set to true.' );
+		$this->assertEquals( $expected, $result, 'Updating a widget with explicit visual=true and absent filter prop causes filter to be set to true.' );
 
 		// --
 		$instance = array(
