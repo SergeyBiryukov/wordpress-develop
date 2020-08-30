@@ -16,7 +16,7 @@ class Tests_Date_I18n extends WP_UnitTestCase {
 		$datetime     = new DateTime( 'now', new DateTimeZone( $timezone ) );
 		$wp_timestamp = $datetime->getTimestamp() + $datetime->getOffset();
 
-		$this->assertSame( $wp_timestamp, date_i18n( 'U', 'invalid' ), '', 5 );
+		$this->assertEquals( $wp_timestamp, date_i18n( 'U', 'invalid' ), '', 5 );
 	}
 
 	/**
