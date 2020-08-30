@@ -466,7 +466,7 @@ class Tests_Term_Meta extends WP_UnitTestCase {
 
 		$found = $meta[0];
 
-		$this->assertSame( $expected, $found );
+		$this->assertEquals( $expected, $found );
 	}
 
 	/**
