@@ -201,11 +201,11 @@ class Tests_Term extends WP_UnitTestCase {
 
 		wp_set_post_categories( $post_id, array(), true );
 		$this->assertSame( 1, count( $post->post_category ) );
-		$this->assertSame( get_option( 'default_category' ), $post->post_category[0] );
+		$this->assertEquals( get_option( 'default_category' ), $post->post_category[0] );
 
 		wp_set_post_categories( $post_id, array() );
 		$this->assertSame( 1, count( $post->post_category ) );
-		$this->assertSame( get_option( 'default_category' ), $post->post_category[0] );
+		$this->assertEquals( get_option( 'default_category' ), $post->post_category[0] );
 	}
 
 	/**
