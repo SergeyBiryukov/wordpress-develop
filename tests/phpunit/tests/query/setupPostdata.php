@@ -78,7 +78,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 		setup_postdata( $p );
 
 		$this->assertNotEmpty( $GLOBALS['authordata'] );
-		$this->assertSame( $u, $GLOBALS['authordata'] );
+		$this->assertEqual( $u, $GLOBALS['authordata'] );
 	}
 
 	public function test_currentday() {
@@ -125,7 +125,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 		// Main loop.
 		$this->assertSame( $post1->ID, $GLOBALS['id'] );
-		$this->assertSame( get_userdata( $users[0] ), $GLOBALS['authordata'] );
+		$this->assertEquals( get_userdata( $users[0] ), $GLOBALS['authordata'] );
 		$this->assertSame( '02.02.12', $GLOBALS['currentday'] );
 		$this->assertSame( '02', $GLOBALS['currentmonth'] );
 
@@ -141,7 +141,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 				// Should refer to the current loop.
 				$this->assertSame( $post2->ID, $GLOBALS['id'] );
-				$this->assertSame( get_userdata( $users[1] ), $GLOBALS['authordata'] );
+				$this->assertEquals( get_userdata( $users[1] ), $GLOBALS['authordata'] );
 				$this->assertSame( '03.03.13', $GLOBALS['currentday'] );
 				$this->assertSame( '03', $GLOBALS['currentmonth'] );
 			}
@@ -150,7 +150,7 @@ class Tests_Query_SetupPostdata extends WP_UnitTestCase {
 
 		// Should be reset to main loop.
 		$this->assertSame( $post1->ID, $GLOBALS['id'] );
-		$this->assertSame( get_userdata( $users[0] ), $GLOBALS['authordata'] );
+		$this->assertEquals( get_userdata( $users[0] ), $GLOBALS['authordata'] );
 		$this->assertSame( '02.02.12', $GLOBALS['currentday'] );
 		$this->assertSame( '02', $GLOBALS['currentmonth'] );
 	}
