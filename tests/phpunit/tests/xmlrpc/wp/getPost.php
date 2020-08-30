@@ -72,7 +72,7 @@ class Tests_XMLRPC_wp_getPost extends WP_XMLRPC_UnitTestCase {
 		$this->assertSame( $this->post_data['post_excerpt'], $result['post_excerpt'] );
 		$this->assertSame( $this->post_data['post_content'], $result['post_content'] );
 		$this->assertSame( url_to_postid( $result['link'] ), $this->post_id );
-		$this->assertSame( $this->post_custom_field['id'], $result['custom_fields'][0]['id'] );
+		$this->assertEquals( $this->post_custom_field['id'], $result['custom_fields'][0]['id'] );
 		$this->assertSame( $this->post_custom_field['key'], $result['custom_fields'][0]['key'] );
 		$this->assertSame( $this->post_custom_field['value'], $result['custom_fields'][0]['value'] );
 
@@ -144,7 +144,7 @@ class Tests_XMLRPC_wp_getPost extends WP_XMLRPC_UnitTestCase {
 		$this->assertInternalType( 'string', $result['post_mime_type'] );
 
 		$this->assertSame( 'page', $result['post_type'] );
-		$this->assertSame( $parent_page_id, $result['post_parent'] );
+		$this->assertEquals( $parent_page_id, $result['post_parent'] );
 		$this->assertSame( 2, $result['menu_order'] );
 	}
 }
