@@ -158,7 +158,7 @@ class Tests_XMLRPC_wp_editTerm extends WP_XMLRPC_UnitTestCase {
 		$this->assertInternalType( 'boolean', $result );
 
 		$term = get_term( self::$child_term, 'category' );
-		$this->assertSame( '0', $term->parent );
+		$this->assertEquals( '0', $term->parent );
 	}
 
 	function test_parent_invalid() {
