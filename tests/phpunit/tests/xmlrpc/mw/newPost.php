@@ -143,7 +143,7 @@ class Tests_XMLRPC_mw_newPost extends WP_XMLRPC_UnitTestCase {
 		);
 		$result = $this->myxmlrpcserver->mw_newPost( array( 1, 'author', 'author', $post ) );
 		$this->assertNotIXRError( $result );
-		$this->assertSame( $attachment_id, get_post_meta( $result, '_thumbnail_id', true ) );
+		$this->assertEquals( $attachment_id, get_post_meta( $result, '_thumbnail_id', true ) );
 
 		remove_theme_support( 'post-thumbnails' );
 	}
