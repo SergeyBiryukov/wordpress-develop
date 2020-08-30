@@ -878,7 +878,7 @@ class Tests_REST_API extends WP_UnitTestCase {
 	 * @dataProvider rest_date_provider
 	 */
 	public function test_rest_parse_date( $string, $value ) {
-		$this->assertSame( $value, rest_parse_date( $string ) );
+		$this->assertEquals( $value, rest_parse_date( $string ) );
 	}
 
 	public function rest_date_force_utc_provider() {
