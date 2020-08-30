@@ -228,7 +228,7 @@ class Tests_Term_getTerms extends WP_UnitTestCase {
 				'fields'     => 'id=>parent',
 			)
 		);
-		$this->assertSame(
+		$this->assertEquals(
 			array(
 				$term_id1 => 0,
 				$term_id2 => $term_id1,
@@ -1457,7 +1457,7 @@ class Tests_Term_getTerms extends WP_UnitTestCase {
 
 		_unregister_taxonomy( 'hierarchical_fields' );
 
-		$this->assertSame( 5, $found );
+		$this->assertEquals( 5, $found );
 	}
 
 	public function test_get_terms_hierarchical_tax_hide_empty_true_fields_count() {
@@ -1478,7 +1478,7 @@ class Tests_Term_getTerms extends WP_UnitTestCase {
 		_unregister_taxonomy( 'hierarchical_fields' );
 
 		// When using 'fields=count', 'hierarchical' is forced to false.
-		$this->assertSame( 2, $found );
+		$this->assertEquals( 2, $found );
 	}
 
 	public function test_get_terms_hierarchical_tax_hide_empty_true_fields_count_hierarchical_false() {
@@ -1499,7 +1499,7 @@ class Tests_Term_getTerms extends WP_UnitTestCase {
 
 		_unregister_taxonomy( 'hierarchical_fields' );
 
-		$this->assertSame( 2, $found );
+		$this->assertEquals( 2, $found );
 	}
 
 	public function test_get_terms_hierarchical_tax_hide_empty_false_fields_idparent() {
