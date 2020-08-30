@@ -2391,7 +2391,7 @@ class WP_Test_REST_Comments_Controller extends WP_Test_REST_Controller_Testcase 
 		$comment = $response->get_data();
 		$updated = get_comment( $comment_id );
 		$this->assertSame( 'approved', $comment['status'] );
-		$this->assertSame( 1, $updated->comment_approved );
+		$this->assertEquals( 1, $updated->comment_approved );
 		$this->assertSame( 'some content', $updated->comment_content );
 	}
 
@@ -3177,7 +3177,7 @@ class WP_Test_REST_Comments_Controller extends WP_Test_REST_Controller_Testcase 
 
 		$response = rest_get_server()->dispatch( $request );
 
-		$this->assertSame( 123, $response->data['my_custom_int'] );
+		$this->assertEquals( 123, $response->data['my_custom_int'] );
 
 		global $wp_rest_additional_fields;
 		$wp_rest_additional_fields = array();
