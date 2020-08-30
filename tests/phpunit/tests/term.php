@@ -55,7 +55,7 @@ class Tests_Term extends WP_UnitTestCase {
 		$t    = wp_insert_term( $term, $this->taxonomy );
 		$this->assertInternalType( 'array', $t );
 		$term_obj = get_term_by( 'name', $term, $this->taxonomy );
-		$this->assertSame( $t['term_id'], term_exists( $term_obj->slug ) );
+		$this->assertEquals( $t['term_id'], term_exists( $term_obj->slug ) );
 
 		// Clean up.
 		$this->assertTrue( wp_delete_term( $t['term_id'], $this->taxonomy ) );
@@ -72,7 +72,7 @@ class Tests_Term extends WP_UnitTestCase {
 			)
 		);
 		// There are 5 posts, all Uncategorized.
-		$this->assertSame( 1, $count );
+		$this->assertEquals( 1, $count );
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Tests_Term extends WP_UnitTestCase {
 
 		// Counts all terms (1 default category, 5 tags).
 		$count = wp_count_terms();
-		$this->assertSame( 6, $count );
+		$this->assertEquals( 6, $count );
 
 		// Counts only tags (5), with both current and legacy signature.
 		// Legacy usage should not trigger deprecated notice.
@@ -156,7 +156,7 @@ class Tests_Term extends WP_UnitTestCase {
 		$this->assertTrue( is_numeric( $t ) );
 		$this->assertNotWPError( $t );
 		$this->assertTrue( $t > 0 );
-		$this->assertSame( $initial_count + 1, wp_count_terms( array( 'taxonomy' => 'category' ) ) );
+		$this->assertEquals( $initial_count + 1, wp_count_terms( array( 'taxonomy' => 'category' ) ) );
 
 		// Make sure the term exists.
 		$this->assertTrue( term_exists( $term ) > 0 );
@@ -166,7 +166,7 @@ class Tests_Term extends WP_UnitTestCase {
 		$this->assertTrue( wp_delete_category( $t ) );
 		$this->assertNull( term_exists( $term ) );
 		$this->assertNull( term_exists( $t ) );
-		$this->assertSame( $initial_count, wp_count_terms( array( 'taxonomy' => 'category' ) ) );
+		$this->assertEquals( $initial_count, wp_count_terms( array( 'taxonomy' => 'category' ) ) );
 	}
 
 	/**
@@ -219,7 +219,7 @@ class Tests_Term extends WP_UnitTestCase {
 		$post_id = self::factory()->post->create( array( 'post_type' => 'cpt' ) );
 		$post    = get_post( $post_id );
 
-		$this->assertSame( get_option( 'default_category' ), $post->post_category[0] );
+		$this->assertEquals( get_option( 'default_category' ), $post->post_category[0] );
 
 		$term = wp_insert_term( 'Foo', 'category' );
 
