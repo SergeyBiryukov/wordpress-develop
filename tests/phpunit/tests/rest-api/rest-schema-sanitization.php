@@ -18,7 +18,7 @@ class WP_Test_REST_Schema_Sanitization extends WP_UnitTestCase {
 		$this->assertEquals( 1, rest_sanitize_value_from_schema( 1, $schema ) );
 		$this->assertSame( 1.10, rest_sanitize_value_from_schema( '1.10', $schema ) );
 		$this->assertEquals( 1, rest_sanitize_value_from_schema( '1abc', $schema ) );
-		$this->assertSame( 0, rest_sanitize_value_from_schema( 'abc', $schema ) );
+		$this->assertEquals( 0, rest_sanitize_value_from_schema( 'abc', $schema ) );
 		$this->assertSame( 0, rest_sanitize_value_from_schema( array(), $schema ) );
 	}
 
@@ -140,7 +140,7 @@ class WP_Test_REST_Schema_Sanitization extends WP_UnitTestCase {
 		);
 		$this->assertEquals( array( 1, 2 ), rest_sanitize_value_from_schema( '1,2', $schema ) );
 		$this->assertEquals( array( 1, 2, 0 ), rest_sanitize_value_from_schema( '1,2,a', $schema ) );
-		$this->assertSame( array( 1, 2 ), rest_sanitize_value_from_schema( '1,2,', $schema ) );
+		$this->assertEquals( array( 1, 2 ), rest_sanitize_value_from_schema( '1,2,', $schema ) );
 	}
 
 	public function test_type_array_with_enum() {
@@ -198,7 +198,7 @@ class WP_Test_REST_Schema_Sanitization extends WP_UnitTestCase {
 		);
 		$this->assertEquals( array( 'a' => 1 ), rest_sanitize_value_from_schema( array( 'a' => 1 ), $schema ) );
 		$this->assertEquals( array( 'a' => 1 ), rest_sanitize_value_from_schema( array( 'a' => '1' ), $schema ) );
-		$this->assertSame(
+		$this->assertEquals(
 			array(
 				'a' => 1,
 				'b' => 1,
@@ -225,7 +225,7 @@ class WP_Test_REST_Schema_Sanitization extends WP_UnitTestCase {
 		);
 		$this->assertEquals( array( 'a' => 1 ), rest_sanitize_value_from_schema( array( 'a' => 1 ), $schema ) );
 		$this->assertEquals( array( 'a' => 1 ), rest_sanitize_value_from_schema( array( 'a' => '1' ), $schema ) );
-		$this->assertSame(
+		$this->assertEquals(
 			array( 'a' => 1 ),
 			rest_sanitize_value_from_schema(
 				array(
