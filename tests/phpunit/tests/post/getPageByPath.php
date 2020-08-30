@@ -38,10 +38,10 @@ class Tests_Post_GetPageByPath extends WP_UnitTestCase {
 		$this->assertSame( 'some-page', $page->post_name );
 
 		// get_page_by_path() should return a post of the requested type before returning an attachment.
-		$this->assertSame( $page, get_page_by_path( 'some-page' ) );
+		$this->assertEquals( $page, get_page_by_path( 'some-page' ) );
 
 		// Make sure get_page_by_path() will still select an attachment when a post of the requested type doesn't exist.
-		$this->assertSame( $other_att, get_page_by_path( 'some-other-page' ) );
+		$this->assertEquals( $other_att, get_page_by_path( 'some-other-page' ) );
 	}
 
 	public function test_should_match_top_level_page() {
