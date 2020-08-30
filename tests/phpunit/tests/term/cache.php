@@ -265,7 +265,7 @@ class Tests_Term_Cache extends WP_UnitTestCase {
 		$this->assertSame( 'Taco', $term->name );
 		$this->assertSame( $num_queries, $wpdb->num_queries );
 
-		$this->assertSame( get_term( $term_id, 'post_tag' ), $term );
+		$this->assertEquals( get_term( $term_id, 'post_tag' ), $term );
 		$this->assertSame( $num_queries, $wpdb->num_queries );
 	}
 
@@ -332,7 +332,7 @@ class Tests_Term_Cache extends WP_UnitTestCase {
 		$term = get_term_by( 'name', 'Burrito', 'post_tag' );
 		$this->assertSame( $num_queries, $wpdb->num_queries );
 
-		$this->assertSame( get_term( $term_id, 'post_tag' ), $term );
+		$this->assertEquals( get_term( $term_id, 'post_tag' ), $term );
 		$this->assertSame( $num_queries, $wpdb->num_queries );
 	}
 
@@ -394,7 +394,7 @@ class Tests_Term_Cache extends WP_UnitTestCase {
 		// Verify the term is cached.
 		$term2 = get_term_by( 'name', 'Burrito', 'post_tag' );
 		$this->assertSame( $num_queries, $wpdb->num_queries );
-		$this->assertSame( $term1, $term2 );
+		$this->assertEquals( $term1, $term2 );
 
 		$suspend = wp_suspend_cache_invalidation();
 
