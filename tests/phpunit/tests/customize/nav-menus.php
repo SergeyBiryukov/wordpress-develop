@@ -46,9 +46,9 @@ class Test_WP_Customize_Nav_Menus extends WP_UnitTestCase {
 	function filter_item_types( $items ) {
 		$items[] = array(
 			'title'      => 'Custom',
+			'type_label' => 'Custom Type',
 			'type'       => 'custom_type',
 			'object'     => 'custom_object',
-			'type_label' => 'Custom Type',
 		);
 
 		return $items;
