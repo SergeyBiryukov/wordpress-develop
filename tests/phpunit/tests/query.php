@@ -84,7 +84,7 @@ class Tests_Query extends WP_UnitTestCase {
 		$this->assertTrue( $query->is_archive() );
 		$this->assertNotEmpty( $query->get( 'tag' ) );
 		$this->assertCount( 1, $query->get( 'tag_slug__in' ) );
-		$this->assertSame( $query->get_queried_object(), $tag );
+		$this->assertEquals( $query->get_queried_object(), $tag );
 	}
 
 	/**
