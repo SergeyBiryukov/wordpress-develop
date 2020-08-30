@@ -3236,7 +3236,7 @@ class WP_Test_REST_Comments_Controller extends WP_Test_REST_Controller_Testcase 
 
 		$this->assertEquals( $comment->comment_ID, $data['id'] );
 		$this->assertEquals( $comment->comment_post_ID, $data['post'] );
-		$this->assertSame( $comment->comment_parent, $data['parent'] );
+		$this->assertEquals( $comment->comment_parent, $data['parent'] );
 		$this->assertSame( $comment->user_id, $data['author'] );
 		$this->assertSame( $comment->comment_author, $data['author_name'] );
 		$this->assertSame( $comment->comment_author_url, $data['author_url'] );
