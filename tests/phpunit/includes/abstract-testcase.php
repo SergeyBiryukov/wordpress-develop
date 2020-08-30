@@ -586,16 +586,6 @@ abstract class WP_UnitTestCase_Base extends PHPUnit\Framework\TestCase {
 		}
 	}
 
-	public static function assertSame( $expected, $actual, string $message = '' ): void {
-		if ( func_num_args() > 3 ) {
-			echo 'assertSame delta!!!' . "\n";
-			echo wp_debug_backtrace_summary() . "\n";
-			var_dump( $expected );
-		}
-
-		parent::assertSame( $expected, $actual, $message );
-	}
-
 	/**
 	 * Asserts that the given value is an instance of WP_Error.
 	 *
