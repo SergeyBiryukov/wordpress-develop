@@ -123,12 +123,12 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 		$this->assertSame( $expected0, $query->queries[0] );
 
 		$expected1 = array(
-			'relation' => 'OR',
 			array(
 				'key'     => 'foo1',
 				'compare' => 'baz1',
 				'value'   => 'bar1',
 			),
+			'relation' => 'OR',
 		);
 		$this->assertSame( $expected1, $query->queries[1] );
 	}
@@ -176,10 +176,10 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 		// Just meta_value.
 		$expected = array(
-			'relation' => 'OR',
 			array(
 				'key' => 'abc',
 			),
+			'relation' => 'OR',
 		);
 		$query->parse_query_vars(
 			array(
@@ -190,11 +190,11 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 		// meta_key & meta_value.
 		$expected = array(
-			'relation' => 'OR',
 			array(
 				'key'   => 'abc',
 				'value' => 'def',
 			),
+			'relation' => 'OR',
 		);
 		$query->parse_query_vars(
 			array(
@@ -206,11 +206,11 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 		// meta_compare.
 		$expected = array(
-			'relation' => 'OR',
 			array(
 				'key'     => 'abc',
 				'compare' => '=>',
 			),
+			'relation' => 'OR',
 		);
 		$query->parse_query_vars(
 			array(
@@ -257,11 +257,11 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 	public function test_sanitize_query_single_query() {
 		$expected = array(
-			'relation' => 'OR',
 			array(
 				'key'   => 'foo',
 				'value' => 'bar',
 			),
+			'relation' => 'OR',
 		);
 
 		$q     = new WP_Meta_Query();
@@ -279,7 +279,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 	public function test_sanitize_query_multiple_first_order_queries_relation_default() {
 		$expected = array(
-			'relation' => 'AND',
 			array(
 				'key'   => 'foo',
 				'value' => 'bar',
@@ -288,6 +287,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 				'key'   => 'foo2',
 				'value' => 'bar2',
 			),
+			'relation' => 'AND',
 		);
 
 		$q     = new WP_Meta_Query();
@@ -309,7 +309,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 	public function test_sanitize_query_multiple_first_order_queries_relation_or() {
 		$expected = array(
-			'relation' => 'OR',
 			array(
 				'key'   => 'foo',
 				'value' => 'bar',
@@ -318,12 +317,12 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 				'key'   => 'foo2',
 				'value' => 'bar2',
 			),
+			'relation' => 'OR',
 		);
 
 		$q     = new WP_Meta_Query();
 		$found = $q->sanitize_query(
 			array(
-				'relation' => 'OR',
 				array(
 					'key'   => 'foo',
 					'value' => 'bar',
@@ -332,6 +331,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 					'key'   => 'foo2',
 					'value' => 'bar2',
 				),
+				'relation' => 'OR',
 			)
 		);
 
@@ -340,7 +340,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 	public function test_sanitize_query_multiple_first_order_queries_relation_or_lowercase() {
 		$expected = array(
-			'relation' => 'OR',
 			array(
 				'key'   => 'foo',
 				'value' => 'bar',
@@ -349,12 +348,12 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 				'key'   => 'foo2',
 				'value' => 'bar2',
 			),
+			'relation' => 'OR',
 		);
 
 		$q     = new WP_Meta_Query();
 		$found = $q->sanitize_query(
 			array(
-				'relation' => 'or',
 				array(
 					'key'   => 'foo',
 					'value' => 'bar',
@@ -363,6 +362,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 					'key'   => 'foo2',
 					'value' => 'bar2',
 				),
+				'relation' => 'or',
 			)
 		);
 
@@ -371,7 +371,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 	public function test_sanitize_query_multiple_first_order_queries_invalid_relation() {
 		$expected = array(
-			'relation' => 'AND',
 			array(
 				'key'   => 'foo',
 				'value' => 'bar',
@@ -380,12 +379,12 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 				'key'   => 'foo2',
 				'value' => 'bar2',
 			),
+			'relation' => 'AND',
 		);
 
 		$q     = new WP_Meta_Query();
 		$found = $q->sanitize_query(
 			array(
-				'relation' => 'FOO',
 				array(
 					'key'   => 'foo',
 					'value' => 'bar',
@@ -394,6 +393,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 					'key'   => 'foo2',
 					'value' => 'bar2',
 				),
+				'relation' => 'FOO',
 			)
 		);
 
@@ -402,9 +402,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 	public function test_sanitize_query_single_query_which_is_a_nested_query() {
 		$expected = array(
-			'relation' => 'OR',
 			array(
-				'relation' => 'AND',
 				array(
 					'key'   => 'foo',
 					'value' => 'bar',
@@ -413,7 +411,9 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 					'key'   => 'foo2',
 					'value' => 'bar2',
 				),
+				'relation' => 'AND',
 			),
+			'relation' => 'OR',
 		);
 
 		$q     = new WP_Meta_Query();
@@ -437,9 +437,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 	public function test_sanitize_query_multiple_nested_queries() {
 		$expected = array(
-			'relation' => 'OR',
 			array(
-				'relation' => 'AND',
 				array(
 					'key'   => 'foo',
 					'value' => 'bar',
@@ -448,9 +446,9 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 					'key'   => 'foo2',
 					'value' => 'bar2',
 				),
+				'relation' => 'AND',
 			),
 			array(
-				'relation' => 'AND',
 				array(
 					'key'   => 'foo3',
 					'value' => 'bar3',
@@ -459,13 +457,14 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 					'key'   => 'foo4',
 					'value' => 'bar4',
 				),
+				'relation' => 'AND',
 			),
+			'relation' => 'OR',
 		);
 
 		$q     = new WP_Meta_Query();
 		$found = $q->sanitize_query(
 			array(
-				'relation' => 'OR',
 				array(
 					array(
 						'key'   => 'foo',
@@ -486,6 +485,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 						'value' => 'bar4',
 					),
 				),
+				'relation' => 'OR',
 			)
 		);
 
@@ -560,8 +560,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 		$query1 = new WP_Meta_Query(
 			array(
-				'relation' => 'OR',
-
 				// Empty 'compare'.
 				array(
 					'key' => 'foo',
@@ -589,6 +587,8 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 				array(
 					'value' => 'bar',
 				),
+
+				'relation' => 'OR',
 			)
 		);
 
@@ -604,8 +604,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 		// 'AND' queries don't have key-only queries.
 		$query2 = new WP_Meta_Query(
 			array(
-				'relation' => 'AND',
-
 				// Empty 'compare'.
 				array(
 					'key' => 'foo',
@@ -616,6 +614,8 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 					'key'     => 'bar',
 					'compare' => '<',
 				),
+
+				'relation' => 'AND',
 			)
 		);
 
@@ -887,7 +887,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 		$query = new WP_Meta_Query(
 			array(
-				'relation' => 'OR',
 				array(
 					'key'     => 'exclude',
 					'compare' => 'NOT EXISTS',
@@ -897,6 +896,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 					'compare' => '!=',
 					'value'   => '1',
 				),
+				'relation' => 'OR',
 			)
 		);
 
@@ -910,7 +910,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 
 		$query = new WP_Meta_Query(
 			array(
-				'relation' => 'OR',
 				array(
 					'key'     => 'exclude',
 					'compare' => '',
@@ -920,6 +919,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 					'compare' => '!=',
 					'value'   => '1',
 				),
+				'relation' => 'OR',
 			)
 		);
 
@@ -936,7 +936,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 	public function test_has_or_relation_should_return_false() {
 		$q = new WP_Meta_Query(
 			array(
-				'relation' => 'AND',
 				array(
 					'key'   => 'foo',
 					'value' => 'bar',
@@ -952,6 +951,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 						'value' => 'bar',
 					),
 				),
+				'relation' => 'AND',
 			)
 		);
 
@@ -964,7 +964,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 	public function test_has_or_relation_should_return_true_for_top_level_or() {
 		$q = new WP_Meta_Query(
 			array(
-				'relation' => 'OR',
 				array(
 					'key'   => 'foo',
 					'value' => 'bar',
@@ -980,6 +979,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 						'value' => 'bar',
 					),
 				),
+				'relation' => 'OR',
 			)
 		);
 
@@ -992,7 +992,6 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 	public function test_has_or_relation_should_return_true_for_nested_or() {
 		$q = new WP_Meta_Query(
 			array(
-				'relation' => 'AND',
 				array(
 					'key'   => 'foo',
 					'value' => 'bar',
@@ -1008,6 +1007,7 @@ class Tests_Meta_Query extends WP_UnitTestCase {
 						'value' => 'bar',
 					),
 				),
+				'relation' => 'AND',
 			)
 		);
 
