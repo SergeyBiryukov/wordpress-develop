@@ -78,7 +78,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 		);
 		$ids = $q->get_results();
 
-		$this->assertSame( array( self::$author_ids[0] ), $ids );
+		$this->assertEqualSets( array( self::$author_ids[0] ), $ids );
 	}
 
 	public function test_include_comma_separated() {
@@ -204,7 +204,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 
 		$expected = array( self::$author_ids[3], self::$author_ids[1], self::$author_ids[0], self::$author_ids[2] );
 
-		$this->assertSame( $expected, $q->get_results() );
+		$this->assertEquals( $expected, $q->get_results() );
 	}
 
 	/**
@@ -226,7 +226,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 
 		$expected = array( self::$author_ids[1], self::$author_ids[2], self::$author_ids[0] );
 
-		$this->assertSame( $expected, $q->get_results() );
+		$this->assertEquals( $expected, $q->get_results() );
 	}
 
 	/**
@@ -248,7 +248,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 
 		$expected = array( self::$author_ids[1], self::$author_ids[2], self::$author_ids[0] );
 
-		$this->assertSame( $expected, $q->get_results() );
+		$this->assertEquals( $expected, $q->get_results() );
 	}
 
 	/**
@@ -273,7 +273,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSame( array( self::$author_ids[1], self::$author_ids[2], self::$author_ids[0] ), $q->results );
+		$this->assertEquals( array( self::$author_ids[1], self::$author_ids[2], self::$author_ids[0] ), $q->results );
 	}
 
 	/**
@@ -316,7 +316,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSame( array( $u3, $u1, $u2 ), $q->results );
+		$this->assertEquals( array( $u3, $u1, $u2 ), $q->results );
 	}
 
 	/**
@@ -350,7 +350,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSame( array( self::$author_ids[2], self::$author_ids[0], self::$author_ids[1] ), $q->results );
+		$this->assertEquals( array( self::$author_ids[2], self::$author_ids[0], self::$author_ids[1] ), $q->results );
 	}
 
 	/**
@@ -383,8 +383,8 @@ class Tests_User_Query extends WP_UnitTestCase {
 		$expected_orderby = 'ORDER BY FIELD( ' . $wpdb->users . '.ID, ' . self::$author_ids[1] . ',' . self::$author_ids[0] . ',' . self::$author_ids[3] . ' )';
 		$this->assertContains( $expected_orderby, $q->query_orderby );
 
-		// assertSame() respects order but ignores type (get_results() returns numeric strings).
-		$this->assertSame( array( self::$author_ids[1], self::$author_ids[0], self::$author_ids[3] ), $q->get_results() );
+		// assertEquals() respects order but ignores type (get_results() returns numeric strings).
+		$this->assertEquals( array( self::$author_ids[1], self::$author_ids[0], self::$author_ids[3] ), $q->get_results() );
 	}
 
 	/**
@@ -404,8 +404,8 @@ class Tests_User_Query extends WP_UnitTestCase {
 		$expected_orderby = 'ORDER BY FIELD( ' . $wpdb->users . '.ID, ' . self::$author_ids[1] . ',' . self::$author_ids[0] . ',' . self::$author_ids[3] . ' )';
 		$this->assertContains( $expected_orderby, $q->query_orderby );
 
-		// assertSame() respects order but ignores type (get_results() returns numeric strings).
-		$this->assertSame( array( self::$author_ids[1], self::$author_ids[0], self::$author_ids[3] ), $q->get_results() );
+		// assertEquals() respects order but ignores type (get_results() returns numeric strings).
+		$this->assertEquals( array( self::$author_ids[1], self::$author_ids[0], self::$author_ids[3] ), $q->get_results() );
 	}
 
 	/**
@@ -623,7 +623,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSame( array( self::$author_ids[0], self::$author_ids[1] ), $query->get_results() );
+		$this->assertEquals( array( self::$author_ids[0], self::$author_ids[1] ), $query->get_results() );
 	}
 
 	public function test_roles_and_caps_should_be_populated_for_default_value_of_blog_id() {
@@ -1282,7 +1282,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSame( array( self::$contrib_id, self::$editor_ids[2] ), $q->results );
+		$this->assertEquals( array( self::$contrib_id, self::$editor_ids[2] ), $q->results );
 	}
 
 	/**
@@ -1662,7 +1662,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 		$ids = $q->get_results();
 
 		// Must include user that has the same string in display_name.
-		$this->assertSame( array( $new_user1 ), $ids );
+		$this->assertEquals( array( $new_user1 ), $ids );
 	}
 
 	/**
