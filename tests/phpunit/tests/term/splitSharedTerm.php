@@ -95,18 +95,18 @@ class Tests_Term_SplitSharedTerm extends WP_UnitTestCase {
 		$children = get_terms(
 			'wptests_tax_2',
 			array(
+				'hide_empty' => false,
+			)
+		);
+		var_dump( $children );
+		$children = get_terms(
+			'wptests_tax_2',
+			array(
 				'parent'     => $this->terms['t2']['term_id'],
 				'hide_empty' => false,
 			)
 		);
 		var_dump( $this->terms['t2']['term_id'] );
-		var_dump( $children );
-		$children = get_terms(
-			'wptests_tax_2',
-			array(
-				'hide_empty' => false,
-			)
-		);
 		var_dump( $children );
 
 		$this->assertSame( $this->terms['t2_child']['term_taxonomy_id'], $children[0]->term_taxonomy_id );
