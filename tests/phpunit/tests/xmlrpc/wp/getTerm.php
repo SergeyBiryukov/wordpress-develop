@@ -76,7 +76,7 @@ class Tests_XMLRPC_wp_getTerm extends WP_XMLRPC_UnitTestCase {
 		$result = $this->myxmlrpcserver->wp_getTerm( array( 1, 'editor', 'editor', 'category', self::$term_id ) );
 
 		$this->assertNotIXRError( $result );
-		$this->assertSame( $result, $term );
+		$this->assertEquals( $result, $term );
 
 		// Check data types.
 		$this->assertInternalType( 'string', $result['name'] );
