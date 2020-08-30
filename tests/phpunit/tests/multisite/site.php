@@ -409,7 +409,7 @@ if ( is_multisite() ) :
 			$current_time = time();
 
 			// Compare the update time with the current time, allow delta < 2.
-			$this->assertSame( $current_time, strtotime( $blog->last_updated ), 'The dates should be equal', 2 );
+			$this->assertEquals( $current_time, strtotime( $blog->last_updated ), 'The dates should be equal', 2 );
 		}
 
 		/**
@@ -1792,16 +1792,16 @@ if ( is_multisite() ) :
 			$this->assertInternalType( 'integer', $site_id );
 
 			$site = get_site( $site_id );
-			$this->assertSame( strtotime( $first_date ), strtotime( $site->registered ), 'The dates should be equal', 2 );
-			$this->assertSame( strtotime( $first_date ), strtotime( $site->last_updated ), 'The dates should be equal', 2 );
+			$this->assertEquals( strtotime( $first_date ), strtotime( $site->registered ), 'The dates should be equal', 2 );
+			$this->assertEquals( strtotime( $first_date ), strtotime( $site->last_updated ), 'The dates should be equal', 2 );
 
 			$second_date = current_time( 'mysql', true );
 			$site_id     = wp_update_site( $site_id, array() );
 			$this->assertInternalType( 'integer', $site_id );
 
 			$site = get_site( $site_id );
-			$this->assertSame( strtotime( $first_date ), strtotime( $site->registered ), 'The dates should be equal', 2 );
-			$this->assertSame( strtotime( $second_date ), strtotime( $site->last_updated ), 'The dates should be equal', 2 );
+			$this->assertEquals( strtotime( $first_date ), strtotime( $site->registered ), 'The dates should be equal', 2 );
+			$this->assertEquals( strtotime( $second_date ), strtotime( $site->last_updated ), 'The dates should be equal', 2 );
 		}
 
 		/**
