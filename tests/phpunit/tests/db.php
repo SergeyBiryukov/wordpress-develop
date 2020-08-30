@@ -424,7 +424,7 @@ class Tests_DB extends WP_UnitTestCase {
 
 		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged,WordPress.DB.PreparedSQL
 		$prepared = @$wpdb->prepare( $query, ...$args );
-		$this->assertSame( $expected, $prepared );
+		$this->assertEquals( $expected, $prepared );
 	}
 
 	public function data_prepare_incorrect_arg_count() {
