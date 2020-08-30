@@ -52,7 +52,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 	function test_get_and_set() {
 		$users = new WP_User_Query();
 
-		$this->assertSame( '', $users->get( 'fields' ) );
+		$this->assertEquals( '', $users->get( 'fields' ) );
 		if ( isset( $users->query_vars['fields'] ) ) {
 			$this->assertSame( '', $users->query_vars['fields'] );
 		}
@@ -562,7 +562,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 		// All values get reset.
 		$query->prepare_query( array( 'fields' => 'all' ) );
 		$this->assertEmpty( $query->query_limit );
-		$this->assertSame( '', $query->query_limit );
+		$this->assertEquals( '', $query->query_limit );
 		$_query_vars = $query->query_vars;
 
 		$query->prepare_query();
