@@ -83,7 +83,7 @@ class Tests_User_Author_Template extends WP_UnitTestCase {
 		// Test with no global post, result should be 0 because no author is found.
 		$this->assertSame( 0, get_the_author_posts() );
 		$GLOBALS['post'] = self::$post_id;
-		$this->assertSame( 1, get_the_author_posts() );
+		$this->assertEquals( 1, get_the_author_posts() );
 	}
 
 	/**
@@ -101,7 +101,7 @@ class Tests_User_Author_Template extends WP_UnitTestCase {
 		);
 		$GLOBALS['post'] = $cpt_ids[0];
 
-		$this->assertSame( 2, get_the_author_posts() );
+		$this->assertEquals( 2, get_the_author_posts() );
 
 		_unregister_post_type( 'wptests_pt' );
 	}
