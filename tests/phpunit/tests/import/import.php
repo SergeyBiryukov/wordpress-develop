@@ -75,11 +75,11 @@ class Tests_Import_Import extends WP_Import_UnitTestCase {
 
 		// Check that posts/pages were imported correctly.
 		$post_count = wp_count_posts( 'post' );
-		$this->assertSame( 5, $post_count->publish );
-		$this->assertSame( 1, $post_count->private );
+		$this->assertEquals( 5, $post_count->publish );
+		$this->assertEquals( 1, $post_count->private );
 		$page_count = wp_count_posts( 'page' );
-		$this->assertSame( 4, $page_count->publish );
-		$this->assertSame( 1, $page_count->draft );
+		$this->assertEquals( 4, $page_count->publish );
+		$this->assertEquals( 1, $page_count->draft );
 		$comment_count = wp_count_comments();
 		$this->assertSame( 1, $comment_count->total_comments );
 
