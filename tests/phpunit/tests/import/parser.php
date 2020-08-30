@@ -60,7 +60,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 
 			$this->assertTrue( is_array( $result ), $message );
 			$this->assertSame( 'http://localhost/', $result['base_url'], $message );
-			$this->assertSame(
+			$this->assertEquals(
 				array(
 					'author_id'           => 2,
 					'author_login'        => 'john',
@@ -178,19 +178,19 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame(
 				array(
 					array(
-						'domain' => 'category',
-						'slug'   => 'alpha',
 						'name'   => 'alpha',
+						'slug'   => 'alpha',
+						'domain' => 'category',
 					),
 					array(
-						'domain' => 'tag',
-						'slug'   => 'news',
 						'name'   => 'news',
+						'slug'   => 'news',
+						'domain' => 'tag',
 					),
 					array(
-						'domain' => 'tag',
-						'slug'   => 'roar',
 						'name'   => 'roar',
+						'slug'   => 'roar',
+						'domain' => 'tag',
 					),
 				),
 				$result['posts'][2]['terms'],
@@ -199,19 +199,19 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame(
 				array(
 					array(
-						'domain' => 'tag',
-						'slug'   => 'chicken',
 						'name'   => 'chicken',
-					),
-					array(
-						'domain' => 'category',
-						'slug'   => 'child',
-						'name'   => 'child',
-					),
-					array(
+						'slug'   => 'chicken',
 						'domain' => 'tag',
-						'slug'   => 'face',
+					),
+					array(
+						'name'   => 'child',
+						'slug'   => 'child',
+						'domain' => 'category',
+					),
+					array(
 						'name'   => 'face',
+						'slug'   => 'face',
+						'domain' => 'tag',
 					),
 				),
 				$result['posts'][3]['terms'],
