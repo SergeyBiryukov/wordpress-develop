@@ -124,7 +124,7 @@ class Tests_XMLRPC_mw_newPost extends WP_XMLRPC_UnitTestCase {
 		$this->assertStringMatchesFormat( '%d', $result );
 
 		$out = get_post( $result );
-		$this->assertSame( $my_author_id, $out->post_author );
+		$this->assertEquals( $my_author_id, $out->post_author );
 		$this->assertSame( 'Test', $out->post_title );
 	}
 
