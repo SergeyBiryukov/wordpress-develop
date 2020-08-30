@@ -988,8 +988,8 @@ class WP_Test_REST_Users_Controller extends WP_Test_REST_Controller_Testcase {
 		} else {
 			$data = $response->get_data();
 
-			$this->assertSame( $data['capabilities'], new stdClass() );
-			$this->assertSame( $data['extra_capabilities'], new stdClass() );
+			$this->assertEquals( $data['capabilities'], new stdClass() );
+			$this->assertEquals( $data['extra_capabilities'], new stdClass() );
 		}
 	}
 
@@ -2443,7 +2443,7 @@ class WP_Test_REST_Users_Controller extends WP_Test_REST_Controller_Testcase {
 
 		// Sanity check to ensure the factory created the post correctly.
 		$post = get_post( $test_post );
-		$this->assertSame( $user_id, $post->post_author );
+		$this->assertEquals( $user_id, $post->post_author );
 
 		wp_set_current_user( self::$user );
 
@@ -2611,7 +2611,7 @@ class WP_Test_REST_Users_Controller extends WP_Test_REST_Controller_Testcase {
 		}
 
 		$test_post = get_post( $test_post );
-		$this->assertSame( 0, $test_post->post_author );
+		$this->assertEquals( 0, $test_post->post_author );
 	}
 
 	public function test_get_item_schema() {
@@ -2704,7 +2704,7 @@ class WP_Test_REST_Users_Controller extends WP_Test_REST_Controller_Testcase {
 			)
 		);
 		$response = rest_get_server()->dispatch( $request );
-		$this->assertSame( 123, get_user_meta( 1, 'my_custom_int', true ) );
+		$this->assertEquals( 123, get_user_meta( 1, 'my_custom_int', true ) );
 
 		$request = new WP_REST_Request( 'POST', '/wp/v2/users' );
 		$request->set_body_params(
