@@ -230,8 +230,8 @@ class Tests_Import_Import extends WP_Import_UnitTestCase {
 		$this->assertSame( 'author', $author->user_login );
 		$this->assertSame( 'author@example.org', $author->user_email );
 
-		$this->assertSame( 30, wp_count_terms( array( 'taxonomy' => 'category' ) ) );
-		$this->assertSame( 3, wp_count_terms( array( 'taxonomy' => 'post_tag' ) ) );
+		$this->assertEquals( 30, wp_count_terms( array( 'taxonomy' => 'category' ) ) );
+		$this->assertEquals( 3, wp_count_terms( array( 'taxonomy' => 'post_tag' ) ) );
 		$foo = get_term_by( 'slug', 'foo', 'category' );
 		$this->assertSame( 0, $foo->parent );
 		$bar     = get_term_by( 'slug', 'bar', 'category' );
