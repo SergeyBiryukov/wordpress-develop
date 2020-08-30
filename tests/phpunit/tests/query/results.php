@@ -1072,7 +1072,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 		$result1 = $this->q->query( array_merge( $args, array( 'has_password' => true ) ) );
 		$this->assertEqualSets( array( $two, $three ), $result1 );
 		$result2 = $this->q->query( array_merge( $args, array( 'has_password' => false ) ) );
-		$this->assertSame( array( $one ), $result2 );
+		$this->assertEquals( array( $one ), $result2 );
 
 		// This is equivalent to not passing it at all.
 		$result3 = $this->q->query( array_merge( $args, array( 'has_password' => null ) ) );
@@ -1263,6 +1263,6 @@ class Tests_Query_Results extends WP_UnitTestCase {
 		$this->assertTrue( $this->q->have_comments() );
 
 		$feed_comment = $this->q->next_comment();
-		$this->assertSame( $comment_id, $feed_comment->comment_ID );
+		$this->assertEquals( $comment_id, $feed_comment->comment_ID );
 	}
 }
