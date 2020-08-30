@@ -109,7 +109,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame( 2, count( $result['posts'] ), $message );
 			$this->assertSame( 19, count( $result['posts'][0] ), $message );
 			$this->assertSame( 18, count( $result['posts'][1] ), $message );
-			$this->assertSame(
+			$this->assertEquals(
 				array(
 					array(
 						'name'   => 'alpha',
