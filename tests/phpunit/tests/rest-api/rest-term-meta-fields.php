@@ -798,7 +798,7 @@ class WP_Test_REST_Term_Meta_Fields extends WP_Test_REST_TestCase {
 		$data = $response->get_data();
 		$meta = (array) $data['meta'];
 		$this->assertArrayHasKey( 'test_custom_schema', $meta );
-		$this->assertSame( 3, $meta['test_custom_schema'] );
+		$this->assertEquals( 3, $meta['test_custom_schema'] );
 	}
 
 	public function test_set_value_multiple_custom_schema() {
