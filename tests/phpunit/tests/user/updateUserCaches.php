@@ -12,7 +12,7 @@ class Tests_User_UpdateUserCaches extends WP_UnitTestCase {
 
 		update_user_caches( $raw_userdata );
 
-		$this->assertSame( $raw_userdata, wp_cache_get( $u, 'users' ) );
+		$this->assertEquals( $raw_userdata, wp_cache_get( $u, 'users' ) );
 	}
 
 	public function test_should_store_user_id_in_userlogins_bucket() {
@@ -65,6 +65,6 @@ class Tests_User_UpdateUserCaches extends WP_UnitTestCase {
 
 		$cached = wp_cache_get( $u, 'users' );
 		$this->assertFalse( $cached instanceof WP_User );
-		$this->assertSame( $raw_userdata, $cached );
+		$this->assertEquals( $raw_userdata, $cached );
 	}
 }
