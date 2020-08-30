@@ -174,14 +174,14 @@ class Tests_Post_Meta extends WP_UnitTestCase {
 		$mobj->post_id    = self::$post_id;
 		$mobj->meta_key   = 'get_post_meta_by_key';
 		$mobj->meta_value = 'get_post_meta_by_key_value';
-		$this->assertSame( $mobj, get_post_meta_by_id( $mid ) );
+		$this->assertEquals( $mobj, get_post_meta_by_id( $mid ) );
 		delete_metadata_by_mid( 'post', $mid );
 
 		$mid = add_post_meta( self::$post_id, 'get_post_meta_by_key', array( 'foo', 'bar' ), true );
 		$this->assertInternalType( 'integer', $mid );
 		$mobj->meta_id    = $mid;
 		$mobj->meta_value = array( 'foo', 'bar' );
-		$this->assertSame( $mobj, get_post_meta_by_id( $mid ) );
+		$this->assertEquals( $mobj, get_post_meta_by_id( $mid ) );
 		delete_metadata_by_mid( 'post', $mid );
 	}
 
@@ -245,7 +245,7 @@ class Tests_Post_Meta extends WP_UnitTestCase {
 		$this->assertInternalType( 'integer', add_post_meta( self::$post_id, 'test_funky_post_meta', $funky_meta, true ) );
 
 		// Check it exists.
-		$this->assertSame( $funky_meta, get_post_meta( self::$post_id, 'test_funky_post_meta', true ) );
+		$this->assertEquals( $funky_meta, get_post_meta( self::$post_id, 'test_funky_post_meta', true ) );
 
 	}
 
