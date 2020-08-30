@@ -6,7 +6,7 @@
 class Tests_Option_Theme_Mods extends WP_UnitTestCase {
 
 	function test_theme_mod_default() {
-		$this->assertSame( '', get_theme_mod( 'non_existent' ) );
+		$this->assertFalse( get_theme_mod( 'non_existent' ) );
 	}
 
 	function test_theme_mod_defined_default() {
@@ -29,7 +29,7 @@ class Tests_Option_Theme_Mods extends WP_UnitTestCase {
 	function test_theme_mod_remove() {
 		set_theme_mod( 'test_remove', 'value' );
 		remove_theme_mod( 'test_remove' );
-		$this->assertSame( '', get_theme_mod( 'test_remove' ) );
+		$this->assertFalse( get_theme_mod( 'test_remove' ) );
 	}
 
 	/**
