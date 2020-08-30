@@ -526,7 +526,7 @@ class WP_Test_REST_Autosaves_Controller extends WP_Test_REST_Post_Type_Controlle
 			$links = $response['_links'];
 		}
 
-		$this->assertSame( $autosave->post_author, $response['author'] );
+		$this->assertEquals( $autosave->post_author, $response['author'] );
 
 		$rendered_content = apply_filters( 'the_content', $autosave->post_content );
 		$this->assertSame( $rendered_content, $response['content']['rendered'] );
