@@ -89,8 +89,8 @@ class Tests_Term extends WP_UnitTestCase {
 		// Legacy usage should not trigger deprecated notice.
 		$count        = wp_count_terms( array( 'taxonomy' => 'post_tag' ) );
 		$legacy_count = wp_count_terms( 'post_tag' );
-		$this->assertSame( 5, $count );
-		$this->assertSame( $count, $legacy_count );
+		$this->assertEquals( 5, $count );
+		$this->assertEquals( $count, $legacy_count );
 	}
 
 	/**
@@ -178,7 +178,7 @@ class Tests_Term extends WP_UnitTestCase {
 
 		$this->assertInternalType( 'array', $post->post_category );
 		$this->assertSame( 1, count( $post->post_category ) );
-		$this->assertSame( get_option( 'default_category' ), $post->post_category[0] );
+		$this->assertEquals( get_option( 'default_category' ), $post->post_category[0] );
 
 		$term1 = wp_insert_term( 'Foo', 'category' );
 		$term2 = wp_insert_term( 'Bar', 'category' );
@@ -227,7 +227,7 @@ class Tests_Term extends WP_UnitTestCase {
 		$this->assertSame( $term['term_id'], $post->post_category[0] );
 
 		wp_set_post_categories( $post_id, array() );
-		$this->assertSame( get_option( 'default_category' ), $post->post_category[0] );
+		$this->assertEquals( get_option( 'default_category' ), $post->post_category[0] );
 
 		remove_filter( 'default_category_post_types', array( $this, 'filter_default_category_post_types' ) );
 	}
