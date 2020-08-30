@@ -316,7 +316,7 @@ class Tests_Taxonomy extends WP_UnitTestCase {
 
 		$posts_with_terms = array_merge( $posts_with_tag, $posts_with_category );
 
-		$this->assertSame( $posts_with_tag, get_objects_in_term( $tag_id, 'post_tag' ) );
+		$this->assertEquals( $posts_with_tag, get_objects_in_term( $tag_id, 'post_tag' ) );
 		$this->assertSame( $posts_with_category, get_objects_in_term( $cat_id, 'category' ) );
 		$this->assertSame( $posts_with_terms, get_objects_in_term( array( $tag_id, $cat_id ), array( 'post_tag', 'category' ) ) );
 		$this->assertSame( array_reverse( $posts_with_tag ), get_objects_in_term( $tag_id, 'post_tag', array( 'order' => 'desc' ) ) );
