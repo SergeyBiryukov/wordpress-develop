@@ -121,7 +121,7 @@ class Tests_User_WpDeleteUser extends WP_UnitTestCase {
 		wp_delete_user( $user_id, $reassign );
 
 		$post = get_post( $post_id );
-		$this->assertSame( $reassign, $post->post_author );
+		$this->assertEquals( $reassign, $post->post_author );
 	}
 
 	/**
