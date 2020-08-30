@@ -4043,7 +4043,6 @@ class WP_Test_REST_Posts_Controller extends WP_Test_REST_Post_Type_Controller_Te
 		$this->assertSame( 'array', $status_arg['type'] );
 		$this->assertSame(
 			array(
-				'type' => 'string',
 				'enum' => array(
 					'publish',
 					'future',
@@ -4059,6 +4058,7 @@ class WP_Test_REST_Posts_Controller extends WP_Test_REST_Post_Type_Controller_Te
 					'request-completed',
 					'any',
 				),
+				'type' => 'string',
 			),
 			$status_arg['items']
 		);
@@ -4106,7 +4106,7 @@ class WP_Test_REST_Posts_Controller extends WP_Test_REST_Post_Type_Controller_Te
 		);
 
 		$response = rest_get_server()->dispatch( $request );
-		$this->assertSame( 123, get_post_meta( $post_id, 'my_custom_int', true ) );
+		$this->assertEquals( 123, get_post_meta( $post_id, 'my_custom_int', true ) );
 
 		$request = new WP_REST_Request( 'POST', '/wp/v2/posts' );
 		$request->set_body_params(
