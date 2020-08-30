@@ -60,7 +60,7 @@ class Tests_Date_Get_Feed_Build_Date extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSame(
+		$this->assertEquals(
 			strtotime( $datetime_utc->format( DATE_RFC3339 ) ),
 			strtotime( get_feed_build_date( DATE_RFC3339 ) ),
 			'Fall back to time of last post modified with no posts',
@@ -74,7 +74,7 @@ class Tests_Date_Get_Feed_Build_Date extends WP_UnitTestCase {
 
 		$wp_query->posts = array( $post_broken );
 
-		$this->assertSame(
+		$this->assertEquals(
 			strtotime( $datetime_utc->format( DATE_RFC3339 ) ),
 			strtotime( get_feed_build_date( DATE_RFC3339 ) ),
 			'Fall back to time of last post modified with broken post object',
