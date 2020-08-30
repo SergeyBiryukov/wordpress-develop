@@ -142,7 +142,7 @@ class Tests_XMLRPC_wp_getTerms extends WP_XMLRPC_UnitTestCase {
 		$this->assertNotIXRError( $results );
 		$this->assertSame( 1, count( $results ) );
 		$this->assertSame( $name, $results[0]['name'] );
-		$this->assertSame( $name_id, $results[0]['term_id'] );
+		$this->assertEquals( $name_id, $results[0]['term_id'] );
 
 		// Search by partial name.
 		$filter   = array( 'search' => substr( $name, 0, 10 ) );
