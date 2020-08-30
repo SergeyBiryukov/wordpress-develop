@@ -2363,7 +2363,7 @@ class WP_Test_REST_Comments_Controller extends WP_Test_REST_Controller_Testcase 
 		$comment = $response->get_data();
 		$updated = get_comment( $comment_id );
 		$this->assertSame( 'approved', $comment['status'] );
-		$this->assertSame( 1, $updated->comment_approved );
+		$this->assertEquals( 1, $updated->comment_approved );
 	}
 
 	public function test_update_comment_field_does_not_use_default_values() {
@@ -3163,7 +3163,7 @@ class WP_Test_REST_Comments_Controller extends WP_Test_REST_Controller_Testcase 
 
 		wp_set_current_user( 1 );
 		rest_get_server()->dispatch( $request );
-		$this->assertSame( 123, get_comment_meta( self::$approved_id, 'my_custom_int', true ) );
+		$this->assertEquals( 123, get_comment_meta( self::$approved_id, 'my_custom_int', true ) );
 
 		$request = new WP_REST_Request( 'POST', '/wp/v2/comments' );
 		$request->set_body_params(
@@ -3235,7 +3235,7 @@ class WP_Test_REST_Comments_Controller extends WP_Test_REST_Controller_Testcase 
 		$comment = get_comment( $data['id'] );
 
 		$this->assertEquals( $comment->comment_ID, $data['id'] );
-		$this->assertSame( $comment->comment_post_ID, $data['post'] );
+		$this->assertEquals( $comment->comment_post_ID, $data['post'] );
 		$this->assertSame( $comment->comment_parent, $data['parent'] );
 		$this->assertSame( $comment->user_id, $data['author'] );
 		$this->assertSame( $comment->comment_author, $data['author_name'] );
