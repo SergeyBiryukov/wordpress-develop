@@ -276,7 +276,7 @@ class Tests_Term_getTerms extends WP_UnitTestCase {
 				'fields'     => 'id=>slug',
 			)
 		);
-		$this->assertSame(
+		$this->assertEquals(
 			array(
 				$term_id1 => 'woo',
 				$term_id2 => 'hoo',
