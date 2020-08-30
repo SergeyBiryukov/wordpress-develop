@@ -159,7 +159,7 @@ class Tests_XMLRPC_mw_editPost extends WP_XMLRPC_UnitTestCase {
 		$post3  = array( 'post_content' => 'Updated post' );
 		$result = $this->myxmlrpcserver->mw_editPost( array( $post_id, 'author', 'author', $post3 ) );
 		$this->assertNotIXRError( $result );
-		$this->assertSame( $attachment_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
+		$this->assertEquals( $attachment_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
 
 		// Create another attachment.
 		$attachment2_id = self::factory()->attachment->create_upload_object( $filename, $post_id );
@@ -168,7 +168,7 @@ class Tests_XMLRPC_mw_editPost extends WP_XMLRPC_UnitTestCase {
 		$post4  = array( 'wp_post_thumbnail' => $attachment2_id );
 		$result = $this->myxmlrpcserver->mw_editPost( array( $post_id, 'author', 'author', $post4 ) );
 		$this->assertNotIXRError( $result );
-		$this->assertSame( $attachment2_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
+		$this->assertEquals( $attachment2_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
 
 		// Unset the post's post_thumbnail.
 		$post5  = array( 'wp_post_thumbnail' => '' );
