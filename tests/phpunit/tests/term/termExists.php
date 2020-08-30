@@ -16,7 +16,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		);
 
 		$found = term_exists( intval( $t ), 'post_tag' );
-		$this->assertSame( $t, $found['term_id'] );
+		$this->assertEquals( $t, $found['term_id'] );
 	}
 
 	public function test_term_exists_term_int_taxonomy_nonempty_term_does_not_exist() {
@@ -41,7 +41,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		);
 
 		$found = term_exists( intval( $t ), 'post_tag' );
-		$this->assertSame( $t, $found['term_id'] );
+		$this->assertEquals( $t, $found['term_id'] );
 	}
 
 	public function test_term_exists_term_int_taxonomy_empty_term_does_not_exist() {
@@ -57,7 +57,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		);
 
 		$found = term_exists( 'I \"love\" WordPress\\\'s taxonomy system' );
-		$this->assertSame( $t, $found );
+		$this->assertEquals( $t, $found );
 	}
 
 	public function test_term_exists_trim_term() {
@@ -69,7 +69,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		);
 
 		$found = term_exists( '  foo  ' );
-		$this->assertSame( $t, $found );
+		$this->assertEquals( $t, $found );
 	}
 
 	public function test_term_exists_term_trimmed_to_empty_string() {
@@ -117,7 +117,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		_unregister_taxonomy( 'foo' );
 
 		$this->assertInternalType( 'array', $found );
-		$this->assertSame( $t, $found['term_id'] );
+		$this->assertEquals( $t, $found['term_id'] );
 	}
 
 	/**
@@ -181,7 +181,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		_unregister_taxonomy( 'foo' );
 
 		$this->assertInternalType( 'array', $found );
-		$this->assertSame( $t, $found['term_id'] );
+		$this->assertEquals( $t, $found['term_id'] );
 	}
 
 	public function test_term_exists_taxonomy_nonempty_parent_empty_match_slug() {
@@ -199,7 +199,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		_unregister_taxonomy( 'foo' );
 
 		$this->assertInternalType( 'array', $found );
-		$this->assertSame( $t, $found['term_id'] );
+		$this->assertEquals( $t, $found['term_id'] );
 	}
 
 	public function test_term_exists_taxonomy_nonempty_parent_empty_match_name() {
@@ -217,7 +217,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		_unregister_taxonomy( 'foo' );
 
 		$this->assertInternalType( 'array', $found );
-		$this->assertSame( $t, $found['term_id'] );
+		$this->assertEquals( $t, $found['term_id'] );
 	}
 
 	public function test_term_exists_taxonomy_empty_parent_empty_match_slug() {
@@ -235,7 +235,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		_unregister_taxonomy( 'foo' );
 
 		$this->assertInternalType( 'string', $found );
-		$this->assertSame( $t, $found );
+		$this->assertEquals( $t, $found );
 	}
 
 	public function test_term_exists_taxonomy_empty_parent_empty_match_name() {
@@ -253,7 +253,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 		_unregister_taxonomy( 'foo' );
 
 		$this->assertInternalType( 'string', $found );
-		$this->assertSame( $t, $found );
+		$this->assertEquals( $t, $found );
 	}
 
 	function test_term_exists_known() {
@@ -263,8 +263,8 @@ class Tests_TermExists extends WP_UnitTestCase {
 		$term = rand_str();
 		$t    = wp_insert_term( $term, 'wptests_tax' );
 		$this->assertInternalType( 'array', $t );
-		$this->assertSame( $t['term_id'], term_exists( $t['term_id'] ) );
-		$this->assertSame( $t['term_id'], term_exists( $term ) );
+		$this->assertEquals( $t['term_id'], term_exists( $t['term_id'] ) );
+		$this->assertEquals( $t['term_id'], term_exists( $term ) );
 
 		// Clean up.
 		$this->assertTrue( wp_delete_term( $t['term_id'], 'wptests_tax' ) );
@@ -274,7 +274,7 @@ class Tests_TermExists extends WP_UnitTestCase {
 	function test_term_exists_unknown() {
 		$this->assertNull( term_exists( rand_str() ) );
 		$this->assertSame( 0, term_exists( 0 ) );
-		$this->assertSame( 0, term_exists( '' ) );
-		$this->assertSame( 0, term_exists( null ) );
+		$this->assertNull( term_exists( '' ) );
+		$this->assertNull( term_exists( null ) );
 	}
 }
