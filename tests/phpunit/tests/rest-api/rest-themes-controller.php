@@ -500,7 +500,7 @@ class WP_Test_REST_Themes_Controller extends WP_Test_REST_Controller_Testcase {
 		$result   = $response->get_data();
 		$this->assertArrayHasKey( 'theme_supports', $result[0] );
 		$this->assertArrayHasKey( 'editor-font-sizes', $result[0]['theme_supports'] );
-		$this->assertSame( array( $tiny ), $result[0]['theme_supports']['editor-font-sizes'] );
+		$this->assertEquals( array( $tiny ), $result[0]['theme_supports']['editor-font-sizes'] );
 	}
 
 	/**
@@ -574,10 +574,10 @@ class WP_Test_REST_Themes_Controller extends WP_Test_REST_Controller_Testcase {
 	public function test_theme_supports_custom_logo() {
 		remove_theme_support( 'custom-logo' );
 		$wordpress_logo = array(
-			'height'               => 100,
 			'width'                => 400,
-			'flex-height'          => true,
+			'height'               => 100,
 			'flex-width'           => true,
+			'flex-height'          => true,
 			'header-text'          => array( 'site-title', 'site-description' ),
 			'unlink-homepage-logo' => false,
 		);
