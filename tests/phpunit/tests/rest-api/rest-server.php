@@ -104,7 +104,7 @@ class Tests_REST_Server extends WP_Test_REST_TestCase {
 		$request->set_query_params( array( 'foo' => 123 ) );
 		$response = rest_get_server()->dispatch( $request );
 
-		$this->assertSame( '123', $request['foo'] );
+		$this->assertEquals( '123', $request['foo'] );
 	}
 
 	public function test_optional_param() {
@@ -501,8 +501,8 @@ class Tests_REST_Server extends WP_Test_REST_TestCase {
 		$this->assertSame( $self, $data['_links']['self'][0] );
 
 		$alternate = array(
-			'href' => 'http://example.org/',
 			'type' => 'application/xml',
+			'href' => 'http://example.org/',
 		);
 		$this->assertSame( $alternate, $data['_links']['alternate'][0] );
 	}
@@ -833,8 +833,8 @@ class Tests_REST_Server extends WP_Test_REST_TestCase {
 		$this->assertArrayNotHasKey( 'self', $data['_links'] );
 
 		$alternate = array(
-			'href' => 'http://example.org/',
 			'type' => 'application/xml',
+			'href' => 'http://example.org/',
 		);
 		$this->assertSame( $alternate, $data['_links']['alternate'][0] );
 	}
