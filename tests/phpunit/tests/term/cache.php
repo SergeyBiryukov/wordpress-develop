@@ -405,7 +405,7 @@ class Tests_Term_Cache extends WP_UnitTestCase {
 		// Verify that the cached term still matches the initial cached term.
 		$term3 = get_term_by( 'name', 'Burrito', 'post_tag' );
 		$this->assertSame( $num_queries, $wpdb->num_queries );
-		$this->assertSame( $term1, $term3 );
+		$this->assertEquals( $term1, $term3 );
 
 		// Verify that last changed has not been updated as part of an invalidation routine.
 		$this->assertSame( $last_changed, wp_cache_get( 'last_changed', 'terms' ) );
