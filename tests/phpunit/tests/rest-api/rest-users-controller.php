@@ -2463,7 +2463,7 @@ class WP_Test_REST_Users_Controller extends WP_Test_REST_Controller_Testcase {
 
 		// Check that the post has been updated correctly.
 		$post = get_post( $test_post );
-		$this->assertSame( $reassign_id, $post->post_author );
+		$this->assertEquals( $reassign_id, $post->post_author );
 	}
 
 	public function test_delete_user_invalid_reassign_id() {
@@ -2716,7 +2716,7 @@ class WP_Test_REST_Users_Controller extends WP_Test_REST_Controller_Testcase {
 			)
 		);
 		$response = rest_get_server()->dispatch( $request );
-		$this->assertSame( 123, $response->data['my_custom_int'] );
+		$this->assertEquals( 123, $response->data['my_custom_int'] );
 
 		global $wp_rest_additional_fields;
 		$wp_rest_additional_fields = array();
