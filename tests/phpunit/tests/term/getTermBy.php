@@ -8,19 +8,19 @@ class Tests_Term_GetTermBy extends WP_UnitTestCase {
 	function test_get_term_by_slug() {
 		$term1 = wp_insert_term( 'Foo', 'category', array( 'slug' => 'foo' ) );
 		$term2 = get_term_by( 'slug', 'foo', 'category' );
-		$this->assertEquals( get_term( $term1['term_id'], 'category' ), $term2 );
+		$this->assertSame( get_term( $term1['term_id'], 'category' ), $term2 );
 	}
 
 	function test_get_term_by_name() {
 		$term1 = wp_insert_term( 'Foo', 'category', array( 'slug' => 'foo' ) );
 		$term2 = get_term_by( 'name', 'Foo', 'category' );
-		$this->assertEquals( get_term( $term1['term_id'], 'category' ), $term2 );
+		$this->assertSame( get_term( $term1['term_id'], 'category' ), $term2 );
 	}
 
 	function test_get_term_by_id() {
 		$term1 = wp_insert_term( 'Foo', 'category', array( 'slug' => 'foo' ) );
 		$term2 = get_term_by( 'id', $term1['term_id'], 'category' );
-		$this->assertEquals( get_term( $term1['term_id'], 'category' ), $term2 );
+		$this->assertSame( get_term( $term1['term_id'], 'category' ), $term2 );
 	}
 
 	/**
@@ -29,7 +29,7 @@ class Tests_Term_GetTermBy extends WP_UnitTestCase {
 	function test_get_term_by_term_id() {
 		$term1 = wp_insert_term( 'Foo', 'category', array( 'slug' => 'foo' ) );
 		$term2 = get_term_by( 'term_id', $term1['term_id'], 'category' );
-		$this->assertEquals( get_term( $term1['term_id'], 'category' ), $term2 );
+		$this->assertSame( get_term( $term1['term_id'], 'category' ), $term2 );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class Tests_Term_GetTermBy extends WP_UnitTestCase {
 	function test_get_term_by_uppercase_id() {
 		$term1 = wp_insert_term( 'Foo', 'category', array( 'slug' => 'foo' ) );
 		$term2 = get_term_by( 'ID', $term1['term_id'], 'category' );
-		$this->assertEquals( get_term( $term1['term_id'], 'category' ), $term2 );
+		$this->assertSame( get_term( $term1['term_id'], 'category' ), $term2 );
 	}
 
 	/**
@@ -47,7 +47,7 @@ class Tests_Term_GetTermBy extends WP_UnitTestCase {
 	function test_get_term_by_tt_id() {
 		$term1 = wp_insert_term( 'Foo', 'category' );
 		$term2 = get_term_by( 'term_taxonomy_id', $term1['term_taxonomy_id'], 'category' );
-		$this->assertEquals( get_term( $term1['term_id'], 'category' ), $term2 );
+		$this->assertSame( get_term( $term1['term_id'], 'category' ), $term2 );
 	}
 
 	function test_get_term_by_unknown() {
