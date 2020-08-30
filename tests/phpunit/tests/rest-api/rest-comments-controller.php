@@ -875,7 +875,7 @@ class WP_Test_REST_Comments_Controller extends WP_Test_REST_Controller_Testcase 
 		$response = rest_get_server()->dispatch( $request );
 		$headers  = $response->get_headers();
 		$this->assertSame( $total_comments, $headers['X-WP-Total'] );
-		$this->assertSame( $total_pages, $headers['X-WP-TotalPages'] );
+		$this->assertEquals( $total_pages, $headers['X-WP-TotalPages'] );
 		$prev_link = add_query_arg(
 			array(
 				'page' => $total_pages,
@@ -3234,7 +3234,7 @@ class WP_Test_REST_Comments_Controller extends WP_Test_REST_Controller_Testcase 
 	protected function check_comment_data( $data, $context, $links ) {
 		$comment = get_comment( $data['id'] );
 
-		$this->assertSame( $comment->comment_ID, $data['id'] );
+		$this->assertEquals( $comment->comment_ID, $data['id'] );
 		$this->assertSame( $comment->comment_post_ID, $data['post'] );
 		$this->assertSame( $comment->comment_parent, $data['parent'] );
 		$this->assertSame( $comment->user_id, $data['author'] );
