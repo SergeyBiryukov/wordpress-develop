@@ -62,7 +62,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame( 'http://localhost/', $result['base_url'], $message );
 			$this->assertSame(
 				array(
-					'author_id'           => '2',
+					'author_id'           => 2,
 					'author_login'        => 'john',
 					'author_email'        => 'johndoe@example.org',
 					'author_display_name' => 'John Doe',
@@ -167,9 +167,9 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame(
 				array(
 					array(
-						'domain' => 'category',
-						'slug'   => 'uncategorized',
 						'name'   => 'Uncategorized',
+						'slug'   => 'uncategorized',
+						'domain' => 'category',
 					),
 				),
 				$result['posts'][0]['terms'],
