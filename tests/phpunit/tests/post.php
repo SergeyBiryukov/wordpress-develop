@@ -388,7 +388,7 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertSame( $post['post_content'], $out->post_content );
 		$this->assertSame( $post['post_title'], $out->post_title );
 		$this->assertSame( 'private', $out->post_status );
-		$this->assertEquls( $post['post_author'], $out->post_author );
+		$this->assertEquals( $post['post_author'], $out->post_author );
 		$this->assertSame( $post['post_date'], $out->post_date );
 
 		// There should be a publish_future_post hook scheduled on the future date.
