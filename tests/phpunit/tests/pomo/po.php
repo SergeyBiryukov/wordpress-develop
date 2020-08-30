@@ -264,7 +264,7 @@ msgstr[2] "бабаяга"',
 		);
 
 		$simple_entry = new Translation_Entry( array( 'singular' => 'moon' ) );
-		$this->assertSame( $simple_entry, $po->entries[ $simple_entry->key() ] );
+		$this->assertEquals( $simple_entry, $po->entries[ $simple_entry->key() ] );
 
 		$all_types_entry = new Translation_Entry(
 			array(
@@ -274,7 +274,7 @@ msgstr[2] "бабаяга"',
 				'translations' => array( 'ztrut0', 'ztrut1', 'ztrut2' ),
 			)
 		);
-		$this->assertSame( $all_types_entry, $po->entries[ $all_types_entry->key() ] );
+		$this->assertEquals( $all_types_entry, $po->entries[ $all_types_entry->key() ] );
 
 		$multiple_line_entry = new Translation_Entry(
 			array(
@@ -282,7 +282,7 @@ msgstr[2] "бабаяга"',
 				'translations' => array( "baba\ndyadogugu" ),
 			)
 		);
-		$this->assertSame( $multiple_line_entry, $po->entries[ $multiple_line_entry->key() ] );
+		$this->assertEquals( $multiple_line_entry, $po->entries[ $multiple_line_entry->key() ] );
 
 		$multiple_line_all_types_entry = new Translation_Entry(
 			array(
@@ -292,7 +292,7 @@ msgstr[2] "бабаяга"',
 				'translations' => array( 'translation0', 'translation1', 'translation2' ),
 			)
 		);
-		$this->assertSame( $multiple_line_all_types_entry, $po->entries[ $multiple_line_all_types_entry->key() ] );
+		$this->assertEquals( $multiple_line_all_types_entry, $po->entries[ $multiple_line_all_types_entry->key() ] );
 
 		$comments_entry = new Translation_Entry(
 			array(
@@ -303,10 +303,10 @@ msgstr[2] "бабаяга"',
 				'flags'               => array( 'fuzzy' ),
 			)
 		);
-		$this->assertSame( $comments_entry, $po->entries[ $comments_entry->key() ] );
+		$this->assertEquals( $comments_entry, $po->entries[ $comments_entry->key() ] );
 
 		$end_quote_entry = new Translation_Entry( array( 'singular' => 'a"' ) );
-		$this->assertSame( $end_quote_entry, $po->entries[ $end_quote_entry->key() ] );
+		$this->assertEquals( $end_quote_entry, $po->entries[ $end_quote_entry->key() ] );
 	}
 
 	function test_import_from_entry_file_should_give_false() {
