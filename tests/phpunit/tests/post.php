@@ -88,7 +88,7 @@ class Tests_Post extends WP_UnitTestCase {
 			$this->assertSame( $post['post_content'], $out->post_content );
 			$this->assertSame( $post['post_title'], $out->post_title );
 			$this->assertSame( $post['post_status'], $out->post_status );
-			$this->assertSame( $post['post_author'], $out->post_author );
+			$this->assertEquals( $post['post_author'], $out->post_author );
 
 			// Test cache state.
 			$pcache = wp_cache_get( $id, 'posts' );
@@ -144,7 +144,7 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertSame( $post['post_content'], $out->post_content );
 		$this->assertSame( $post['post_title'], $out->post_title );
 		$this->assertSame( 'future', $out->post_status );
-		$this->assertSame( $post['post_author'], $out->post_author );
+		$this->assertEquals( $post['post_author'], $out->post_author );
 		$this->assertSame( $post['post_date'], $out->post_date );
 
 		// There should be a publish_future_post hook scheduled on the future date.
@@ -267,7 +267,7 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertSame( $post['post_content'], $out->post_content );
 		$this->assertSame( $post['post_title'], $out->post_title );
 		$this->assertSame( 'draft', $out->post_status );
-		$this->assertSame( $post['post_author'], $out->post_author );
+		$this->assertEquals( $post['post_author'], $out->post_author );
 		$this->assertSame( $post['post_date'], $out->post_date );
 
 		// There should be a publish_future_post hook scheduled on the future date.
@@ -388,7 +388,7 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertSame( $post['post_content'], $out->post_content );
 		$this->assertSame( $post['post_title'], $out->post_title );
 		$this->assertSame( 'private', $out->post_status );
-		$this->assertSame( $post['post_author'], $out->post_author );
+		$this->assertEquls( $post['post_author'], $out->post_author );
 		$this->assertSame( $post['post_date'], $out->post_date );
 
 		// There should be a publish_future_post hook scheduled on the future date.
@@ -796,7 +796,7 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertTrue( ( is_int( $insert_post_id ) && $insert_post_id > 0 ) );
 
 		$post = get_post( $insert_post_id );
-		$this->assertSame( $post->post_author, self::$editor_id );
+		$this->assertEquals( $post->post_author, self::$editor_id );
 		$this->assertSame( $post->post_title, $title );
 	}
 
@@ -813,7 +813,7 @@ class Tests_Post extends WP_UnitTestCase {
 			)
 		);
 		$count = wp_count_posts( $post_type, 'readable' );
-		$this->assertSame( 1, $count->publish );
+		$this->assertEquals( 1, $count->publish );
 		_unregister_post_type( $post_type );
 		$this->assertSame( new stdClass, wp_count_posts( $post_type, 'readable' ) );
 	}
@@ -829,11 +829,11 @@ class Tests_Post extends WP_UnitTestCase {
 			)
 		);
 		$count1 = wp_count_posts( $post_type, 'readable' );
-		$this->assertSame( 3, $count1->publish );
+		$this->assertEquals( 3, $count1->publish );
 		add_filter( 'wp_count_posts', array( $this, 'filter_wp_count_posts' ) );
 
 		$count2 = wp_count_posts( $post_type, 'readable' );
-		$this->assertSame( 2, $count2->publish );
+		$this->assertEquals( 2, $count2->publish );
 
 		remove_filter( 'wp_count_posts', array( $this, 'filter_wp_count_posts' ) );
 	}
@@ -856,8 +856,8 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertNotEquals( 'publish', $post->post_status );
 
 		$after_draft_counts = wp_count_posts();
-		$this->assertSame( 1, $after_draft_counts->draft );
-		$this->assertSame( 2, $after_draft_counts->publish );
+		$this->assertEquals( 1, $after_draft_counts->draft );
+		$this->assertEquals( 2, $after_draft_counts->publish );
 		$this->assertNotEquals( $initial_counts->publish, $after_draft_counts->publish );
 	}
 
@@ -874,8 +874,8 @@ class Tests_Post extends WP_UnitTestCase {
 		$this->assertNotEquals( 'publish', $post->post_status );
 
 		$after_trash_counts = wp_count_posts();
-		$this->assertSame( 1, $after_trash_counts->trash );
-		$this->assertSame( 2, $after_trash_counts->publish );
+		$this->assertEquals( 1, $after_trash_counts->trash );
+		$this->assertEquals( 2, $after_trash_counts->publish );
 		$this->assertNotEquals( $initial_counts->publish, $after_trash_counts->publish );
 	}
 
@@ -978,8 +978,8 @@ class Tests_Post extends WP_UnitTestCase {
 	 * @ticket 28310
 	 */
 	function test_mysql2date_returns_gmt_or_unix_timestamp() {
-		$this->assertSame( '441013392', mysql2date( 'G', '1983-12-23 07:43:12' ) );
-		$this->assertSame( '441013392', mysql2date( 'U', '1983-12-23 07:43:12' ) );
+		$this->assertSame( 441013392, mysql2date( 'G', '1983-12-23 07:43:12' ) );
+		$this->assertSame( 441013392, mysql2date( 'U', '1983-12-23 07:43:12' ) );
 	}
 
 	/**
@@ -1270,7 +1270,7 @@ class Tests_Post extends WP_UnitTestCase {
 	public function test_wp_insert_post_author_zero() {
 		$post_id = self::factory()->post->create( array( 'post_author' => 0 ) );
 
-		$this->assertSame( 0, get_post( $post_id )->post_author );
+		$this->assertEquals( 0, get_post( $post_id )->post_author );
 	}
 
 	/**
@@ -1279,7 +1279,7 @@ class Tests_Post extends WP_UnitTestCase {
 	public function test_wp_insert_post_author_null() {
 		$post_id = self::factory()->post->create( array( 'post_author' => null ) );
 
-		$this->assertSame( self::$editor_id, get_post( $post_id )->post_author );
+		$this->assertEquals( self::$editor_id, get_post( $post_id )->post_author );
 	}
 
 	/**
@@ -1301,7 +1301,7 @@ class Tests_Post extends WP_UnitTestCase {
 
 		$this->assertSame( $post['post_content'], $out->post_content );
 		$this->assertSame( $post['post_title'], $out->post_title );
-		$this->assertSame( $post['post_author'], $out->post_author );
+		$this->assertEquals( $post['post_author'], $out->post_author );
 		$this->assertSame( get_date_from_gmt( $post['post_date_gmt'] ), $out->post_date );
 		$this->assertSame( $post['post_date_gmt'], $out->post_date_gmt );
 	}
