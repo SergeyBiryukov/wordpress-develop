@@ -67,7 +67,7 @@ class Tests_XMLRPC_wp_getUsers extends WP_XMLRPC_UnitTestCase {
 		$results = $this->myxmlrpcserver->wp_getUsers( array( 1, 'administrator', 'administrator', $filter ) );
 		$this->assertNotIXRError( $results );
 		$this->assertCount( 1, $results );
-		$this->assertSame( $editor_id, $results[0]['user_id'] );
+		$this->assertEquals( $editor_id, $results[0]['user_id'] );
 
 		// Test 'authors', which should return all non-subscribers.
 		$filter2  = array( 'who' => 'authors' );
