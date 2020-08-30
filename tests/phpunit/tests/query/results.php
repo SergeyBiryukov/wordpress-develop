@@ -1088,7 +1088,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 				)
 			)
 		);
-		$this->assertSame( array( $one ), $result4 );
+		$this->assertEquals( array( $one ), $result4 );
 		$result5 = $this->q->query(
 			array_merge(
 				$args,
@@ -1098,7 +1098,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 				)
 			)
 		);
-		$this->assertSame( array( $one ), $result5 );
+		$this->assertEquals( array( $one ), $result5 );
 		$result6 = $this->q->query(
 			array_merge(
 				$args,
@@ -1108,7 +1108,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 				)
 			)
 		);
-		$this->assertSame( array( $one ), $result6 );
+		$this->assertEquals( array( $one ), $result6 );
 
 		$result7 = $this->q->query(
 			array_merge(
@@ -1142,7 +1142,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 		$this->assertEqualSets( array( $two, $three ), $result9 );
 
 		$result10 = $this->q->query( array_merge( $args, array( 'post_password' => '' ) ) );
-		$this->assertSame( array( $one ), $result10 );
+		$this->assertEquals( array( $one ), $result10 );
 		$result11 = $this->q->query( array_merge( $args, array( 'post_password' => 'burrito' ) ) );
 		$this->assertEqualSets( array( $two, $three ), $result11 );
 	}
