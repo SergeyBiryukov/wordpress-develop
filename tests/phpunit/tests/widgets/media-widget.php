@@ -338,7 +338,7 @@ class Test_WP_Widget_Media extends WP_UnitTestCase {
 		$this->widget_instance_filter_args = array();
 		$widget->widget( $args, $instance );
 		$this->assertCount( 3, $this->widget_instance_filter_args );
-		$this->assertSame( $instance, $this->widget_instance_filter_args[0] );
+		$this->assertEquals( $instance, $this->widget_instance_filter_args[0] );
 		$this->assertSame( $args, $this->widget_instance_filter_args[1] );
 		$this->assertSame( $widget, $this->widget_instance_filter_args[2] );
 		$output = ob_get_clean();
