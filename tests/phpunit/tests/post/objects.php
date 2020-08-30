@@ -114,7 +114,7 @@ class Tests_Post_Objects extends WP_UnitTestCase {
 
 		$this->assertInternalType( 'array', $post->post_category );
 		$this->assertSame( 1, count( $post->post_category ) );
-		$this->assertSame( get_option( 'default_category' ), $post->post_category[0] );
+		$this->assertEquals( get_option( 'default_category' ), $post->post_category[0] );
 		$term1 = wp_insert_term( 'Foo', 'category' );
 		$term2 = wp_insert_term( 'Bar', 'category' );
 		$term3 = wp_insert_term( 'Baz', 'category' );
