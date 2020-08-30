@@ -34,19 +34,19 @@ class Tests_Image_Editor_GD extends WP_Image_UnitTestCase {
 
 	public function test_supports_mime_type_jpeg() {
 		$gd_image_editor = new WP_Image_Editor_GD( null );
-		$expected        = (bool) imagetypes() & IMG_JPG;
+		$expected        = (bool) ( imagetypes() & IMG_JPG );
 		$this->assertSame( $expected, $gd_image_editor->supports_mime_type( 'image/jpeg' ) );
 	}
 
 	public function test_supports_mime_type_png() {
 		$gd_image_editor = new WP_Image_Editor_GD( null );
-		$expected        = (bool) imagetypes() & IMG_PNG;
+		$expected        = (bool) ( imagetypes() & IMG_PNG );
 		$this->assertSame( $expected, $gd_image_editor->supports_mime_type( 'image/png' ) );
 	}
 
 	public function test_supports_mime_type_gif() {
 		$gd_image_editor = new WP_Image_Editor_GD( null );
-		$expected        = (bool) imagetypes() & IMG_GIF;
+		$expected        = (bool) ( imagetypes() & IMG_GIF );
 		$this->assertSame( $expected, $gd_image_editor->supports_mime_type( 'image/gif' ) );
 	}
 
