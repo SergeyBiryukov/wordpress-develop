@@ -53,7 +53,7 @@ class Tests_Query_GeneratePostdata extends WP_UnitTestCase {
 		$data = generate_postdata( $p );
 
 		$this->assertNotEmpty( $data['authordata'] );
-		$this->assertSame( $u, $data['authordata'] );
+		$this->assertEquals( $u, $data['authordata'] );
 	}
 
 	/**
