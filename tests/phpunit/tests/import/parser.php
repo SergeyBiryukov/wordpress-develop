@@ -72,7 +72,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 				$result['authors']['john'],
 				$message
 			);
-			$this->assertSame(
+			$this->assertEquals(
 				array(
 					'term_id'              => 3,
 					'category_nicename'    => 'alpha',
@@ -83,7 +83,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 				$result['categories'][0],
 				$message
 			);
-			$this->assertSame(
+			$this->assertEquals(
 				array(
 					'term_id'         => 22,
 					'tag_slug'        => 'clippable',
@@ -93,7 +93,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 				$result['tags'][0],
 				$message
 			);
-			$this->assertSame(
+			$this->assertEquals(
 				array(
 					'term_id'          => 40,
 					'term_taxonomy'    => 'post_tax',
@@ -164,7 +164,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 			$this->assertSame( 19, count( $result['posts'][0] ), $message );
 			$this->assertSame( 18, count( $result['posts'][1] ), $message );
 
-			$this->assertSame(
+			$this->assertEquals(
 				array(
 					array(
 						'name'   => 'Uncategorized',
@@ -175,7 +175,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 				$result['posts'][0]['terms'],
 				$message
 			);
-			$this->assertSame(
+			$this->assertEquals(
 				array(
 					array(
 						'name'   => 'alpha',
@@ -196,7 +196,7 @@ class Tests_Import_Parser extends WP_Import_UnitTestCase {
 				$result['posts'][2]['terms'],
 				$message
 			);
-			$this->assertSame(
+			$this->assertEquals(
 				array(
 					array(
 						'name'   => 'chicken',
