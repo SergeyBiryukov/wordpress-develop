@@ -54,7 +54,7 @@ class Tests_XMLRPC_wp_getComments extends WP_XMLRPC_UnitTestCase {
 		$this->assertNotIXRError( $results );
 
 		foreach ( $results as $result ) {
-			$this->assertSame( $this->post_id, $result['post_id'] );
+			$this->assertEquals( $this->post_id, $result['post_id'] );
 		}
 	}
 
