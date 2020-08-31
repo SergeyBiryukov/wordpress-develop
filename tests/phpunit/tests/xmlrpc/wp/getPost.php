@@ -74,7 +74,7 @@ class Tests_XMLRPC_wp_getPost extends WP_XMLRPC_UnitTestCase {
 		$this->assertSame( url_to_postid( $result['link'] ), $this->post_id );
 		$this->assertEquals( $this->post_custom_field['id'], $result['custom_fields'][0]['id'] );
 		$this->assertSame( $this->post_custom_field['key'], $result['custom_fields'][0]['key'] );
-		$this->assertSame( $this->post_custom_field['value'], $result['custom_fields'][0]['value'] );
+		$this->assertEquals( $this->post_custom_field['value'], $result['custom_fields'][0]['value'] );
 
 		remove_theme_support( 'post-thumbnails' );
 	}
