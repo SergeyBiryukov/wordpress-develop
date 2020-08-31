@@ -927,7 +927,7 @@ class Test_WP_Widget_Text extends WP_UnitTestCase {
 				'filter' => true,
 			)
 		);
-		$this->assertSame( $expected, $result, 'Updating a pre-existing widget with the filter=content prop in WP 4.8.0 upgrades to filter=true&visual=true.' );
+		$this->assertEquals( $expected, $result, 'Updating a pre-existing widget with the filter=content prop in WP 4.8.0 upgrades to filter=true&visual=true.' );
 
 		// --
 		$instance = array(
