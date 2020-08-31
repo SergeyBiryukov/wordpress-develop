@@ -150,6 +150,6 @@ class Tests_XMLRPC_wp_getTerms extends WP_XMLRPC_UnitTestCase {
 		$this->assertNotIXRError( $results2 );
 		$this->assertSame( 1, count( $results2 ) );
 		$this->assertSame( $name, $results2[0]['name'] );
-		$this->assertSame( $name_id, $results2[0]['term_id'] );
+		$this->assertEquals( $name_id, $results2[0]['term_id'] );
 	}
 }
