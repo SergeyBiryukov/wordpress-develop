@@ -131,7 +131,7 @@ class Tests_Ajax_CustomizeManager extends WP_Ajax_UnitTestCase {
 			$exception = $e;
 		}
 		$this->assertNotEmpty( $e );
-		$this->assertSame( -1, $e->getMessage() );
+		$this->assertEquals( -1, $e->getMessage() );
 
 		// Not called setup_theme.
 		wp_set_current_user( self::$admin_user_id );
