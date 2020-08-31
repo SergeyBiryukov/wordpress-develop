@@ -867,7 +867,7 @@ class Test_WP_Widget_Text extends WP_UnitTestCase {
 				'filter' => false,
 			)
 		);
-		$this->assertSame( $expected, $result, 'Updating a widget in legacy mode results in filter=false as if checkbox not checked.' );
+		$this->assertEquals( $expected, $result, 'Updating a widget in legacy mode results in filter=false as if checkbox not checked.' );
 
 		// --
 		$instance     = array(
