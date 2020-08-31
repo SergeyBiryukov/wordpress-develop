@@ -27,7 +27,7 @@ class Tests_HTTP_Functions extends WP_UnitTestCase {
 
 		$this->assertSame( 'image/jpeg', $headers['content-type'] );
 		$this->assertSame( '40148', $headers['content-length'] );
-		$this->assertSame( '200', wp_remote_retrieve_response_code( $response ) );
+		$this->assertSame( 200, wp_remote_retrieve_response_code( $response ) );
 	}
 
 	function test_head_redirect() {
@@ -36,7 +36,7 @@ class Tests_HTTP_Functions extends WP_UnitTestCase {
 		$response = wp_remote_head( $url );
 
 		$this->skipTestOnTimeout( $response );
-		$this->assertSame( '301', wp_remote_retrieve_response_code( $response ) );
+		$this->assertSame( 301, wp_remote_retrieve_response_code( $response ) );
 	}
 
 	function test_head_404() {
@@ -44,7 +44,7 @@ class Tests_HTTP_Functions extends WP_UnitTestCase {
 		$response = wp_remote_head( $url );
 
 		$this->skipTestOnTimeout( $response );
-		$this->assertSame( '404', wp_remote_retrieve_response_code( $response ) );
+		$this->assertSame( 404, wp_remote_retrieve_response_code( $response ) );
 	}
 
 	function test_get_request() {
@@ -61,7 +61,7 @@ class Tests_HTTP_Functions extends WP_UnitTestCase {
 		// Should return the same headers as a HEAD request.
 		$this->assertSame( 'image/jpeg', $headers['content-type'] );
 		$this->assertSame( '40148', $headers['content-length'] );
-		$this->assertSame( '200', wp_remote_retrieve_response_code( $response ) );
+		$this->assertSame( 200, wp_remote_retrieve_response_code( $response ) );
 	}
 
 	function test_get_redirect() {
@@ -77,7 +77,7 @@ class Tests_HTTP_Functions extends WP_UnitTestCase {
 		// Should return the same headers as a HEAD request.
 		$this->assertSame( 'image/jpeg', $headers['content-type'] );
 		$this->assertSame( '40148', $headers['content-length'] );
-		$this->assertSame( '200', wp_remote_retrieve_response_code( $response ) );
+		$this->assertSame( 200, wp_remote_retrieve_response_code( $response ) );
 	}
 
 	function test_get_redirect_limit_exceeded() {
