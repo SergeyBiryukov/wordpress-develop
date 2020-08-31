@@ -179,7 +179,7 @@ if ( is_multisite() ) :
 			}
 			wp_update_network_counts();
 
-			$this->assertSame( $site_count_start, $actual );
+			$this->assertEquals( $site_count_start, $actual );
 		}
 
 		/**
@@ -199,7 +199,7 @@ if ( is_multisite() ) :
 			}
 			wp_update_network_counts();
 
-			$this->assertSame( $site_count_start + 1, $actual );
+			$this->assertEquals( $site_count_start + 1, $actual );
 		}
 
 		/**
@@ -210,7 +210,7 @@ if ( is_multisite() ) :
 
 			$site_count = get_blog_count( self::$different_network_id );
 
-			$this->assertSame( count( self::$different_site_ids ), $site_count );
+			$this->assertEquals( count( self::$different_site_ids ), $site_count );
 		}
 
 		/**
@@ -227,7 +227,7 @@ if ( is_multisite() ) :
 
 			$user_count = get_user_count( self::$different_network_id );
 
-			$this->assertSame( $current_network_user_count + 1, $user_count );
+			$this->assertEquals( $current_network_user_count + 1, $user_count );
 		}
 
 		/**
@@ -256,7 +256,7 @@ if ( is_multisite() ) :
 			wpmu_create_user( 'user2', 'pass2', 'email2' );
 
 			$count = get_user_count();
-			$this->assertSame( $start_count + 1, $count );
+			$this->assertEquals( $start_count + 1, $count );
 
 			remove_filter( 'enable_live_network_counts', '__return_false' );
 			remove_filter( 'enable_live_network_counts', '__return_true' );
@@ -342,7 +342,7 @@ if ( is_multisite() ) :
 			wp_update_network_counts(); // Magic happens here.
 
 			$count = get_user_count();
-			$this->assertSame( $start_count + 1, $count );
+			$this->assertEquals( $start_count + 1, $count );
 			remove_filter( 'enable_live_network_counts', '__return_false' );
 		}
 
@@ -361,7 +361,7 @@ if ( is_multisite() ) :
 		function test_get_dashboard_blog() {
 			// If there is no dashboard blog set, current blog is used.
 			$dashboard_blog = get_dashboard_blog();
-			$this->assertSame( 1, $dashboard_blog->blog_id );
+			$this->assertEquals( 1, $dashboard_blog->blog_id );
 
 			$user_id = self::factory()->user->create( array( 'role' => 'administrator' ) );
 			$blog_id = self::factory()->blog->create( array( 'user_id' => $user_id ) );
