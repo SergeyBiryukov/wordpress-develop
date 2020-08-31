@@ -696,8 +696,8 @@ class Tests_General_Template extends WP_UnitTestCase {
 	 * @dataProvider data_selected_and_checked_with_equal_values
 	 */
 	function test_selected_and_checked_with_equal_values( $selected, $current ) {
-		$this->assertEquals( " selected='selected'", selected( $selected, $current, false ) );
-		$this->assertEquals( " checked='checked'", checked( $selected, $current, false ) );
+		$this->assertSame( " selected='selected'", selected( $selected, $current, false ) );
+		$this->assertSame( " checked='checked'", checked( $selected, $current, false ) );
 	}
 
 	function data_selected_and_checked_with_equal_values() {
@@ -720,8 +720,8 @@ class Tests_General_Template extends WP_UnitTestCase {
 	 * @dataProvider data_selected_and_checked_with_non_equal_values
 	 */
 	function test_selected_and_checked_with_non_equal_values( $selected, $current ) {
-		$this->assertEquals( '', selected( $selected, $current, false ) );
-		$this->assertEquals( '', checked( $selected, $current, false ) );
+		$this->assertSame( '', selected( $selected, $current, false ) );
+		$this->assertSame( '', checked( $selected, $current, false ) );
 	}
 
 	function data_selected_and_checked_with_non_equal_values() {
