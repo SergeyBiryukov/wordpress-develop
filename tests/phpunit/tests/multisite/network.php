@@ -370,7 +370,7 @@ if ( is_multisite() ) :
 			// Set the dashboard blog to another one.
 			update_site_option( 'dashboard_blog', $blog_id );
 			$dashboard_blog = get_dashboard_blog();
-			$this->assertSame( $blog_id, $dashboard_blog->blog_id );
+			$this->assertEquals( $blog_id, $dashboard_blog->blog_id );
 		}
 
 		/**
