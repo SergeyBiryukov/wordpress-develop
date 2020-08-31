@@ -160,13 +160,13 @@ class Tests_XMLRPC_wp_editPost extends WP_XMLRPC_UnitTestCase {
 		$this->assertNotIXRError( $result );
 		$this->assertArrayHasKey( 'post_thumbnail', $result );
 		$this->assertInternalType( 'array', $result['post_thumbnail'] );
-		$this->assertSame( $attachment_id, $result['post_thumbnail']['attachment_id'] );
+		$this->assertEquals( $attachment_id, $result['post_thumbnail']['attachment_id'] );
 
 		// Edit the post without supplying a post_thumbnail and check that it didn't change.
 		$post3  = array( 'post_content' => 'Updated post' );
 		$result = $this->myxmlrpcserver->wp_editPost( array( 1, 'author', 'author', $post_id, $post3 ) );
 		$this->assertNotIXRError( $result );
-		$this->assertSame( $attachment_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
+		$this->assertEquals( $attachment_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
 
 		// Create another attachment.
 		$attachment2_id = self::factory()->attachment->create_upload_object( $filename, $post_id );
@@ -175,7 +175,7 @@ class Tests_XMLRPC_wp_editPost extends WP_XMLRPC_UnitTestCase {
 		$post4  = array( 'post_thumbnail' => $attachment2_id );
 		$result = $this->myxmlrpcserver->wp_editPost( array( 1, 'author', 'author', $post_id, $post4 ) );
 		$this->assertNotIXRError( $result );
-		$this->assertSame( $attachment2_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
+		$this->assertEquals( $attachment2_id, get_post_meta( $post_id, '_thumbnail_id', true ) );
 
 		// Unset the post's post_thumbnail.
 		$post5  = array( 'post_thumbnail' => '' );
