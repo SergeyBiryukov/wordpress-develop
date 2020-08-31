@@ -900,7 +900,7 @@ class Tests_Post extends WP_UnitTestCase {
 	 */
 	function test_get_the_date_with_id_returns_correct_time() {
 		$post_id = self::factory()->post->create( array( 'post_date' => '2014-03-01 16:35:00' ) );
-		$this->assertSame( 'March 1, 2014', get_the_date( 'F j, Y', $post_id ) );
+		$this->assertEquals( 'March 1, 2014', get_the_date( 'F j, Y', $post_id ) );
 	}
 
 	/**
@@ -936,7 +936,7 @@ class Tests_Post extends WP_UnitTestCase {
 	 */
 	function test_get_post_time_with_id_returns_correct_time() {
 		$post_id = self::factory()->post->create( array( 'post_date' => '2014-03-01 16:35:00' ) );
-		$this->assertSame( '16:35:00', get_post_time( 'H:i:s', false, $post_id ) );
+		$this->assertEquals( '16:35:00', get_post_time( 'H:i:s', false, $post_id ) );
 	}
 
 	/**
@@ -954,7 +954,7 @@ class Tests_Post extends WP_UnitTestCase {
 	 */
 	function test_get_post_modified_time_with_id_returns_correct_time() {
 		$post_id = self::factory()->post->create( array( 'post_date' => '2014-03-01 16:35:00' ) );
-		$this->assertSame( '16:35:00', get_post_modified_time( 'H:i:s', false, $post_id ) );
+		$this->assertEquals( '16:35:00', get_post_modified_time( 'H:i:s', false, $post_id ) );
 	}
 
 	/**
@@ -978,8 +978,8 @@ class Tests_Post extends WP_UnitTestCase {
 	 * @ticket 28310
 	 */
 	function test_mysql2date_returns_gmt_or_unix_timestamp() {
-		$this->assertSame( 441013392, mysql2date( 'G', '1983-12-23 07:43:12' ) );
-		$this->assertSame( 441013392, mysql2date( 'U', '1983-12-23 07:43:12' ) );
+		$this->assertEquals( 441013392, mysql2date( 'G', '1983-12-23 07:43:12' ) );
+		$this->assertEquals( 441013392, mysql2date( 'U', '1983-12-23 07:43:12' ) );
 	}
 
 	/**
