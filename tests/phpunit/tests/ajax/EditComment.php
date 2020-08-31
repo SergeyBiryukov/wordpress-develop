@@ -66,7 +66,7 @@ class Tests_Ajax_EditComment extends WP_Ajax_UnitTestCase {
 		$xml = simplexml_load_string( $this->_last_response, 'SimpleXMLElement', LIBXML_NOCDATA );
 
 		// Check the meta data.
-		$this->assertSame( -1, (string) $xml->response[0]->edit_comment['position'] );
+		$this->assertSame( '-1', (string) $xml->response[0]->edit_comment['position'] );
 		$this->assertSame( $comment->comment_ID, (string) $xml->response[0]->edit_comment['id'] );
 		$this->assertSame( 'edit-comment_' . $comment->comment_ID, (string) $xml->response['action'] );
 
@@ -114,7 +114,7 @@ class Tests_Ajax_EditComment extends WP_Ajax_UnitTestCase {
 		$xml = simplexml_load_string( $this->_last_response, 'SimpleXMLElement', LIBXML_NOCDATA );
 
 		// Check the meta data.
-		$this->assertSame( -1, (string) $xml->response[0]->edit_comment['position'] );
+		$this->assertSame( '-1', (string) $xml->response[0]->edit_comment['position'] );
 		$this->assertSame( $comment->comment_ID, (string) $xml->response[0]->edit_comment['id'] );
 		$this->assertSame( 'edit-comment_' . $comment->comment_ID, (string) $xml->response['action'] );
 
