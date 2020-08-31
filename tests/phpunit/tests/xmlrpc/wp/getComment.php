@@ -77,7 +77,7 @@ class Tests_XMLRPC_wp_getComment extends WP_XMLRPC_UnitTestCase {
 		$this->assertEquals( self::$parent_comment_id, $result['comment_id'] );
 		$this->assertEquals( 0, $result['parent'] );
 		$this->assertSame( self::$parent_comment_data['comment_content'], $result['content'] );
-		$this->assertSame( self::$post_id, $result['post_id'] );
+		$this->assertEquals( self::$post_id, $result['post_id'] );
 		$this->assertSame( self::$parent_comment_data['comment_author'], $result['author'] );
 		$this->assertSame( self::$parent_comment_data['comment_author_url'], $result['author_url'] );
 		$this->assertSame( self::$parent_comment_data['comment_author_email'], $result['author_email'] );
