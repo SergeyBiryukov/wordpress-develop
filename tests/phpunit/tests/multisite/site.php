@@ -150,7 +150,7 @@ if ( is_multisite() ) :
 			// Combine domain and path for a site specific cache key.
 			$key = md5( $details->domain . $details->path );
 
-			$this->assertSame( $details, wp_cache_get( $blog_id . 'short', 'blog-details' ) );
+			$this->assertEquals( $details, wp_cache_get( $blog_id . 'short', 'blog-details' ) );
 
 			// get_blogaddress_by_name().
 			$this->assertSame( 'http://' . $details->domain . $details->path, get_blogaddress_by_name( trim( $details->path, '/' ) ) );
@@ -445,7 +445,7 @@ if ( is_multisite() ) :
 			$blog = get_blog_details( $blog_id );
 
 			// When the cache is refreshed, it should now equal the site data.
-			$this->assertSame( $blog, wp_cache_get( $blog_id, 'blog-details' ) );
+			$this->assertEquals( $blog, wp_cache_get( $blog_id, 'blog-details' ) );
 		}
 
 		/**
@@ -813,7 +813,7 @@ if ( is_multisite() ) :
 			$this->assertSame( 'http://' . $site->domain . '/wp-content/uploads/' . gmstrftime( '%Y/%m' ), $info['url'] );
 			$this->assertSame( ABSPATH . 'wp-content/uploads/' . gmstrftime( '%Y/%m' ), $info['path'] );
 			$this->assertSame( gmstrftime( '/%Y/%m' ), $info['subdir'] );
-			$this->assertSame( '', $info['error'] );
+			$this->assertFalse( $info['error'] );
 
 			$blog_id = self::factory()->blog->create();
 
@@ -822,14 +822,14 @@ if ( is_multisite() ) :
 			$this->assertSame( 'http://' . $site->domain . '/wp-content/uploads/sites/' . get_current_blog_id() . '/' . gmstrftime( '%Y/%m' ), $info['url'] );
 			$this->assertSame( ABSPATH . 'wp-content/uploads/sites/' . get_current_blog_id() . '/' . gmstrftime( '%Y/%m' ), $info['path'] );
 			$this->assertSame( gmstrftime( '/%Y/%m' ), $info['subdir'] );
-			$this->assertSame( '', $info['error'] );
+			$this->assertFalse( $info['error'] );
 			restore_current_blog();
 
 			$info = wp_upload_dir();
 			$this->assertSame( 'http://' . $site->domain . '/wp-content/uploads/' . gmstrftime( '%Y/%m' ), $info['url'] );
 			$this->assertSame( ABSPATH . 'wp-content/uploads/' . gmstrftime( '%Y/%m' ), $info['path'] );
 			$this->assertSame( gmstrftime( '/%Y/%m' ), $info['subdir'] );
-			$this->assertSame( '', $info['error'] );
+			$this->assertFalse( $info['error'] );
 		}
 
 		/**
@@ -843,7 +843,7 @@ if ( is_multisite() ) :
 			switch_to_blog( $blog_id );
 
 			// The post created and retrieved on the main site should match the one retrieved "remotely".
-			$this->assertSame( $post, get_blog_post( 1, $post_id ) );
+			$this->assertEquals( $post, get_blog_post( 1, $post_id ) );
 
 			restore_current_blog();
 		}
@@ -854,7 +854,7 @@ if ( is_multisite() ) :
 		function test_get_blog_post_from_same_site() {
 			$post_id = self::factory()->post->create();
 
-			$this->assertSame( get_blog_post( 1, $post_id ), get_post( $post_id ) );
+			$this->assertEquals( get_blog_post( 1, $post_id ), get_post( $post_id ) );
 		}
 
 		/**
@@ -1302,7 +1302,7 @@ if ( is_multisite() ) :
 
 			$site = get_site( $site_id );
 			foreach ( $expected_data as $key => $value ) {
-				$this->assertSame( $value, $site->$key );
+				$this->assertEquals( $value, $site->$key );
 			}
 		}
 
@@ -1439,7 +1439,7 @@ if ( is_multisite() ) :
 			$new_site = get_site( $site_id );
 			foreach ( $new_site->to_array() as $key => $value ) {
 				if ( isset( $expected_data[ $key ] ) ) {
-					$this->assertSame( $expected_data[ $key ], $value );
+					$this->assertEquals( $expected_data[ $key ], $value );
 				} elseif ( 'last_updated' === $key ) {
 					$this->assertTrue( $old_site->last_updated <= $value );
 				} else {
@@ -1524,9 +1524,9 @@ if ( is_multisite() ) :
 			$result = wp_update_site( $site_id, array( 'public' => 1 ) );
 			$site3  = get_site( $site_id );
 
-			$this->assertSame( 1, $site1->public );
-			$this->assertSame( 0, $site2->public );
-			$this->assertSame( 1, $site3->public );
+			$this->assertEquals( 1, $site1->public );
+			$this->assertEquals( 0, $site2->public );
+			$this->assertEquals( 1, $site3->public );
 		}
 
 		/**
@@ -2402,7 +2402,7 @@ if ( is_multisite() ) :
 
 			wpmu_create_blog( 'testsite1.example.org', '/new-blog/', 'New Blog', get_current_user_id(), $meta, 1 );
 
-			$this->assertSame( $expected_meta, $this->wp_initialize_site_meta );
+			$this->assertEquals( $expected_meta, $this->wp_initialize_site_meta );
 
 			$this->wp_initialize_site_meta = array();
 		}
@@ -2431,12 +2431,12 @@ if ( is_multisite() ) :
 			$new_site = $this->factory()->blog->create_and_get();
 
 			// Double-check we got the ID of the new site correct.
-			$this->assertSame( $new_site_id, $new_site->blog_id );
+			$this->assertEquals( $new_site_id, $new_site->blog_id );
 
 			// Verify that if we fetch the site now, it's no longer false.
 			$fetched_site = get_site( $new_site_id );
 			$this->assertInstanceOf( 'WP_Site', $fetched_site );
-			$this->assertSame( $new_site_id, $fetched_site->blog_id );
+			$this->assertEquals( $new_site_id, $fetched_site->blog_id );
 
 		}
 
