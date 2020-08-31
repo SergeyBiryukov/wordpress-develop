@@ -918,7 +918,7 @@ class Tests_Post extends WP_UnitTestCase {
 	 */
 	function test_get_the_time_with_id_returns_correct_time() {
 		$post_id = self::factory()->post->create( array( 'post_date' => '2014-03-01 16:35:00' ) );
-		$this->assertSame( '16:35:00', get_the_time( 'H:i:s', $post_id ) );
+		$this->assertEquals( '16:35:00', get_the_time( 'H:i:s', $post_id ) );
 	}
 
 	/**
