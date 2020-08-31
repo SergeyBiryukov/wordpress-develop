@@ -75,7 +75,7 @@ class Tests_XMLRPC_wp_getComment extends WP_XMLRPC_UnitTestCase {
 		$this->assertStringMatchesFormat( '%d', $result['parent'] );
 		$this->assertStringMatchesFormat( '%d', $result['post_id'] );
 		$this->assertEquals( self::$parent_comment_id, $result['comment_id'] );
-		$this->assertSame( 0, $result['parent'] );
+		$this->assertEquals( 0, $result['parent'] );
 		$this->assertSame( self::$parent_comment_data['comment_content'], $result['content'] );
 		$this->assertSame( self::$post_id, $result['post_id'] );
 		$this->assertSame( self::$parent_comment_data['comment_author'], $result['author'] );
@@ -90,7 +90,7 @@ class Tests_XMLRPC_wp_getComment extends WP_XMLRPC_UnitTestCase {
 		$this->assertNotIXRError( $result );
 
 		$this->assertEquals( self::$child_comment_id, $result['comment_id'] );
-		$this->assertSame( self::$parent_comment_id, $result['parent'] );
+		$this->assertEquals( self::$parent_comment_id, $result['parent'] );
 	}
 
 	function test_invalid_id() {
