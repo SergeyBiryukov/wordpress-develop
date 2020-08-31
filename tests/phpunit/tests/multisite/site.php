@@ -161,8 +161,8 @@ if ( is_multisite() ) :
 
 			// $get_all = true, populate the full blog-details cache and the blog slug lookup cache.
 			$details = get_blog_details( $blog_id, true );
-			$this->assertSame( $details, wp_cache_get( $blog_id, 'blog-details' ) );
-			$this->assertSame( $details, wp_cache_get( $key, 'blog-lookup' ) );
+			$this->assertEquals( $details, wp_cache_get( $blog_id, 'blog-details' ) );
+			$this->assertEquals( $details, wp_cache_get( $key, 'blog-lookup' ) );
 
 			// Check existence of each database table for the created site.
 			foreach ( $wpdb->tables( 'blog', false ) as $table ) {
