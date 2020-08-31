@@ -43,7 +43,7 @@ if ( is_multisite() ) :
 			$this->assertSame( 'http://' . $site->domain . '/wp-content/uploads/' . gmstrftime( '%Y/%m' ), $info['url'] );
 			$this->assertSame( ABSPATH . 'wp-content/uploads/' . gmstrftime( '%Y/%m' ), $info['path'] );
 			$this->assertSame( gmstrftime( '/%Y/%m' ), $info['subdir'] );
-			$this->assertSame( '', $info['error'] );
+			$this->assertFalse( $info['error'] );
 
 			switch_to_blog( $blog_id2 );
 			$info2 = wp_upload_dir();
@@ -51,7 +51,7 @@ if ( is_multisite() ) :
 			$this->assertSame( get_option( 'siteurl' ) . '/wp-content/blogs.dir/' . get_current_blog_id() . '/files/' . gmstrftime( '%Y/%m' ), $info2['url'] );
 			$this->assertSame( ABSPATH . 'wp-content/blogs.dir/' . get_current_blog_id() . '/files/' . gmstrftime( '%Y/%m' ), $info2['path'] );
 			$this->assertSame( gmstrftime( '/%Y/%m' ), $info2['subdir'] );
-			$this->assertSame( '', $info2['error'] );
+			$this->assertFalse( $info2['error'] );
 			restore_current_blog();
 		}
 
