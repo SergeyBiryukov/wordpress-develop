@@ -437,7 +437,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$expected = 1453390476;
 		$format   = 'G';
 		$actual   = get_the_modified_time( $format );
-		$this->assertSame( $expected, $actual );
+		$this->assertEquals( $expected, $actual );
 	}
 
 	/**
@@ -454,14 +454,14 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$expected = 'filtered modified time failure result';
 		add_filter( 'get_the_modified_time', array( $this, '_filter_get_the_modified_time_failure' ) );
 		$actual = get_the_modified_time();
-		$this->assertSame( $expected, $actual );
+		$this->assertEquals( $expected, $actual );
 		remove_filter( 'get_the_modified_time', array( $this, '_filter_get_the_modified_time_failure' ) );
 	}
 
 	function _filter_get_the_modified_time_failure( $the_time ) {
 		$expected = false;
 		$actual   = $the_time;
-		$this->assertSame( $expected, $actual );
+		$this->assertEquals( $expected, $actual );
 
 		if ( false === $the_time ) {
 			return 'filtered modified time failure result';
@@ -485,7 +485,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$format   = 'Y-m-d';
 		$expected = '2016-01-21';
 		$actual   = get_the_modified_date( $format, $post_id );
-		$this->assertSame( $expected, $actual );
+		$this->assertEquals( $expected, $actual );
 	}
 
 	/**
@@ -508,7 +508,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$expected = '2016-01-21';
 		$format   = 'Y-m-d';
 		$actual   = get_the_modified_date( $format );
-		$this->assertSame( $expected, $actual );
+		$this->assertEquals( $expected, $actual );
 	}
 
 	/**
@@ -525,14 +525,14 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$expected = 'filtered modified date failure result';
 		add_filter( 'get_the_modified_date', array( $this, '_filter_get_the_modified_date_failure' ) );
 		$actual = get_the_modified_date();
-		$this->assertSame( $expected, $actual );
+		$this->assertEquals( $expected, $actual );
 		remove_filter( 'get_the_modified_date', array( $this, '_filter_get_the_modified_date_failure' ) );
 	}
 
 	function _filter_get_the_modified_date_failure( $the_date ) {
 		$expected = false;
 		$actual   = $the_date;
-		$this->assertSame( $expected, $actual );
+		$this->assertEquals( $expected, $actual );
 
 		if ( false === $the_date ) {
 			return 'filtered modified date failure result';
@@ -556,7 +556,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		$format   = 'G';
 		$expected = 1453390476;
 		$actual   = get_the_modified_time( $format, $post_id );
-		$this->assertSame( $expected, $actual );
+		$this->assertEquals( $expected, $actual );
 	}
 
 	/**
