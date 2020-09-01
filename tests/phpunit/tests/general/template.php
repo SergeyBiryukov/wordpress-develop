@@ -434,7 +434,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 
 		$GLOBALS['post'] = $post;
 
-		$expected = 1453390476;
+		$expected = '1453390476';
 		$format   = 'G';
 		$actual   = get_the_modified_time( $format );
 		$this->assertEquals( $expected, $actual );
@@ -554,7 +554,7 @@ class Tests_General_Template extends WP_UnitTestCase {
 		);
 		$post_id  = $this->factory->post->create( $details );
 		$format   = 'G';
-		$expected = 1453390476;
+		$expected = '1453390476';
 		$actual   = get_the_modified_time( $format, $post_id );
 		$this->assertEquals( $expected, $actual );
 	}
