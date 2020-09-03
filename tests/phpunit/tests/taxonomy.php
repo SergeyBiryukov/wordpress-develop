@@ -364,7 +364,7 @@ class Tests_Taxonomy extends WP_UnitTestCase {
 
 		// Prime cache.
 		$before = get_objects_in_term( $term_id, 'wptests_tax' );
-		$this->assertSameSets( array( $posts[1] ), $before );
+		$this->assertEqualSets( array( $posts[1] ), $before );
 
 		wp_delete_term( $term_id, 'wptests_tax' );
 
@@ -389,7 +389,7 @@ class Tests_Taxonomy extends WP_UnitTestCase {
 
 		// Prime cache.
 		$before = get_objects_in_term( $term_id, 'wptests_tax' );
-		$this->assertSameSets( array( $posts[1] ), $before );
+		$this->assertEqualSets( array( $posts[1] ), $before );
 
 		wp_delete_post( $posts[1], true );
 
