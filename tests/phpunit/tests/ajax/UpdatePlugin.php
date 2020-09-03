@@ -41,7 +41,7 @@ class Tests_Ajax_Update_Plugin extends WP_Ajax_UnitTestCase {
 			),
 		);
 
-		$this->assertEqualSets( $expected, $response );
+		$this->assertSameSets( $expected, $response );
 	}
 
 	public function test_missing_slug() {
@@ -67,7 +67,7 @@ class Tests_Ajax_Update_Plugin extends WP_Ajax_UnitTestCase {
 			),
 		);
 
-		$this->assertEqualSets( $expected, $response );
+		$this->assertSameSets( $expected, $response );
 	}
 
 	public function test_missing_capability() {
@@ -96,7 +96,7 @@ class Tests_Ajax_Update_Plugin extends WP_Ajax_UnitTestCase {
 			),
 		);
 
-		$this->assertEqualSets( $expected, $response );
+		$this->assertSameSets( $expected, $response );
 	}
 
 	public function test_invalid_file() {
@@ -127,7 +127,7 @@ class Tests_Ajax_Update_Plugin extends WP_Ajax_UnitTestCase {
 			),
 		);
 
-		$this->assertEqualSets( $expected, $response );
+		$this->assertSameSets( $expected, $response );
 	}
 
 	public function test_update_plugin() {
@@ -164,6 +164,6 @@ class Tests_Ajax_Update_Plugin extends WP_Ajax_UnitTestCase {
 			),
 		);
 
-		$this->assertEqualSets( $expected, $response );
+		$this->assertSameSets( $expected, $response );
 	}
 }
