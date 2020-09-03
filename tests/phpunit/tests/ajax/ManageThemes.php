@@ -70,7 +70,7 @@ class Tests_Ajax_Manage_Themes extends WP_Ajax_UnitTestCase {
 			),
 		);
 
-		$this->assertEqualSets( $expected, $response );
+		$this->assertSameSets( $expected, $response );
 	}
 
 	public function test_missing_capability() {
@@ -98,7 +98,7 @@ class Tests_Ajax_Manage_Themes extends WP_Ajax_UnitTestCase {
 			),
 		);
 
-		$this->assertEqualSets( $expected, $response );
+		$this->assertSameSets( $expected, $response );
 	}
 
 	public function test_update_theme() {
@@ -135,7 +135,7 @@ class Tests_Ajax_Manage_Themes extends WP_Ajax_UnitTestCase {
 			),
 		);
 
-		$this->assertEqualSets( $expected, $response );
+		$this->assertSameSets( $expected, $response );
 	}
 
 	function test_uppercase_theme_slug() {
@@ -166,6 +166,6 @@ class Tests_Ajax_Manage_Themes extends WP_Ajax_UnitTestCase {
 			),
 		);
 
-		$this->assertEqualSets( $expected, $response );
+		$this->assertSameSets( $expected, $response );
 	}
 }
