@@ -161,7 +161,7 @@ class Tests_Functions_wpListUtil extends WP_UnitTestCase {
 	 * @param array      $expected  Expected result.
 	 */
 	public function test_wp_list_pluck( $list, $field, $index_key, $expected ) {
-		$this->assertSameSetsWithIndex( $expected, wp_list_pluck( $list, $field, $index_key ) );
+		$this->assertEqualSetsWithIndex( $expected, wp_list_pluck( $list, $field, $index_key ) );
 	}
 
 	public function data_test_wp_list_filter() {
@@ -366,7 +366,7 @@ class Tests_Functions_wpListUtil extends WP_UnitTestCase {
 	 * @param array  $expected Expected result.
 	 */
 	public function test_wp_list_filter( $list, $args, $operator, $expected ) {
-		$this->assertSameSetsWithIndex( $expected, wp_list_filter( $list, $args, $operator ) );
+		$this->assertEqualSetsWithIndex( $expected, wp_list_filter( $list, $args, $operator ) );
 	}
 
 	public function data_test_wp_list_sort() {
@@ -1023,14 +1023,14 @@ class Tests_Functions_wpListUtil extends WP_UnitTestCase {
 		$input = array( 'foo', 'bar' );
 		$util  = new WP_List_Util( $input );
 
-		$this->assertSameSets( $input, $util->get_input() );
+		$this->assertEqualSets( $input, $util->get_input() );
 	}
 
 	public function test_wp_list_util_get_output_immediately() {
 		$input = array( 'foo', 'bar' );
 		$util  = new WP_List_Util( $input );
 
-		$this->assertSameSets( $input, $util->get_output() );
+		$this->assertEqualSets( $input, $util->get_output() );
 	}
 
 	public function test_wp_list_util_get_output() {
@@ -1052,7 +1052,7 @@ class Tests_Functions_wpListUtil extends WP_UnitTestCase {
 		);
 		$actual = $util->filter( array( 'foo' => 'bar' ) );
 
-		$this->assertSameSets( $expected, $actual );
-		$this->assertSameSets( $expected, $util->get_output() );
+		$this->assertEqualSets( $expected, $actual );
+		$this->assertEqualSets( $expected, $util->get_output() );
 	}
 }

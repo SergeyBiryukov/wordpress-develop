@@ -197,7 +197,7 @@ class Tests_User_CountUsers extends WP_UnitTestCase {
 		restore_current_blog();
 
 		$count = count_users( $strategy, $site_id );
-		$this->assertSameSetsWithIndex(
+		$this->assertEqualSetsWithIndex(
 			array(
 				'tester' => 1,
 				'none'   => 0,
@@ -278,7 +278,7 @@ class Tests_User_CountUsers extends WP_UnitTestCase {
 
 		$count2 = count_users( $strategy );
 
-		$this->assertSameSets( $count, $count2 );
+		$this->assertEqualSets( $count, $count2 );
 	}
 
 	function data_count_users_strategies() {

@@ -23,7 +23,7 @@ class Tests_Bookmark_GetBookmarks extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSameSets( $found1, $found2 );
+		$this->assertEqualSets( $found1, $found2 );
 		$this->assertSame( $num_queries, $wpdb->num_queries );
 	}
 
@@ -54,7 +54,7 @@ class Tests_Bookmark_GetBookmarks extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSameSets( $bookmarks, wp_list_pluck( $found2, 'link_id' ) );
+		$this->assertEqualSets( $bookmarks, wp_list_pluck( $found2, 'link_id' ) );
 		$this->assertTrue( $num_queries < $wpdb->num_queries );
 	}
 
@@ -81,7 +81,7 @@ class Tests_Bookmark_GetBookmarks extends WP_UnitTestCase {
 		);
 
 		// Equal sets != same order.
-		$this->assertSameSets( $found1, $found2 );
+		$this->assertEqualSets( $found1, $found2 );
 		$this->assertTrue( $num_queries < $wpdb->num_queries );
 	}
 
@@ -100,7 +100,7 @@ class Tests_Bookmark_GetBookmarks extends WP_UnitTestCase {
 		}
 
 		// Equal sets != same order.
-		$this->assertSameSets( $bookmarks, $found_ids );
+		$this->assertEqualSets( $bookmarks, $found_ids );
 	}
 
 	public function test_include_param_gets_properly_parsed_as_list() {
@@ -118,7 +118,7 @@ class Tests_Bookmark_GetBookmarks extends WP_UnitTestCase {
 		}
 
 		// Equal sets != same order.
-		$this->assertSameSets( $bookmarks, $found_ids );
+		$this->assertEqualSets( $bookmarks, $found_ids );
 	}
 
 	public function test_category_param_propelry_gets_parsed_as_list() {
@@ -146,6 +146,6 @@ class Tests_Bookmark_GetBookmarks extends WP_UnitTestCase {
 		}
 
 		// Equal sets != same order.
-		$this->assertSameSets( $bookmarks, $found_ids );
+		$this->assertEqualSets( $bookmarks, $found_ids );
 	}
 }

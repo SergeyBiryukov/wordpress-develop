@@ -168,7 +168,7 @@ if ( is_multisite() ) :
 
 			$result = array_keys( get_object_vars( $site ) );
 
-			$this->assertSameSets( $this->get_fields( $get_all ), $result );
+			$this->assertEqualSets( $this->get_fields( $get_all ), $result );
 		}
 
 		/**
@@ -190,7 +190,7 @@ if ( is_multisite() ) :
 				$result[] = $key;
 			}
 
-			$this->assertSameSets( $this->get_fields( $get_all ), $result );
+			$this->assertEqualSets( $this->get_fields( $get_all ), $result );
 		}
 
 		public function data_get_all() {

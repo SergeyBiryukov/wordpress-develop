@@ -413,7 +413,7 @@ class Tests_Post_Types extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSameSetsWithIndex(
+		$this->assertEqualSetsWithIndex(
 			array(
 				'editor' => true,
 				'author' => true,
@@ -563,13 +563,13 @@ class Tests_Post_Types extends WP_UnitTestCase {
 	 * @ticket 34010
 	 */
 	public function test_get_post_types_by_support_excluding_features() {
-		$this->assertSameSets( array(), get_post_types_by_support( array( 'post-formats', 'page-attributes' ) ) );
+		$this->assertEqualSets( array(), get_post_types_by_support( array( 'post-formats', 'page-attributes' ) ) );
 	}
 
 	/**
 	 * @ticket 34010
 	 */
 	public function test_get_post_types_by_support_non_existant_feature() {
-		$this->assertSameSets( array(), get_post_types_by_support( 'somefeature' ) );
+		$this->assertEqualSets( array(), get_post_types_by_support( 'somefeature' ) );
 	}
 }

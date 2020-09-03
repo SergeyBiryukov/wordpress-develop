@@ -153,7 +153,7 @@ class Tests_Nav_Menu_Theme_Change extends WP_UnitTestCase {
 		$expected_nav_menu_locations = array(
 			'main' => 1,
 		);
-		$this->assertSameSets( $expected_nav_menu_locations, $new_next_theme_nav_menu_locations );
+		$this->assertEqualSets( $expected_nav_menu_locations, $new_next_theme_nav_menu_locations );
 	}
 
 	/**
@@ -201,7 +201,7 @@ class Tests_Nav_Menu_Theme_Change extends WP_UnitTestCase {
 		$expected_nav_menu_locations = array(
 			'primary' => 1,
 		);
-		$this->assertSameSets( $expected_nav_menu_locations, $new_next_theme_nav_menu_locations );
+		$this->assertEqualSets( $expected_nav_menu_locations, $new_next_theme_nav_menu_locations );
 	}
 
 	/**
@@ -228,6 +228,6 @@ class Tests_Nav_Menu_Theme_Change extends WP_UnitTestCase {
 			0         => 3,
 		);
 
-		$this->assertSameSets( $expected_nav_menu_locations, $new_next_theme_nav_menu_locations );
+		$this->assertEqualSets( $expected_nav_menu_locations, $new_next_theme_nav_menu_locations );
 	}
 }

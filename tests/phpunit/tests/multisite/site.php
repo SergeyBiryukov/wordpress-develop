@@ -1574,7 +1574,7 @@ if ( is_multisite() ) :
 		public function test_wp_normalize_site_data( $data, $expected ) {
 			$result = wp_normalize_site_data( $data );
 
-			$this->assertSameSetsWithIndex( $expected, $result );
+			$this->assertEqualSetsWithIndex( $expected, $result );
 		}
 
 		public function data_wp_normalize_site_data() {
@@ -1657,7 +1657,7 @@ if ( is_multisite() ) :
 			if ( empty( $expected_errors ) ) {
 				$this->assertEmpty( $result->errors );
 			} else {
-				$this->assertSameSets( $expected_errors, array_keys( $result->errors ) );
+				$this->assertEqualSets( $expected_errors, array_keys( $result->errors ) );
 			}
 		}
 
@@ -1955,8 +1955,8 @@ if ( is_multisite() ) :
 			$update_result   = $this->get_listen_to_site_status_hooks_result();
 
 			// Check both insert and update results.
-			$this->assertSameSetsWithIndex( $insert_expected, $insert_result );
-			$this->assertSameSetsWithIndex( $update_expected, $update_result );
+			$this->assertEqualSetsWithIndex( $insert_expected, $insert_result );
+			$this->assertEqualSetsWithIndex( $update_expected, $update_result );
 		}
 
 		public function data_site_status_hook_triggers() {
@@ -2187,7 +2187,7 @@ if ( is_multisite() ) :
 			wp_uninitialize_site( self::$uninitialized_site_id );
 
 			$this->assertTrue( $result );
-			$this->assertSameSets(
+			$this->assertEqualSets(
 				array(
 					'administrator',
 					'editor',
@@ -2351,7 +2351,7 @@ if ( is_multisite() ) :
 			$passed_args                   = $this->wp_initialize_site_args;
 			$this->wp_initialize_site_args = null;
 
-			$this->assertSameSetsWithIndex( $args, $passed_args );
+			$this->assertEqualSetsWithIndex( $args, $passed_args );
 		}
 
 		public function filter_wp_initialize_site_args_catch_args( $args ) {

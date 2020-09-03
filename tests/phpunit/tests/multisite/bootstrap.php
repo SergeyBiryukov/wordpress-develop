@@ -270,7 +270,7 @@ if ( is_multisite() ) :
 			);
 			ms_load_current_site_and_network( WP_TESTS_DOMAIN, '/' );
 
-			$this->assertSameSetsWithIndex( $expected, $actual );
+			$this->assertEqualSetsWithIndex( $expected, $actual );
 		}
 
 		public function data_multisite_bootstrap() {
@@ -310,7 +310,7 @@ if ( is_multisite() ) :
 			remove_filter( 'site_by_path_segments_count', array( $this, 'filter_path_segments_to_two' ) );
 			ms_load_current_site_and_network( WP_TESTS_DOMAIN, '/' );
 
-			$this->assertSameSetsWithIndex( $expected, $actual );
+			$this->assertEqualSetsWithIndex( $expected, $actual );
 		}
 
 		/**

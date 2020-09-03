@@ -874,7 +874,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_1, $author_2, $author_3, $author_4 ), $author_ids );
+		$this->assertEqualSets( array( $author_1, $author_2, $author_3, $author_4 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -883,7 +883,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_1, $author_2, $author_3, $author_4 ), $author_ids );
+		$this->assertEqualSets( array( $author_1, $author_2, $author_3, $author_4 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -892,7 +892,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_1, $author_2, $author_3, $author_4 ), $author_ids );
+		$this->assertEqualSets( array( $author_1, $author_2, $author_3, $author_4 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -901,7 +901,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_1 ), $author_ids );
+		$this->assertEqualSets( array( $author_1 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -910,7 +910,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_1 ), $author_ids );
+		$this->assertEqualSets( array( $author_1 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -919,7 +919,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_1, $author_2 ), $author_ids );
+		$this->assertEqualSets( array( $author_1, $author_2 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -928,7 +928,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_2, $author_3, $author_4 ), $author_ids );
+		$this->assertEqualSets( array( $author_2, $author_3, $author_4 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -937,7 +937,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_1, $author_3, $author_4 ), $author_ids );
+		$this->assertEqualSets( array( $author_1, $author_3, $author_4 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -946,7 +946,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_3, $author_4 ), $author_ids );
+		$this->assertEqualSets( array( $author_3, $author_4 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -955,7 +955,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_1, $author_2 ), $author_ids );
+		$this->assertEqualSets( array( $author_1, $author_2 ), $author_ids );
 
 		$posts = $this->q->query( array( 'author__in' => array() ) );
 		$this->assertNotEmpty( $posts );
@@ -967,7 +967,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_3, $author_4 ), $author_ids );
+		$this->assertEqualSets( array( $author_3, $author_4 ), $author_ids );
 
 		$posts      = $this->q->query(
 			array(
@@ -976,7 +976,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 			)
 		);
 		$author_ids = array_unique( wp_list_pluck( $posts, 'post_author' ) );
-		$this->assertSameSets( array( $author_1 ), $author_ids );
+		$this->assertEqualSets( array( $author_1 ), $author_ids );
 	}
 
 	/**
@@ -1070,13 +1070,13 @@ class Tests_Query_Results extends WP_UnitTestCase {
 		);
 
 		$result1 = $this->q->query( array_merge( $args, array( 'has_password' => true ) ) );
-		$this->assertSameSets( array( $two, $three ), $result1 );
+		$this->assertEqualSets( array( $two, $three ), $result1 );
 		$result2 = $this->q->query( array_merge( $args, array( 'has_password' => false ) ) );
 		$this->assertEquals( array( $one ), $result2 );
 
 		// This is equivalent to not passing it at all.
 		$result3 = $this->q->query( array_merge( $args, array( 'has_password' => null ) ) );
-		$this->assertSameSets( array( $one, $two, $three ), $result3 );
+		$this->assertEqualSets( array( $one, $two, $three ), $result3 );
 
 		// If both arguments are passed, only post_password is considered.
 		$result4 = $this->q->query(
@@ -1119,7 +1119,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 				)
 			)
 		);
-		$this->assertSameSets( array( $two, $three ), $result7 );
+		$this->assertEqualSets( array( $two, $three ), $result7 );
 		$result8 = $this->q->query(
 			array_merge(
 				$args,
@@ -1129,7 +1129,7 @@ class Tests_Query_Results extends WP_UnitTestCase {
 				)
 			)
 		);
-		$this->assertSameSets( array( $two, $three ), $result8 );
+		$this->assertEqualSets( array( $two, $three ), $result8 );
 		$result9 = $this->q->query(
 			array_merge(
 				$args,
@@ -1139,12 +1139,12 @@ class Tests_Query_Results extends WP_UnitTestCase {
 				)
 			)
 		);
-		$this->assertSameSets( array( $two, $three ), $result9 );
+		$this->assertEqualSets( array( $two, $three ), $result9 );
 
 		$result10 = $this->q->query( array_merge( $args, array( 'post_password' => '' ) ) );
 		$this->assertEquals( array( $one ), $result10 );
 		$result11 = $this->q->query( array_merge( $args, array( 'post_password' => 'burrito' ) ) );
-		$this->assertSameSets( array( $two, $three ), $result11 );
+		$this->assertEqualSets( array( $two, $three ), $result11 );
 	}
 
 	/**

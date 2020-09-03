@@ -429,7 +429,7 @@ class Tests_Theme extends WP_UnitTestCase {
 			'description'  => '',
 			'show_in_rest' => false,
 		);
-		$this->assertSameSets( $expected, get_registered_theme_feature( 'test-feature' ) );
+		$this->assertEqualSets( $expected, get_registered_theme_feature( 'test-feature' ) );
 	}
 
 	/**
@@ -475,7 +475,7 @@ class Tests_Theme extends WP_UnitTestCase {
 		);
 		$actual   = get_registered_theme_feature( 'test-feature' )['show_in_rest'];
 
-		$this->assertSameSets( $expected, $actual );
+		$this->assertEqualSets( $expected, $actual );
 	}
 
 	/**
@@ -509,7 +509,7 @@ class Tests_Theme extends WP_UnitTestCase {
 		);
 		$actual   = get_registered_theme_feature( 'test-feature' )['show_in_rest']['schema'];
 
-		$this->assertSameSets( $expected, $actual );
+		$this->assertEqualSets( $expected, $actual );
 	}
 
 	/**
@@ -587,7 +587,7 @@ class Tests_Theme extends WP_UnitTestCase {
 		);
 		$actual   = get_registered_theme_feature( 'test-feature' )['show_in_rest']['schema']['additionalProperties'];
 
-		$this->assertSameSets( $expected, $actual );
+		$this->assertEqualSets( $expected, $actual );
 	}
 
 	/**
