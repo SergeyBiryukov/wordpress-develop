@@ -73,9 +73,9 @@ class Tests_Functions_wpListUtil extends WP_UnitTestCase {
 				'foo',
 				'key',
 				array(
+					'bar',
 					'bar'   => 'foo',
 					'value' => 'baz',
-					'bar',
 				),
 			),
 			'objects'                        => array(
@@ -144,9 +144,9 @@ class Tests_Functions_wpListUtil extends WP_UnitTestCase {
 				'foo',
 				'key',
 				array(
+					'bar',
 					'bar'   => 'foo',
 					'value' => 'baz',
-					'bar',
 				),
 			),
 		);
@@ -366,7 +366,7 @@ class Tests_Functions_wpListUtil extends WP_UnitTestCase {
 	 * @param array  $expected Expected result.
 	 */
 	public function test_wp_list_filter( $list, $args, $operator, $expected ) {
-		$this->assertSameSetsWithIndex( $expected, wp_list_filter( $list, $args, $operator ) );
+		$this->assertEqualSetsWithIndex( $expected, wp_list_filter( $list, $args, $operator ) );
 	}
 
 	public function data_test_wp_list_sort() {
