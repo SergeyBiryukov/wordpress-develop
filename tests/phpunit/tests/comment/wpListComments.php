@@ -39,7 +39,7 @@ class Tests_Comment_WpListComments extends WP_UnitTestCase {
 
 		preg_match_all( '|id="comment\-([0-9]+)"|', $found, $matches );
 
-		$this->assertSameSets( array( $comments[2], $comments[3] ), $matches[1] );
+		$this->assertEqualSets( array( $comments[2], $comments[3] ), $matches[1] );
 	}
 
 	/**
@@ -77,7 +77,7 @@ class Tests_Comment_WpListComments extends WP_UnitTestCase {
 
 		preg_match_all( '|id="comment\-([0-9]+)"|', $found, $matches );
 
-		$this->assertSameSets( array( $comments[0], $comments[1], $comments[2] ), $matches[1] );
+		$this->assertEqualSets( array( $comments[0], $comments[1], $comments[2] ), $matches[1] );
 	}
 
 	/**
