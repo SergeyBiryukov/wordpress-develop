@@ -78,7 +78,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 		);
 		$ids = $q->get_results();
 
-		$this->assertSameSets( array( self::$author_ids[0] ), $ids );
+		$this->assertEqualSets( array( self::$author_ids[0] ), $ids );
 	}
 
 	public function test_include_comma_separated() {
@@ -102,7 +102,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 		);
 		$ids = $q->get_results();
 
-		$this->assertSameSets( array( self::$author_ids[0], self::$author_ids[2] ), $ids );
+		$this->assertEqualSets( array( self::$author_ids[0], self::$author_ids[2] ), $ids );
 	}
 
 	public function test_include_array_bad_values() {
@@ -114,7 +114,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 		);
 		$ids = $q->get_results();
 
-		$this->assertSameSets( array( self::$author_ids[0], self::$author_ids[2] ), $ids );
+		$this->assertEqualSets( array( self::$author_ids[0], self::$author_ids[2] ), $ids );
 	}
 
 	public function test_exclude() {
@@ -1358,7 +1358,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSameSets( self::$editor_ids, $users );
+		$this->assertEqualSets( self::$editor_ids, $users );
 	}
 
 
