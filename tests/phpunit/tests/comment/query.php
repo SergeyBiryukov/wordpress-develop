@@ -3838,7 +3838,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSameSets( array( $top_level_0, $child_of_0, $top_level_comments[0] ), wp_list_pluck( $q->comments, 'comment_ID' ) );
+		$this->assertEqualSets( array( $top_level_0, $child_of_0, $top_level_comments[0] ), wp_list_pluck( $q->comments, 'comment_ID' ) );
 	}
 
 	/**
@@ -3907,16 +3907,16 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		$q = new WP_Comment_Query( $query_args );
 
 		// Top-level comments.
-		$this->assertSameSets( array( $c1, $c5 ), array_values( wp_list_pluck( $q->comments, 'comment_ID' ) ) );
+		$this->assertEqualSets( array( $c1, $c5 ), array_values( wp_list_pluck( $q->comments, 'comment_ID' ) ) );
 
 		// Direct descendants of $c1.
-		$this->assertSameSets( array( $c2, $c4 ), array_values( wp_list_pluck( $q->comments[ $c1 ]->get_children( $args ), 'comment_ID' ) ) );
+		$this->assertEqualSets( array( $c2, $c4 ), array_values( wp_list_pluck( $q->comments[ $c1 ]->get_children( $args ), 'comment_ID' ) ) );
 
 		// Direct descendants of $c2.
-		$this->assertSameSets( array( $c3 ), array_values( wp_list_pluck( $q->comments[ $c1 ]->get_child( $c2 )->get_children( $args ), 'comment_ID' ) ) );
+		$this->assertEqualSets( array( $c3 ), array_values( wp_list_pluck( $q->comments[ $c1 ]->get_child( $c2 )->get_children( $args ), 'comment_ID' ) ) );
 
 		// Direct descendants of $c5.
-		$this->assertSameSets( array( $c6 ), array_values( wp_list_pluck( $q->comments[ $c5 ]->get_children( $args ), 'comment_ID' ) ) );
+		$this->assertEqualSets( array( $c6 ), array_values( wp_list_pluck( $q->comments[ $c5 ]->get_children( $args ), 'comment_ID' ) ) );
 	}
 
 	/**
@@ -3986,13 +3986,13 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		$q = new WP_Comment_Query( $query_args );
 
 		// Top-level comments.
-		$this->assertSameSets( array( $c1, $c5 ), array_values( wp_list_pluck( $q->comments, 'comment_ID' ) ) );
+		$this->assertEqualSets( array( $c1, $c5 ), array_values( wp_list_pluck( $q->comments, 'comment_ID' ) ) );
 
 		// Direct descendants of $c1.
-		$this->assertSameSets( array( $c2, $c4 ), array_values( wp_list_pluck( $q->comments[ $c1 ]->get_children( $args ), 'comment_ID' ) ) );
+		$this->assertEqualSets( array( $c2, $c4 ), array_values( wp_list_pluck( $q->comments[ $c1 ]->get_children( $args ), 'comment_ID' ) ) );
 
 		// Direct descendants of $c2.
-		$this->assertSameSets( array(), array_values( wp_list_pluck( $q->comments[ $c1 ]->get_child( $c2 )->get_children( $args ), 'comment_ID' ) ) );
+		$this->assertEqualSets( array(), array_values( wp_list_pluck( $q->comments[ $c1 ]->get_child( $c2 )->get_children( $args ), 'comment_ID' ) ) );
 	}
 
 	/**
@@ -4043,7 +4043,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 
 		unset( $this->to_exclude );
 
-		$this->assertSameSets( array( $top_level_0, $child1_of_0, $top_level_comments[0], $top_level_comments[2] ), wp_list_pluck( $q->comments, 'comment_ID' ) );
+		$this->assertEqualSets( array( $top_level_0, $child1_of_0, $top_level_comments[0], $top_level_comments[2] ), wp_list_pluck( $q->comments, 'comment_ID' ) );
 	}
 
 	public function prepend_exclusions( $clauses ) {
@@ -4100,7 +4100,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 
 		unset( $this->to_exclude );
 
-		$this->assertSameSets( array( $top_level_0, $child1_of_0, $top_level_comments[0], $top_level_comments[2] ), wp_list_pluck( $q->comments, 'comment_ID' ) );
+		$this->assertEqualSets( array( $top_level_0, $child1_of_0, $top_level_comments[0], $top_level_comments[2] ), wp_list_pluck( $q->comments, 'comment_ID' ) );
 	}
 
 	public function append_exclusions( $clauses ) {
@@ -4208,7 +4208,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 			)
 		);
 		$q1_ids = wp_list_pluck( $q1->comments, 'comment_ID' );
-		$this->assertSameSets( array( $comment_1, $comment_2, $comment_3, $comment_4 ), $q1_ids );
+		$this->assertEqualSets( array( $comment_1, $comment_2, $comment_3, $comment_4 ), $q1_ids );
 
 		// Delete one of the parent caches.
 		$last_changed = wp_cache_get( 'last_changed', 'comment' );
@@ -4358,7 +4358,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		$num_queries += 2;
 
 		$found = wp_list_pluck( $q->comments, 'comment_ID' );
-		$this->assertSameSets( $comments, $found );
+		$this->assertEqualSets( $comments, $found );
 
 		$this->assertSame( $num_queries, $wpdb->num_queries );
 	}
@@ -4381,7 +4381,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 		wp_suspend_cache_addition( $suspend );
 
 		$found = wp_list_pluck( $q->comments, 'comment_ID' );
-		$this->assertSameSets( array( $c ), $found );
+		$this->assertEqualSets( array( $c ), $found );
 	}
 
 	public function test_comment_query_should_be_cached() {
