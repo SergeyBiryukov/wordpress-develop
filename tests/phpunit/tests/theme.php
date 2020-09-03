@@ -466,8 +466,8 @@ class Tests_Theme extends WP_UnitTestCase {
 
 		$expected = array(
 			'schema'           => array(
-				'type'        => 'boolean',
 				'description' => '',
+				'type'        => 'boolean',
 				'default'     => false,
 			),
 			'name'             => 'test-feature',
