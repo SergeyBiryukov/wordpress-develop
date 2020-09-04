@@ -92,9 +92,9 @@ class Tests_Ajax_Manage_Themes extends WP_Ajax_UnitTestCase {
 			'data'    => array(
 				'update'       => 'theme',
 				'slug'         => 'foo',
-				'errorMessage' => 'Sorry, you are not allowed to update themes for this site.',
 				'oldVersion'   => '',
 				'newVersion'   => '',
+				'errorMessage' => 'Sorry, you are not allowed to update themes for this site.',
 			),
 		);
 
@@ -128,10 +128,10 @@ class Tests_Ajax_Manage_Themes extends WP_Ajax_UnitTestCase {
 			'data'    => array(
 				'update'       => 'theme',
 				'slug'         => 'twentyten',
-				'errorMessage' => 'The theme is at the latest version.',
 				'oldVersion'   => $theme->get( 'Version' ),
 				'newVersion'   => '',
 				'debug'        => array( 'The theme is at the latest version.' ),
+				'errorMessage' => 'The theme is at the latest version.',
 			),
 		);
 
@@ -161,8 +161,8 @@ class Tests_Ajax_Manage_Themes extends WP_Ajax_UnitTestCase {
 				'slug'         => 'camelCase',
 				'oldVersion'   => '1.0',
 				'newVersion'   => '',
-				'errorMessage' => 'The theme is at the latest version.',
 				'debug'        => array( 'The theme is at the latest version.' ),
+				'errorMessage' => 'The theme is at the latest version.',
 			),
 		);
 
