@@ -1597,7 +1597,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSameSets( array( self::$author_ids[1] ), $found );
+		$this->assertEqualSets( array( self::$author_ids[1] ), $found );
 	}
 
 	/**
