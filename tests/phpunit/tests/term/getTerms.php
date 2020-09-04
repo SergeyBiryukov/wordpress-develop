@@ -1553,7 +1553,7 @@ class Tests_Term_getTerms extends WP_UnitTestCase {
 
 		_unregister_taxonomy( 'hierarchical_fields' );
 
-		$this->assertSameSetsWithIndex( $expected, $found );
+		$this->assertEqualSetsWithIndex( $expected, $found );
 	}
 
 	public function test_get_terms_hierarchical_tax_hide_empty_true_fields_idparent_hierarchical_false() {
