@@ -1053,6 +1053,6 @@ class Tests_Functions_wpListUtil extends WP_UnitTestCase {
 		$actual = $util->filter( array( 'foo' => 'bar' ) );
 
 		$this->assertEqualSets( $expected, $actual );
-		$this->assertSameSets( $expected, $util->get_output() );
+		$this->assertEqualSets( $expected, $util->get_output() );
 	}
 }
