@@ -90,7 +90,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 		);
 		$ids = $q->get_results();
 
-		$this->assertSameSets( array( self::$author_ids[0], self::$author_ids[2] ), $ids );
+		$this->assertEqualSets( array( self::$author_ids[0], self::$author_ids[2] ), $ids );
 	}
 
 	public function test_include_array() {
