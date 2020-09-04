@@ -155,10 +155,10 @@ class Tests_Ajax_Update_Plugin extends WP_Ajax_UnitTestCase {
 			'data'    => array(
 				'update'       => 'plugin',
 				'slug'         => 'hello-dolly',
-				'plugin'       => 'hello.php',
-				'pluginName'   => 'Hello Dolly',
 				'oldVersion'   => 'Version 1.7.2',
 				'newVersion'   => '',
+				'plugin'       => 'hello.php',
+				'pluginName'   => 'Hello Dolly',
 				'debug'        => array( 'The plugin is at the latest version.' ),
 				'errorMessage' => 'The plugin is at the latest version.',
 			),
