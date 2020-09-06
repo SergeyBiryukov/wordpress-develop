@@ -56,6 +56,15 @@ class Tests_Cache extends WP_UnitTestCase {
 		$this->assertEquals( '', $this->cache->get( $key ) );
 	}
 
+	function test_add_get_false() {
+		$key = __FUNCTION__;
+		$val = false;
+
+		// You can store `false` in the cache.
+		$this->assertTrue( $this->cache->add( $key, $val ) );
+		$this->assertSame( $val, $this->cache->get( $key ) );
+	}
+
 	function test_add() {
 		$key  = __FUNCTION__;
 		$val1 = 'val1';
