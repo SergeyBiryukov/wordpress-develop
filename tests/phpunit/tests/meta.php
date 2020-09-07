@@ -140,7 +140,7 @@ class Tests_Meta extends WP_UnitTestCase {
 		$this->assertSame( 1, count( $u ) );
 
 		// User found is not locally defined author (it's the admin).
-		$this->assertNotEquals( $this->author->user_login, $u[0]->user_login );
+		$this->assertNotSame( $this->author->user_login, $u[0]->user_login );
 
 		// Test EXISTS and NOT EXISTS together, no users should be found.
 		$this->assertSame(

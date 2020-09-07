@@ -56,7 +56,7 @@ class Tests_Query_Search extends WP_UnitTestCase {
 	function test_search_terms_query_var() {
 		$terms = 'This is a search term';
 		$query = new WP_Query( array( 's' => 'This is a search term' ) );
-		$this->assertNotEquals( explode( ' ', $terms ), $query->get( 'search_terms' ) );
+		$this->assertNotSame( explode( ' ', $terms ), $query->get( 'search_terms' ) );
 		$this->assertSame( array( 'search', 'term' ), $query->get( 'search_terms' ) );
 	}
 
@@ -66,7 +66,7 @@ class Tests_Query_Search extends WP_UnitTestCase {
 		$query = new WP_Query( array( 's' => $terms ) );
 		remove_filter( 'wp_search_stopwords', array( $this, 'filter_wp_search_stopwords' ) );
 
-		$this->assertNotEquals( array( 'search', 'term' ), $query->get( 'search_terms' ) );
+		$this->assertNotSame( array( 'search', 'term' ), $query->get( 'search_terms' ) );
 		$this->assertSame( array( 'This', 'is', 'search', 'term' ), $query->get( 'search_terms' ) );
 	}
 
@@ -437,7 +437,7 @@ class Tests_Query_Search extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertNotEquals( array( $attachment ), $q->posts );
+		$this->assertNotSame( array( $attachment ), $q->posts );
 	}
 
 	/**
@@ -525,7 +525,7 @@ class Tests_Query_Search extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertNotEquals( array( $attachment ), $q->posts );
+		$this->assertNotSame( array( $attachment ), $q->posts );
 	}
 
 	/**

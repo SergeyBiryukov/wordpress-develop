@@ -177,7 +177,7 @@ class Tests_Post_Objects extends WP_UnitTestCase {
 		// The post should be fetched from cache instead of using the passed object.
 		$raw_post = get_post( $display_post, OBJECT, 'raw' );
 		$this->assertSame( 'raw', $raw_post->filter );
-		$this->assertNotEquals( esc_js( "Mary's home" ), $raw_post->post_title );
+		$this->assertNotSame( esc_js( "Mary's home" ), $raw_post->post_title );
 
 		$raw_post->filter( 'js' );
 		$this->assertSame( 'js', $post->filter );

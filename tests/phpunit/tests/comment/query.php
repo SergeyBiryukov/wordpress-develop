@@ -3396,7 +3396,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertNotEquals( $num_queries, $wpdb->num_queries );
+		$this->assertNotSame( $num_queries, $wpdb->num_queries );
 	}
 
 	/**
@@ -3419,7 +3419,7 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertNotEquals( $num_queries, $wpdb->num_queries );
+		$this->assertNotSame( $num_queries, $wpdb->num_queries );
 	}
 
 	/**

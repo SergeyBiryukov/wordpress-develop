@@ -980,7 +980,7 @@ class Tests_Widgets extends WP_UnitTestCase {
 		$this->assertSameSets( $old_sidebars_widgets, get_theme_mod( 'sidebars_widgets' ) );
 
 		// Sidebar_widgets option was not updated.
-		$this->assertNotEquals( $sidebars_widgets, wp_get_sidebars_widgets() );
+		$this->assertNotSame( $sidebars_widgets, wp_get_sidebars_widgets() );
 	}
 
 	function test_retreive_widgets_with_single_widget() {

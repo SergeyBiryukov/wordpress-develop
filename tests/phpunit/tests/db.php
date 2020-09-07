@@ -252,7 +252,7 @@ class Tests_DB extends WP_UnitTestCase {
 		$col_meta       = $wpdb->col_meta;
 		$wpdb->col_meta = $new_meta;
 
-		$this->assertNotEquals( $col_meta, $new_meta );
+		$this->assertNotSame( $col_meta, $new_meta );
 		$this->assertSame( $col_meta, $wpdb->col_meta );
 	}
 
@@ -539,7 +539,7 @@ class Tests_DB extends WP_UnitTestCase {
 		usleep( 5 );
 		$stop = $wpdb->timer_stop();
 
-		$this->assertNotEquals( $wpdb->time_start, $stop );
+		$this->assertNotSame( $wpdb->time_start, $stop );
 		$this->assertGreaterThan( $stop, $wpdb->time_start );
 	}
 

@@ -853,12 +853,12 @@ class Tests_Post extends WP_UnitTestCase {
 		wp_insert_post( $_post );
 		$post = get_post( $post_ids[ $key ] );
 		$this->assertSame( 'draft', $post->post_status );
-		$this->assertNotEquals( 'publish', $post->post_status );
+		$this->assertNotSame( 'publish', $post->post_status );
 
 		$after_draft_counts = wp_count_posts();
 		$this->assertEquals( 1, $after_draft_counts->draft );
 		$this->assertEquals( 2, $after_draft_counts->publish );
-		$this->assertNotEquals( $initial_counts->publish, $after_draft_counts->publish );
+		$this->assertNotSame( $initial_counts->publish, $after_draft_counts->publish );
 	}
 
 	function test_wp_count_posts_trash_invalidation() {
@@ -871,12 +871,12 @@ class Tests_Post extends WP_UnitTestCase {
 
 		$post = get_post( $post_ids[ $key ] );
 		$this->assertSame( 'trash', $post->post_status );
-		$this->assertNotEquals( 'publish', $post->post_status );
+		$this->assertNotSame( 'publish', $post->post_status );
 
 		$after_trash_counts = wp_count_posts();
 		$this->assertEquals( 1, $after_trash_counts->trash );
 		$this->assertEquals( 2, $after_trash_counts->publish );
-		$this->assertNotEquals( $initial_counts->publish, $after_trash_counts->publish );
+		$this->assertNotSame( $initial_counts->publish, $after_trash_counts->publish );
 	}
 
 	/**

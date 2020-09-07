@@ -779,7 +779,7 @@ class Tests_REST_API extends WP_UnitTestCase {
 		// Switch to an admin request on a different domain name.
 		$_SERVER['SERVER_NAME'] = 'admin.example.org';
 		update_option( 'siteurl', 'http://admin.example.org' );
-		$this->assertNotEquals( $_SERVER['SERVER_NAME'], parse_url( home_url(), PHP_URL_HOST ) );
+		$this->assertNotSame( $_SERVER['SERVER_NAME'], parse_url( home_url(), PHP_URL_HOST ) );
 
 		// Test an HTTP URL.
 		unset( $_SERVER['HTTPS'] );

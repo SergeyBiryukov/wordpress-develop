@@ -34,7 +34,7 @@ if ( is_multisite() ) :
 
 			$post = get_post( $post_id );
 
-			$this->assertNotEquals( $user1->ID, $post->post_author );
+			$this->assertNotSame( $user1->ID, $post->post_author );
 			$this->assertEquals( $user2->ID, $post->post_author );
 		}
 

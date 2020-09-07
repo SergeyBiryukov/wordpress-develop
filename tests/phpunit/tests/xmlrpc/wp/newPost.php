@@ -46,7 +46,7 @@ class Tests_XMLRPC_wp_newPost extends WP_XMLRPC_UnitTestCase {
 		);
 		$result = $this->myxmlrpcserver->wp_newPost( array( 1, 'author', 'author', $post ) );
 		$this->assertNotIXRError( $result );
-		$this->assertNotEquals( '103948', $result );
+		$this->assertNotSame( '103948', $result );
 	}
 
 	function test_capable_publish() {
