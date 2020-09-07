@@ -47,7 +47,7 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	 * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
 	 */
 	public static function assertEqualsWithDelta( $expected, $actual, $delta, $message = '' ) {
-		$constraint = new PHPUnit\Framework\Constraint\IsEqual(
+		$constraint = new PHPUnit_Framework_Constraint_IsEqual(
 			$expected,
 			$delta
 		);
