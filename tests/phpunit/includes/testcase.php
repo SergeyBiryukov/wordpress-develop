@@ -38,9 +38,9 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	 *
 	 * @since 5.6.0
 	 *
-     * @param mixed  $expected First value to compare.
-     * @param mixed  $actual   Second value to compare.
-     * @param float  $delta    Allowed numerical distance between two values to consider them equal.
+	 * @param mixed  $expected First value to compare.
+	 * @param mixed  $actual   Second value to compare.
+	 * @param float  $delta    Allowed numerical distance between two values to consider them equal.
 	 * @param string $message  Optional. Message to display when the assertion fails.
 	 *
 	 * @throws ExpectationFailedException
