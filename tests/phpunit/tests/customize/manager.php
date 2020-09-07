@@ -403,7 +403,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 		$wp_customize = new WP_Customize_Manager();
 		$title        = 'Hello World';
 		$wp_customize->set_post_value( 'blogname', $title );
-		$this->assertNotSame( $title, get_option( 'blogname' ) );
+		$this->assertNotEquals( $title, get_option( 'blogname' ) );
 		$wp_customize->wp_loaded();
 		$this->assertFalse( $wp_customize->is_preview() );
 		$this->assertSame( $title, $wp_customize->get_setting( 'blogname' )->value() );
@@ -432,7 +432,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 		$this->assertSame( $post_id, $wp_customize->find_changeset_post_id( $uuid ) );
 
 		// Verify that the found post ID was cached under the given UUID, not the manager's UUID.
-		$this->assertNotSame( $post_id, $wp_customize->find_changeset_post_id( $wp_customize->changeset_uuid() ) );
+		$this->assertNotEquals( $post_id, $wp_customize->find_changeset_post_id( $wp_customize->changeset_uuid() ) );
 	}
 
 	/**
@@ -516,7 +516,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 			)
 		);
 		$this->assertTrue( $wp_customize->autosaved() );
-		$this->assertNotSame( $data, $wp_customize->changeset_data() );
+		$this->assertNotEquals( $data, $wp_customize->changeset_data() );
 		$this->assertSame(
 			array_merge(
 				wp_list_pluck( $data, 'value' ),
@@ -773,7 +773,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 		$changeset_data = $wp_customize->changeset_data();
 		$this->assertSame( $previous_blogname, $changeset_data['blogname']['value'] );
 		$this->assertArrayNotHasKey( 'starter_content', $changeset_data['blogname'] );
-		$this->assertNotSame( $previous_blogdescription, $changeset_data['blogdescription']['value'] );
+		$this->assertNotEquals( $previous_blogdescription, $changeset_data['blogdescription']['value'] );
 		$this->assertArrayHasKey( 'starter_content', $changeset_data['blogdescription'] );
 
 		// Publish.
@@ -785,7 +785,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 		$this->assertEmpty( get_theme_mod( 'background_image' ) );
 		$this->assertSame( 'auto-draft', get_post( $posts_by_name['about'] )->post_status );
 		$this->assertSame( 'auto-draft', get_post( $posts_by_name['waffles'] )->post_status );
-		$this->assertNotSame( $changeset_data['blogname']['value'], get_option( 'blogname' ) );
+		$this->assertNotEquals( $changeset_data['blogname']['value'], get_option( 'blogname' ) );
 		$r = $wp_customize->save_changeset_post( array( 'status' => 'publish' ) );
 		$this->assertInternalType( 'array', $r );
 		$this->assertSame( 'publish', get_post( $posts_by_name['about'] )->post_status );
@@ -1060,7 +1060,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 		$this->assertSame( 'Auto Draft', get_post( $post_id )->post_title );
 		$this->assertSame( 'auto-draft', get_post( $post_id )->post_status );
 		$this->assertSame( $date, get_post( $post_id )->post_date_gmt );
-		$this->assertNotSame( 'Changeset Title', get_option( 'blogname' ) );
+		$this->assertNotEquals( 'Changeset Title', get_option( 'blogname' ) );
 		$this->assertArrayHasKey( 'setting_validities', $r );
 
 		// Test saving with invalid settings, ensuring transaction blocked.
@@ -1142,7 +1142,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 		$this->assertTrue( $r['setting_validities']['blogname'] );
 		$this->assertInstanceOf( 'WP_Error', $r['setting_validities']['bar_unknown'] );
 		$saved_data = json_decode( get_post( $post_id )->post_content, true );
-		$this->assertNotSame( $previous_saved_data, $saved_data );
+		$this->assertNotEquals( $previous_saved_data, $saved_data );
 		$this->assertSame( 'Non-Transactional \o/ <script>unsanitized</script>', $saved_data['blogname']['value'] );
 
 		// Ensure the filter applies.
@@ -1693,7 +1693,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 		);
 
 		$post = get_post( $changeset_post_id );
-		$this->assertNotSame( $post->post_date, $original_post_date );
+		$this->assertNotEquals( $post->post_date, $original_post_date );
 	}
 
 	/**
@@ -2987,7 +2987,7 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 
 		$url                     = 'http://badreferer.example.com/';
 		$_SERVER['HTTP_REFERER'] = wp_slash( $url );
-		$this->assertNotSame( $url, $this->manager->get_return_url() );
+		$this->assertNotEquals( $url, $this->manager->get_return_url() );
 		$this->assertSame( $preview_url, $this->manager->get_return_url() );
 
 		$this->manager->set_return_url( admin_url( 'edit.php?trashed=1' ) );

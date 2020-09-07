@@ -69,7 +69,7 @@ class Tests_Post_getPages extends WP_UnitTestCase {
 
 		// Force last_changed to increment.
 		clean_post_cache( $pages[0]->ID );
-		$this->assertNotSame( $time1, $time2 = wp_cache_get( 'last_changed', 'posts' ) );
+		$this->assertNotEquals( $time1, $time2 = wp_cache_get( 'last_changed', 'posts' ) );
 
 		$num_queries = $wpdb->num_queries;
 

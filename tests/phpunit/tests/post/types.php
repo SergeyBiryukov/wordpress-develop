@@ -77,7 +77,7 @@ class Tests_Post_Types extends WP_UnitTestCase {
 		 */
 		$args = register_post_type( $this->post_type, array( 'public' => $public = false ) );
 
-		$this->assertNotSame( $public, $args->exclude_from_search );
+		$this->assertNotEquals( $public, $args->exclude_from_search );
 	}
 
 	/**

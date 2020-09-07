@@ -552,7 +552,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 		$this->assertNotEmpty( $query->query_orderby );
 		$this->assertNotEmpty( $query->query_where );
 		$this->assertNotEmpty( $query->query_vars );
-		$this->assertNotSame( $_query_vars, $query->query_vars );
+		$this->assertNotEquals( $_query_vars, $query->query_vars );
 
 		// All values get reset.
 		$query->prepare_query( array( 'number' => 8 ) );
@@ -569,7 +569,7 @@ class Tests_User_Query extends WP_UnitTestCase {
 		$this->assertSame( $_query_vars, $query->query_vars );
 
 		$query->prepare_query( array( 'number' => -1 ) );
-		$this->assertNotSame( 'LIMIT -1', $query->query_limit );
+		$this->assertNotEquals( 'LIMIT -1', $query->query_limit );
 		$this->assertEmpty( $query->query_limit );
 	}
 

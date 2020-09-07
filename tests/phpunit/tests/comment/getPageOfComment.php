@@ -160,7 +160,7 @@ class Tests_Comment_GetPageOfComment extends WP_UnitTestCase {
 		);
 		$this->assertSame( 1, $page_comments );
 
-		$this->assertNotSame( $num_queries, $wpdb->num_queries );
+		$this->assertNotEquals( $num_queries, $wpdb->num_queries );
 	}
 
 	/**

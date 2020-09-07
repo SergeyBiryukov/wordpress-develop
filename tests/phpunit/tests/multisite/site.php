@@ -103,7 +103,7 @@ if ( is_multisite() ) :
 
 			$cap_key = wp_get_current_user()->cap_key;
 			switch_to_blog( $blog_id );
-			$this->assertNotSame( $cap_key, wp_get_current_user()->cap_key );
+			$this->assertNotEquals( $cap_key, wp_get_current_user()->cap_key );
 			$this->assertSame( array( $current_blog_id ), $_wp_switched_stack );
 			$this->assertTrue( ms_is_switched() );
 			$this->assertSame( $blog_id, $wpdb->blogid );
@@ -202,7 +202,7 @@ if ( is_multisite() ) :
 			$new_details = get_site( $site_id );
 			wp_suspend_cache_invalidation( $suspend );
 
-			$this->assertNotSame( $details->path, $new_details->path );
+			$this->assertNotEquals( $details->path, $new_details->path );
 		}
 
 		public function test_site_caches_should_not_invalidate_when_invalidation_is_suspended() {

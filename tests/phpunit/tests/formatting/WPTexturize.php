@@ -254,7 +254,7 @@ class Tests_Formatting_WPTexturize extends WP_UnitTestCase {
 		$problem_input  = "$nbsp\"A";
 		$problem_output = "$nbsp&#8221;A";
 
-		$this->assertNotSame( $problem_output, wptexturize( $problem_input ) );
+		$this->assertNotEquals( $problem_output, wptexturize( $problem_input ) );
 	}
 
 	/**
