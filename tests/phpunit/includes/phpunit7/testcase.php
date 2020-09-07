@@ -61,7 +61,7 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	 * @throws ExpectationFailedException
 	 * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
 	 */
-	public static function assertEquals( $expected, $actual, string $message = '', float $delta = 0.0, int $maxDepth = 10, bool $canonicalize = false, bool $ignoreCase = false ): void {
+	public static function assertEquals( $expected, $actual, string $message = '', float $delta = 0.0, int $max_depth = 10, bool $canonicalize = false, bool $ignore_case = false ): void {
 		if ( func_num_args() > 3 ) {
 			echo 'assertEquals delta!!!' . "\n";
 			echo wp_debug_backtrace_summary() . "\n";
@@ -71,9 +71,9 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 		$constraint = new PHPUnit\Framework\Constraint\IsEqual(
 			$expected,
 			$delta,
-			$maxDepth,
+			$max_depth,
 			$canonicalize,
-			$ignoreCase
+			$ignore_case
 		);
 
 		static::assertThat( $actual, $constraint, $message );
