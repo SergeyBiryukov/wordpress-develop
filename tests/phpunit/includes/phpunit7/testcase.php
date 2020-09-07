@@ -54,28 +54,4 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 
 		static::assertThat( $actual, $constraint, $message );
 	}
-
-	/**
-	 * Asserts that two variables are equal.
-	 *
-	 * @throws ExpectationFailedException
-	 * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-	 */
-	public static function assertEquals( $expected, $actual, string $message = '', float $delta = 0.0, int $max_depth = 10, bool $canonicalize = false, bool $ignore_case = false ): void {
-		if ( func_num_args() > 3 ) {
-			echo 'assertEquals delta!!!' . "\n";
-			echo wp_debug_backtrace_summary() . "\n";
-			var_dump( $expected );
-		}
-
-		$constraint = new PHPUnit\Framework\Constraint\IsEqual(
-			$expected,
-			$delta,
-			$max_depth,
-			$canonicalize,
-			$ignore_case
-		);
-
-		static::assertThat( $actual, $constraint, $message );
-	}
 }
