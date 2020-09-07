@@ -16,8 +16,8 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	/**
 	 * Asserts that a condition is not false.
 	 *
-	 * This method has been backported from a more recent PHPUnit version, as tests running on PHP 5.2 use
-	 * PHPUnit 3.6.x.
+	 * This method has been backported from a more recent PHPUnit version,
+	 * as tests running on PHP 5.2 use PHPUnit 3.6.x.
 	 *
 	 * @since 4.7.4
 	 *
@@ -28,5 +28,54 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	 */
 	public static function assertNotFalse( $condition, string $message = '' ): void {
 		self::assertThat( $condition, self::logicalNot( self::isFalse() ), $message );
+	}
+
+	/**
+	 * Asserts that two variables are equal (with delta).
+	 *
+	 * This method has been backported from a more recent PHPUnit version,
+	 * as tests running on PHP 5.6 use PHPUnit 5.7.x.
+	 *
+	 * @since 5.6.0
+	 *
+	 * @param mixed  $expected First value to compare.
+	 * @param mixed  $actual   Second value to compare.
+	 * @param float  $delta    Allowed numerical distance between two values to consider them equal.
+	 * @param string $message  Optional. Message to display when the assertion fails.
+	 *
+	 * @throws ExpectationFailedException
+	 * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+	 */
+	public static function assertEqualsWithDelta( $expected, $actual, float $delta, string $message = '' ): void {
+		$constraint = new IsEqual(
+			$expected,
+			$delta
+		);
+
+		static::assertThat( $actual, $constraint, $message );
+	}
+
+	/**
+	 * Asserts that two variables are equal.
+	 *
+	 * @throws ExpectationFailedException
+	 * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+	 */
+	public static function assertEquals( $expected, $actual, string $message = '', float $delta = 0.0, int $maxDepth = 10, bool $canonicalize = false, bool $ignoreCase = false ): void {
+		if ( func_num_args() > 3 ) {
+			echo 'assertEquals delta!!!' . "\n";
+			echo wp_debug_backtrace_summary() . "\n";
+			var_dump( $expected );
+		}
+
+		$constraint = new IsEqual(
+			$expected,
+			$delta,
+			$maxDepth,
+			$canonicalize,
+			$ignoreCase
+		);
+
+		static::assertThat( $actual, $constraint, $message );
 	}
 }
