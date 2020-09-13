@@ -43,6 +43,14 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	 * methods of the class mocked. Concrete methods to mock can be specified with
 	 * the last parameter.
 	 *
+	 * This method replaces the native PHPUnit method to avoid parse errors
+	 * due to `match` being a reserved keyword in PHP 8.
+	 *
+	 * To run on PHP 8, the tests using this method require PHPUnit 9.3 or later.
+	 *
+	 * When the test suite is updated for compatibility with PHPUnit 9.x,
+	 * this override can be removed.
+	 *
 	 * @since 5.6.0
 	 *
 	 * @param string $original_class_name
@@ -61,7 +69,7 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	 */
 	public function getMockForAbstractClass( $original_class_name, array $arguments = array(), $mock_class_name = '', $call_original_constructor = true, $call_original_clone = true, $call_autoload = true, $mocked_methods = array(), $clone_arguments = false ): PHPUnit\Framework\MockObject\MockObject {
 		if ( PHP_VERSION_ID >= 80000 && version_compare( tests_get_phpunit_version(), '9.3', '<' ) ) {
-			$this->markTestSkipped( 'This test requires PHPUnit 9.3 or later to run on PHP 8.' );
+			$this->markTestSkipped( 'To run on PHP 8, this test requires PHPUnit 9.3 or later.' );
 		}
 
 		return parent::getMockForAbstractClass( $original_class_name, $arguments, $mock_class_name, $call_original_constructor, $call_original_clone, $call_autoload, $mocked_methods, $clone_arguments );
@@ -70,13 +78,21 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	/**
 	 * Returns a builder object to create mock objects using a fluent interface.
 	 *
+	 * This method replaces the native PHPUnit method to avoid parse errors
+	 * due to `match` being a reserved keyword in PHP 8.
+	 *
+	 * To run on PHP 8, the tests using this method require PHPUnit 9.3 or later.
+	 *
+	 * When the test suite is updated for compatibility with PHPUnit 9.x,
+	 * this override can be removed.
+	 *
 	 * @since 5.6.0
 	 *
 	 * @param string|string[] $class_name
 	 */
 	public function getMockBuilder( $class_name ): PHPUnit\Framework\MockObject\MockBuilder {
 		if ( PHP_VERSION_ID >= 80000 && version_compare( tests_get_phpunit_version(), '9.3', '<' ) ) {
-			$this->markTestSkipped( 'This test requires PHPUnit 9.3 or later to run on PHP 8.' );
+			$this->markTestSkipped( 'To run on PHP 8, this test requires PHPUnit 9.3 or later.' );
 		}
 
 		return parent::getMockBuilder( $class_name );
