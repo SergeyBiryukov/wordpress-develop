@@ -126,6 +126,7 @@ before_script:
 - docker-compose run --rm mysql mysql --version
 - docker-compose run --rm php php --version
 - docker-compose run --rm php php -m
+- docker-compose run --rm php php -i
 - docker-compose run --rm locale -a
 
 script:
