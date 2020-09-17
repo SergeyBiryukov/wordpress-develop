@@ -4928,10 +4928,10 @@ class Tests_Comment_Query extends WP_UnitTestCase {
 
 		remove_filter( 'comments_pre_query', array( __CLASS__, 'filter_comments_pre_query_and_set_comments' ), 10, 2 );
 
-		// Check the comments property of the query is the same than results.
+		// Check that the comments property of the query is the same as results.
 		$this->assertSame( $results, $q->comments );
 
-		// Check the comment type is `foobar`.
+		// Check that the comment type is `foobar`.
 		$this->assertSame( 'foobar', $q->comments[0]->comment_type );
 	}
 
