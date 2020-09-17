@@ -1095,34 +1095,6 @@ if ( is_multisite() ) :
 
 			return array( 555 );
 		}
-
-		/**
-		 * @ticket 50521
-		 */
-		public function test_sites_pre_query_filter_should_set_sites_property() {
-			add_filter( 'sites_pre_query', array( __CLASS__, 'filter_sites_pre_query_and_set_sites' ), 10, 2 );
-
-			$q       = new WP_Site_Query();
-			$results = $q->query( array() );
-
-			remove_filter( 'sites_pre_query', array( __CLASS__, 'filter_sites_pre_query_and_set_sites' ), 10, 2 );
-
-			// Check the sites property of the query is the same than results.
-			$this->assertSame( $results, $q->sites );
-
-			// Check the site title is `foobar`.
-			$this->assertSame( 'foobar', $q->sites[0]->title );
-		}
-
-		public static function filter_sites_pre_query_and_set_sites( $sites, $query ) {
-			$s = self::factory()->blog->create(
-				array(
-					'title' => 'foobar',
-				)
-			);
-
-			return array( get_site( $s ) );
-		}
 	}
 
 endif;
