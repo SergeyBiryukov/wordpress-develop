@@ -1095,6 +1095,37 @@ if ( is_multisite() ) :
 
 			return array( 555 );
 		}
+
+		/**
+		 * @ticket 50521
+		 */
+		public function test_sites_pre_query_filter_should_set_sites_property() {
+			add_filter( 'sites_pre_query', array( __CLASS__, 'filter_sites_pre_query_and_set_sites' ), 10, 2 );
+
+			$q       = new WP_Site_Query();
+			$results = $q->query( array() );
+
+			remove_filter( 'sites_pre_query', array( __CLASS__, 'filter_sites_pre_query_and_set_sites' ), 10, 2 );
+
+			// Check that the sites property of the query is the same as results.
+			$this->assertSame( $results, $q->sites );
+
+			// Check that the site path is `foobar`.
+			$this->assertSame( '/foobar/', $q->sites[0]->path );
+		}
+
+		public static function filter_sites_pre_query_and_set_sites( $sites, $query ) {
+			// Avoid infinite loop.
+			remove_filter( 'sites_pre_query', array( __CLASS__, __FUNCTION__ ), 10, 2 );
+
+			$site_id = self::factory()->blog->create(
+				array(
+					'path' => '/foobar/',
+				)
+			);
+
+			return array( get_site( $site_id ) );
+		}
 	}
 
 endif;
