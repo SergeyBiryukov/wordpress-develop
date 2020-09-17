@@ -554,6 +554,34 @@ if ( is_multisite() ) :
 
 			return array( 555 );
 		}
+
+		/**
+		 * @ticket 50521
+		 */
+		public function test_networks_pre_query_filter_should_set_networks_property() {
+			add_filter( 'networks_pre_query', array( __CLASS__, 'filter_networks_pre_query_and_set_networks' ), 10, 2 );
+
+			$q       = new WP_Network_Query();
+			$results = $q->query( array() );
+
+			remove_filter( 'networks_pre_query', array( __CLASS__, 'filter_networks_pre_query_and_set_networks' ), 10, 2 );
+
+			// Check that the networks property of the query is the same as results.
+			$this->assertSame( $results, $q->networks );
+
+			// Check that the network path is `foobar`.
+			$this->assertSame( '/foobar/', $q->networks[0]->path );
+		}
+
+		public static function filter_networks_pre_query_and_set_networks( $networks, $query ) {
+			$network_id = self::factory()->network->create(
+				array(
+					'path' => '/foobar/',
+				)
+			);
+
+			return array( get_network( $network_id ) );
+		}
 	}
 
 endif;
