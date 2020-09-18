@@ -13,7 +13,6 @@ class Tests_Ajax_Update_Plugin extends WP_Ajax_UnitTestCase {
 
 	public function test_missing_nonce() {
 		$this->setExpectedException( 'WPAjaxDieStopException', '-1' );
-
 		$this->_handleAjax( 'update-plugin' );
 	}
 
