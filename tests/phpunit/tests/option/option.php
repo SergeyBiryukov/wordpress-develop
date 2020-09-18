@@ -104,15 +104,14 @@ class Tests_Option_Option extends WP_UnitTestCase {
 	 */
 	function test_special_option_name_alloption() {
 		$this->expectException( 'WPDieException' );
-
 		delete_option( 'alloptions' );
 	}
 
 	/**
 	 * @ticket 23289
-	 * @expectedException WPDieException
 	 */
 	function test_special_option_name_notoptions() {
+		$this->expectException( 'WPDieException' );
 		delete_option( 'notoptions' );
 	}
 
