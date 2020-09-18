@@ -1399,6 +1399,10 @@ class wpdb {
 					'4.8.3'
 				);
 
+				/*
+				 * If we don't have enough arguments to match the placeholders,
+				 * return an empty string to avoid a fatal error on PHP 8.
+				 */
 				if ( $args_count < $placeholders ) {
 					$max_numbered_placeholder = ! empty( $matches[3] ) ? max( array_map( 'intval', $matches[3] ) ) : 0;
 
