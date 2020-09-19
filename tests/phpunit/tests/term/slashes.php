@@ -9,7 +9,7 @@ class Tests_Term_Slashes extends WP_Ajax_UnitTestCase {
 	protected static $author_id;
 
 	public static function wpSetUpBeforeClass( $factory ) {
-		$this->author_id = $factory->user->create( array( 'role' => 'administrator' ) );
+		self::$author_id = $factory->user->create( array( 'role' => 'administrator' ) );
 	}
 
 	function setUp() {

@@ -9,7 +9,7 @@ class Tests_Attachment_Slashes extends WP_UnitTestCase {
 	protected static $author_id;
 
 	public static function wpSetUpBeforeClass( $factory ) {
-		$this->author_id = $factory->user->create( array( 'role' => 'editor' ) );
+		self::$author_id = $factory->user->create( array( 'role' => 'editor' ) );
 	}
 
 	function setUp() {
