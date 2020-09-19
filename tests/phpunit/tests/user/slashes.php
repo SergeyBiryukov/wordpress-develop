@@ -6,9 +6,14 @@
  * @ticket 21767
  */
 class Tests_User_Slashes extends WP_UnitTestCase {
+	protected static $author_id;
+
+	public static function wpSetUpBeforeClass( $factory ) {
+		$this->author_id = $factory->user->create( array( 'role' => 'administrator' ) );
+	}
+
 	function setUp() {
 		parent::setUp();
-		$this->author_id = self::factory()->user->create( array( 'role' => 'administrator' ) );
 
 		wp_set_current_user( $this->author_id );
 

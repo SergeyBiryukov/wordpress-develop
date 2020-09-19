@@ -6,9 +6,15 @@
  * @ticket 21767
  */
 class Tests_Attachment_Slashes extends WP_UnitTestCase {
+	protected static $author_id;
+
+	public static function wpSetUpBeforeClass( $factory ) {
+		$this->author_id = $factory->user->create( array( 'role' => 'editor' ) );
+	}
+
 	function setUp() {
 		parent::setUp();
-		$this->author_id = self::factory()->user->create( array( 'role' => 'editor' ) );
+
 		wp_set_current_user( $this->author_id );
 
 		// It is important to test with both even and odd numbered slashes,
