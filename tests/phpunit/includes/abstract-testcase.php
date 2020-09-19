@@ -71,12 +71,10 @@ abstract class WP_UnitTestCase_Base extends PHPUnit\Framework\TestCase {
 		parent::setUpBeforeClass();
 
 		$c = get_called_class();
-		if ( ! method_exists( $c, 'wpSetUpBeforeClass' ) ) {
-			self::commit_transaction();
-			return;
-		}
 
-		call_user_func( array( $c, 'wpSetUpBeforeClass' ), self::factory() );
+		if ( method_exists( $c, 'wpSetUpBeforeClass' ) ) {
+			call_user_func( array( $c, 'wpSetUpBeforeClass' ), self::factory() );
+		}
 
 		self::commit_transaction();
 	}
@@ -91,12 +89,10 @@ abstract class WP_UnitTestCase_Base extends PHPUnit\Framework\TestCase {
 		self::flush_cache();
 
 		$c = get_called_class();
-		if ( ! method_exists( $c, 'wpTearDownAfterClass' ) ) {
-			self::commit_transaction();
-			return;
-		}
 
-		call_user_func( array( $c, 'wpTearDownAfterClass' ) );
+		if ( method_exists( $c, 'wpTearDownAfterClass' ) ) {
+			call_user_func( array( $c, 'wpTearDownAfterClass' ) );
+		}
 
 		self::commit_transaction();
 	}
