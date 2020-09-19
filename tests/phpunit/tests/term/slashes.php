@@ -15,7 +15,7 @@ class Tests_Term_Slashes extends WP_Ajax_UnitTestCase {
 	function setUp() {
 		parent::setUp();
 
-		wp_set_current_user( $this->author_id );
+		wp_set_current_user( self::$author_id );
 
 		$this->slash_1 = 'String with 1 slash \\';
 		$this->slash_2 = 'String with 2 slashes \\\\';

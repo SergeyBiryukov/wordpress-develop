@@ -16,7 +16,7 @@ class Tests_Comment_Slashes extends WP_UnitTestCase {
 	function setUp() {
 		parent::setUp();
 
-		wp_set_current_user( $this->author_id );
+		wp_set_current_user( self::$author_id );
 
 		// It is important to test with both even and odd numbered slashes,
 		// as KSES does a strip-then-add slashes in some of its function calls.
