@@ -314,10 +314,10 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 
 		// First, test with deprecated wp_load_image function.
 		$editor1 = wp_load_image( DIR_TESTDATA );
-		$this->assertNotInternalType( 'resource', $editor1 );
+		$this->assertInternalType( 'string', $editor1 );
 
 		$editor2 = wp_get_image_editor( DIR_TESTDATA );
-		$this->assertNotInternalType( 'resource', $editor2 );
+		$this->assertInstanceOf( 'WP_Error', $editor2 );
 
 		if ( ! WP_Image_Editor_GD::test() && ! WP_Image_Editor_Imagick::test() ) {
 			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system.', 'WP_Image_Editor_GD' ) );
