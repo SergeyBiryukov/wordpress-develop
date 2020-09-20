@@ -198,7 +198,7 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 		}
 
 		if ( 0 === $this->getNumAssertions() ) {
-			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', 'WP_Image_Editor_GD' ) );
+			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system.', 'WP_Image_Editor_GD' ) );
 		}
 	}
 
@@ -241,7 +241,7 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 		}
 
 		if ( 0 === $this->getNumAssertions() ) {
-			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', 'WP_Image_Editor_GD' ) );
+			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system.', 'WP_Image_Editor_GD' ) );
 		}
 	}
 
@@ -300,7 +300,7 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 		}
 
 		if ( 0 === $this->getNumAssertions() ) {
-			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', 'WP_Image_Editor_GD' ) );
+			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system.', 'WP_Image_Editor_GD' ) );
 		}
 	}
 
@@ -335,7 +335,7 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 		}
 
 		if ( 0 === $this->getNumAssertions() ) {
-			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', 'WP_Image_Editor_GD' ) );
+			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system.', 'WP_Image_Editor_GD' ) );
 		}
 	}
 
