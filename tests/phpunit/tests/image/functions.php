@@ -283,7 +283,7 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 		);
 
 		// Test each image editor engine.
-		foreach ( $classes ) {
+		foreach ( $classes as $class ) {
 			$img    = new $class( DIR_TESTDATA . '/images/canola.jpg' );
 			$loaded = $img->load();
 
