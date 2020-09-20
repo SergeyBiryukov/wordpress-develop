@@ -170,7 +170,6 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 
 			// If the image editor isn't available, skip it.
 			if ( ! call_user_func( array( $class, 'test' ) ) ) {
-				$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', $class ) );
 				continue;
 			}
 
@@ -197,6 +196,10 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 			// Clean up.
 			unset( $img );
 		}
+
+		if ( 0 === $this->getNumAssertions() ) {
+			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', 'WP_Image_Editor_GD' ) );
+		}
 	}
 
 	/**
@@ -215,7 +218,6 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 
 			// If the image editor isn't available, skip it.
 			if ( ! call_user_func( array( $class, 'test' ) ) ) {
-				$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', $class ) );
 				continue;
 			}
 
@@ -236,6 +238,10 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 			unlink( $file );
 			unlink( $ret['path'] );
 			unset( $img );
+		}
+
+		if ( 0 === $this->getNumAssertions() ) {
+			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', 'WP_Image_Editor_GD' ) );
 		}
 	}
 
@@ -265,7 +271,6 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 
 			// If the image editor isn't available, skip it.
 			if ( ! call_user_func( array( $class, 'test' ) ) ) {
-				$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', $class ) );
 				continue;
 			}
 
@@ -293,6 +298,10 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 			// Clean up.
 			unset( $img );
 		}
+
+		if ( 0 === $this->getNumAssertions() ) {
+			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', 'WP_Image_Editor_GD' ) );
+		}
 	}
 
 	/**
@@ -315,7 +324,6 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 		foreach ( $classes as $class ) {
 			// If the image editor isn't available, skip it.
 			if ( ! call_user_func( array( $class, 'test' ) ) ) {
-				$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', $class ) );
 				continue;
 			}
 
@@ -324,6 +332,10 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 
 			$this->assertInstanceOf( 'WP_Error', $loaded );
 			$this->assertSame( 'error_loading_image', $loaded->get_error_code() );
+		}
+
+		if ( 0 === $this->getNumAssertions() ) {
+			$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', 'WP_Image_Editor_GD' ) );
 		}
 	}
 
