@@ -170,6 +170,7 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 
 			// If the image editor isn't available, skip it.
 			if ( ! call_user_func( array( $class, 'test' ) ) ) {
+				$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', $class ) );
 				continue;
 			}
 
@@ -214,6 +215,7 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 
 			// If the image editor isn't available, skip it.
 			if ( ! call_user_func( array( $class, 'test' ) ) ) {
+				$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', $class ) );
 				continue;
 			}
 
@@ -263,6 +265,7 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 
 			// If the image editor isn't available, skip it.
 			if ( ! call_user_func( array( $class, 'test' ) ) ) {
+				$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', $class ) );
 				continue;
 			}
 
@@ -312,6 +315,7 @@ class Tests_Image_Functions extends WP_UnitTestCase {
 		foreach ( $classes as $class ) {
 			// If the image editor isn't available, skip it.
 			if ( ! call_user_func( array( $class, 'test' ) ) ) {
+				$this->markTestSkipped( sprintf( 'The image editor engine %s is not supported on this system', $class ) );
 				continue;
 			}
 
