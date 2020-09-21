@@ -1441,6 +1441,8 @@ EOF;
 			} elseif ( isset( $image_meta['sizes'][ $size_name ]['width'] ) && isset( $image_meta['sizes'][ $size_name ]['height'] ) ) {
 				$array = array( $image_meta['sizes'][ $size_name ]['width'], $image_meta['sizes'][ $size_name ]['height'] );
 			}
+		} else {
+			$this->fail( 'Could not retrieve image metadata.' );
 		}
 
 		return $array;
