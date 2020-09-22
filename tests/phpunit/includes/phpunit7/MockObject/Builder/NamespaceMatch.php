@@ -2,6 +2,9 @@
 /*
  * This file is part of PHPUnit.
  *
+ * This file is modified to replace the Match interface with ParametersMatch
+ * for PHP 8 compatibility.
+ * 
  * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
  * For the full copyright and license information, please view the LICENSE
