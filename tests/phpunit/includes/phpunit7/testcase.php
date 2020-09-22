@@ -69,7 +69,7 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	 */
 	public function getMockForAbstractClass( $original_class_name, array $arguments = array(), $mock_class_name = '', $call_original_constructor = true, $call_original_clone = true, $call_autoload = true, $mocked_methods = array(), $clone_arguments = false ): PHPUnit\Framework\MockObject\MockObject {
 		if ( PHP_VERSION_ID >= 80000 && version_compare( tests_get_phpunit_version(), '9.3', '<' ) ) {
-			$this->markTestSkipped( 'To run on PHP 8, this test requires PHPUnit 9.3 or later.' );
+			// $this->markTestSkipped( 'To run on PHP 8, this test requires PHPUnit 9.3 or later.' );
 		}
 
 		return parent::getMockForAbstractClass( $original_class_name, $arguments, $mock_class_name, $call_original_constructor, $call_original_clone, $call_autoload, $mocked_methods, $clone_arguments );
@@ -92,7 +92,7 @@ class WP_UnitTestCase extends WP_UnitTestCase_Base {
 	 */
 	public function getMockBuilder( $class_name ): PHPUnit\Framework\MockObject\MockBuilder {
 		if ( PHP_VERSION_ID >= 80000 && version_compare( tests_get_phpunit_version(), '9.3', '<' ) ) {
-			$this->markTestSkipped( 'To run on PHP 8, this test requires PHPUnit 9.3 or later.' );
+			// $this->markTestSkipped( 'To run on PHP 8, this test requires PHPUnit 9.3 or later.' );
 		}
 
 		return parent::getMockBuilder( $class_name );
