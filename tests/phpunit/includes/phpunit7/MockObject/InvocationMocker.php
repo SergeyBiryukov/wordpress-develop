@@ -2,8 +2,11 @@
 /*
  * This file is part of PHPUnit.
  *
- * This file is modified to replace the Match interface with ParametersMatch
- * for PHP 8 compatibility.
+ * This file is modified to replace the Match interface with ParametersMatch,
+ * to avoid parse errors due to `match` being a reserved keyword in PHP 8.
+ * 
+ * When the test suite is updated for compatibility with PHPUnit 9.x,
+ * this override can be removed.
  * 
  * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
