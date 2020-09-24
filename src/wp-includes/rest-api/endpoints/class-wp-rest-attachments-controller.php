@@ -883,7 +883,7 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 
 		$schema['properties']['media_details'] = array(
 			'description' => __( 'Details about the media file, specific to its type.' ),
-			'type'        => 'object',
+			'type'        => 'array',
 			'context'     => array( 'view', 'edit', 'embed' ),
 			'readonly'    => true,
 		);
