@@ -2019,6 +2019,7 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_filter_content_tags_srcset_sizes() {
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
@@ -2180,6 +2181,7 @@ EOF;
 	/**
 	 * @ticket 35045
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_filter_content_tags_schemes() {
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
