@@ -1430,7 +1430,7 @@ EOF;
 	}
 
 	/**
-	 * Helper function to get image size array from size "name"
+	 * Helper function to get image size array from size "name".
 	 */
 	function _get_image_size_array_from_meta( $image_meta, $size_name ) {
 		$array = false;
@@ -1467,6 +1467,7 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_srcset() {
 		$_wp_additional_image_sizes = wp_get_additional_image_sizes();
@@ -1514,6 +1515,7 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_srcset_no_date_uploads() {
 		$_wp_additional_image_sizes = wp_get_additional_image_sizes();
@@ -1570,6 +1572,7 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_srcset_with_edits() {
 		// For this test we're going to mock metadata changes from an edit.
@@ -1603,6 +1606,7 @@ EOF;
 
 	/**
 	 * @ticket 35106
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_srcset_with_absolute_path_in_meta() {
 		$_wp_additional_image_sizes = wp_get_additional_image_sizes();
@@ -1900,6 +1904,7 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_get_attachment_image_srcset() {
 		$_wp_additional_image_sizes = wp_get_additional_image_sizes();
@@ -1990,6 +1995,7 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_sizes() {
 		// Test sizes against the default WP sizes.
@@ -2624,6 +2630,7 @@ EOF;
 
 	/**
 	 * @ticket 50367
+	 * @requires function imagejpeg
 	 */
 	function test_wp_filter_content_tags_width_height() {
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
@@ -2669,6 +2676,7 @@ EOF;
 	/**
 	 * @ticket 44427
 	 * @ticket 50367
+	 * @requires function imagejpeg
 	 */
 	function test_wp_filter_content_tags_loading_lazy() {
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
