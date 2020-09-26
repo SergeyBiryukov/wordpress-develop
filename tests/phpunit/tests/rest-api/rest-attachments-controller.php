@@ -583,11 +583,10 @@ class WP_Test_REST_Attachments_Controller extends WP_Test_REST_Post_Type_Control
 		$this->assertSame( 'image/jpeg', $data['mime_type'] );
 	}
 
+	/**
+	 * @requires function imagejpeg
+	 */
 	public function test_get_item_sizes() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$attachment_id = $this->factory->attachment->create_object(
 			$this->test_file,
 			0,
@@ -615,11 +614,10 @@ class WP_Test_REST_Attachments_Controller extends WP_Test_REST_Post_Type_Control
 		$this->assertSame( 'image/jpeg', $data['media_details']['sizes']['full']['mime_type'] );
 	}
 
+	/**
+	 * @requires function imagejpeg
+	 */
 	public function test_get_item_sizes_with_no_url() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$attachment_id = $this->factory->attachment->create_object(
 			$this->test_file,
 			0,
@@ -1952,12 +1950,9 @@ class WP_Test_REST_Attachments_Controller extends WP_Test_REST_Post_Type_Control
 
 	/**
 	 * @ticket 44405
+	 * @requires function imagejpeg
 	 */
 	public function test_edit_image() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		wp_set_current_user( self::$superadmin_id );
 		$attachment = self::factory()->attachment->create_upload_object( $this->test_file );
 
