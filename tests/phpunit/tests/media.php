@@ -2379,10 +2379,6 @@ EOF;
 	 * @ticket 36246
 	 */
 	function test_wp_get_attachment_image_should_use_wp_get_attachment_metadata() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		add_filter( 'wp_get_attachment_metadata', array( $this, '_filter_36246' ), 10, 2 );
 
 		remove_all_filters( 'wp_calculate_image_sizes' );
