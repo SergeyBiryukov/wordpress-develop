@@ -1467,12 +1467,9 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_srcset() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$_wp_additional_image_sizes = wp_get_additional_image_sizes();
 
 		$year_month      = gmdate( 'Y/m' );
@@ -1518,12 +1515,9 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_srcset_no_date_uploads() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$_wp_additional_image_sizes = wp_get_additional_image_sizes();
 
 		// Disable date organized uploads.
@@ -1578,12 +1572,9 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_srcset_with_edits() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		// For this test we're going to mock metadata changes from an edit.
 		// Start by getting the attachment metadata.
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
@@ -1615,12 +1606,9 @@ EOF;
 
 	/**
 	 * @ticket 35106
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_srcset_with_absolute_path_in_meta() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$_wp_additional_image_sizes = wp_get_additional_image_sizes();
 
 		$year_month      = gmdate( 'Y/m' );
@@ -1916,12 +1904,9 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_get_attachment_image_srcset() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$_wp_additional_image_sizes = wp_get_additional_image_sizes();
 
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
@@ -2010,12 +1995,9 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_calculate_image_sizes() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		// Test sizes against the default WP sizes.
 		$intermediates = array( 'thumbnail', 'medium', 'medium_large', 'large' );
 		$image_meta    = wp_get_attachment_metadata( self::$large_id );
@@ -2037,12 +2019,9 @@ EOF;
 
 	/**
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_filter_content_tags_srcset_sizes() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
 		$size_array = $this->_get_image_size_array_from_meta( $image_meta, 'medium' );
 
@@ -2202,12 +2181,9 @@ EOF;
 	/**
 	 * @ticket 35045
 	 * @ticket 33641
+	 * @requires function imagejpeg
 	 */
 	function test_wp_filter_content_tags_schemes() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
 		$size_array = $this->_get_image_size_array_from_meta( $image_meta, 'medium' );
 
@@ -2656,12 +2632,9 @@ EOF;
 
 	/**
 	 * @ticket 50367
+	 * @requires function imagejpeg
 	 */
 	function test_wp_filter_content_tags_width_height() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
 		$size_array = $this->_get_image_size_array_from_meta( $image_meta, 'medium' );
 
@@ -2705,12 +2678,9 @@ EOF;
 	/**
 	 * @ticket 44427
 	 * @ticket 50367
+	 * @requires function imagejpeg
 	 */
 	function test_wp_filter_content_tags_loading_lazy() {
-		if ( ! wp_image_editor_supports( array( 'mime_type' => 'image/jpeg' ) ) ) {
-			$this->markTestSkipped( 'This test requires JPEG support.' );
-		}
-
 		$image_meta = wp_get_attachment_metadata( self::$large_id );
 		$size_array = $this->_get_image_size_array_from_meta( $image_meta, 'medium' );
 
