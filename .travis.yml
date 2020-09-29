@@ -140,7 +140,7 @@ script:
       - docker-compose run --rm phpunit php ./vendor/bin/phpunit --verbose -c phpunit.xml.dist --group external-http
       - docker-compose run --rm phpunit php ./vendor/bin/phpunit --verbose -c phpunit.xml.dist --group restapi-jsclient
       # __fakegroup__ is excluded to force PHPUnit to ignore the <exclude> settings in phpunit.xml.dist.
-      - LOCAL_PHP_XDEBUG=true docker-compose run --rm phpunit phpunit -v --group xdebug --exclude-group __fakegroup__
+      # - LOCAL_PHP_XDEBUG=true docker-compose run --rm phpunit phpunit -v --group xdebug --exclude-group __fakegroup__
     elif [[ "$WP_TRAVISCI" == "lint:php" ]]; then
       docker-compose run --rm php composer lint:errors &&
       docker-compose run --rm php composer lint tests
