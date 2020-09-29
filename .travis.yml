@@ -70,12 +70,12 @@ before_install:
 
 before_script:
 - |
-  if [[ "$COMPOSER_INSTALL" == "true" && ${LOCAL_PHP:0:3} != "8.0" ]]; then
-    docker-compose run --rm php composer --version
-    docker-compose run --rm php composer install
-  elif [[ "$COMPOSER_INSTALL" == "true" && ${LOCAL_PHP:0:3} == "8.0" ]]; then
+  if [[ "$COMPOSER_INSTALL" == "true" && ${LOCAL_PHP:0:3} == "8.0" ]]; then
     docker-compose run --rm php composer --version
     docker-compose run --rm php composer install --ignore-platform-reqs
+  elif [[ "$COMPOSER_INSTALL" == "true"; then
+    docker-compose run --rm php composer --version
+    docker-compose run --rm php composer install
   fi
 - npm --version
 - node --version
@@ -121,15 +121,6 @@ script:
   - |
     if [[ "$WP_TRAVISCI" == "test:e2e" ]]; then
       npm run test:e2e
-    elif [[ "$WP_TRAVISCI" == "test:php" ]] && [[ ${LOCAL_PHP:0:3} != "8.0" ]]; then
-      npm run test:php -- --verbose -c phpunit.xml.dist &&
-      npm run test:php -- --verbose -c phpunit.xml.dist --group ajax &&
-      npm run test:php -- --verbose -c tests/phpunit/multisite.xml &&
-      npm run test:php -- --verbose -c tests/phpunit/multisite.xml --group ms-files &&
-      npm run test:php -- --verbose -c phpunit.xml.dist --group external-http &&
-      npm run test:php -- --verbose -c phpunit.xml.dist --group restapi-jsclient &&
-      # __fakegroup__ is excluded to force PHPUnit to ignore the <exclude> settings in phpunit.xml.dist.
-      LOCAL_PHP_XDEBUG=true npm run test:php -- -v --group xdebug --exclude-group __fakegroup__
     elif [[ "$WP_TRAVISCI" == "test:php" ]] && [[ ${LOCAL_PHP:0:3} == "8.0" ]]; then
       # The PHPUnit 7.x phar is not compatible with PHP 8 and won't be updated,
       # as PHPUnit 7 is no longer supported, so run the Composer-installed PHPUnit instead.
@@ -141,6 +132,15 @@ script:
       - docker-compose run --rm phpunit php ./vendor/bin/phpunit --verbose -c phpunit.xml.dist --group restapi-jsclient
       # __fakegroup__ is excluded to force PHPUnit to ignore the <exclude> settings in phpunit.xml.dist.
       # - LOCAL_PHP_XDEBUG=true docker-compose run --rm phpunit phpunit -v --group xdebug --exclude-group __fakegroup__
+    elif [[ "$WP_TRAVISCI" == "test:php" ]]; then
+      npm run test:php -- --verbose -c phpunit.xml.dist &&
+      npm run test:php -- --verbose -c phpunit.xml.dist --group ajax &&
+      npm run test:php -- --verbose -c tests/phpunit/multisite.xml &&
+      npm run test:php -- --verbose -c tests/phpunit/multisite.xml --group ms-files &&
+      npm run test:php -- --verbose -c phpunit.xml.dist --group external-http &&
+      npm run test:php -- --verbose -c phpunit.xml.dist --group restapi-jsclient &&
+      # __fakegroup__ is excluded to force PHPUnit to ignore the <exclude> settings in phpunit.xml.dist.
+      LOCAL_PHP_XDEBUG=true npm run test:php -- -v --group xdebug --exclude-group __fakegroup__
     elif [[ "$WP_TRAVISCI" == "lint:php" ]]; then
       docker-compose run --rm php composer lint:errors &&
       docker-compose run --rm php composer lint tests
