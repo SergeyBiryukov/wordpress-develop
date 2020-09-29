@@ -1915,6 +1915,10 @@ class wpdb {
 		 */
 		$query = apply_filters( 'query', $query );
 
+		if ( ! $query ) {
+			return false;
+		}
+
 		$this->flush();
 
 		// Log how the function was called.
