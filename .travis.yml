@@ -131,6 +131,7 @@ script:
       docker-compose run --rm phpunit php ./vendor/bin/phpunit --verbose -c phpunit.xml.dist --group external-http
       docker-compose run --rm phpunit php ./vendor/bin/phpunit --verbose -c phpunit.xml.dist --group restapi-jsclient
       # __fakegroup__ is excluded to force PHPUnit to ignore the <exclude> settings in phpunit.xml.dist.
+      # Xdebug supports PHP 8 only from version 3.0, which is not released yet.
       # - LOCAL_PHP_XDEBUG=true docker-compose run --rm phpunit phpunit -v --group xdebug --exclude-group __fakegroup__
     elif [[ "$WP_TRAVISCI" == "test:php" ]]; then
       npm run test:php -- --verbose -c phpunit.xml.dist &&
