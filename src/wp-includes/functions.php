@@ -3044,7 +3044,7 @@ function wp_get_image_mime( $file ) {
 			$imagetype = exif_imagetype( $file );
 			$mime      = ( $imagetype ) ? image_type_to_mime_type( $imagetype ) : false;
 		} elseif ( function_exists( 'getimagesize' ) ) {
-			$imagesize = @getimagesize( $file );
+			$imagesize = wp_getimagesize( $file );
 			$mime      = ( isset( $imagesize['mime'] ) ) ? $imagesize['mime'] : false;
 		} else {
 			$mime = false;
@@ -7599,7 +7599,7 @@ function get_dirsize( $directory, $max_execution_time = null ) {
 function recurse_dirsize( $directory, $exclude = null, $max_execution_time = null, &$directory_cache = null ) {
 	$size = 0;
 
-	$directory = untrailingslashit( $directory );
+	$directory  = untrailingslashit( $directory );
 	$cache_path = normalize_dirsize_cache_path( $directory );
 	$save_cache = false;
 
@@ -7766,4 +7766,21 @@ function is_php_version_compatible( $required ) {
  */
 function wp_fuzzy_number_match( $expected, $actual, $precision = 1 ) {
 	return abs( (float) $expected - (float) $actual ) <= $precision;
+}
+
+/**
+ * Allow PHPs getimagesize() to be debuggable when necessary.
+ *
+ * @since 5.6.0
+ *
+ * @param string $filename  The file path.
+ * @param array $imageinfo  Extended image information.
+ * @return array|false Array of image information or false on failure.
+ */
+function wp_getimagesize( $filename, &$imageinfo = array() ) {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		return getimagesize( $filename, $imageinfo );
+	}
+
+	return @getimagesize( $filename, $imageinfo );
 }
