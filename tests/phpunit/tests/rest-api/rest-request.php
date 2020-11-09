@@ -206,7 +206,7 @@ class Tests_REST_Request extends WP_UnitTestCase {
 
 		// Check that JSON takes precedence.
 		$this->assertSame( $source, $this->request->get_param( 'source' ) );
-		$this->assertSame( $accept_json, $this->request->get_param( 'has_json_params' ) );
+		$this->assertEquals( $accept_json, $this->request->get_param( 'has_json_params' ) );
 	}
 
 	public static function is_json_content_type_provider() {

@@ -1020,7 +1020,7 @@ class Tests_Comment_CommentsTemplate extends WP_UnitTestCase {
 		}
 
 		$this->assertSame( $expected_ids, array_map( 'intval', $matches[1] ) );
-		$this->assertSame( $expected['offset'], $offset );
+		$this->assertEquals( $expected['offset'], $offset );
 	}
 
 	public function data_comments_template_top_level_query_args() {

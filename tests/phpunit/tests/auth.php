@@ -452,7 +452,7 @@ class Tests_Auth extends WP_UnitTestCase {
 		$_SERVER['PHP_AUTH_PW']   = 'http_auth_pass';
 
 		$this->assertSame(
-			0,
+			null,
 			wp_validate_application_password( null ),
 			'Regular user account password should not be allowed for API authentication'
 		);

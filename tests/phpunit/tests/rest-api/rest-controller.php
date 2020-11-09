@@ -258,7 +258,7 @@ class WP_Test_REST_Controller extends WP_Test_REST_TestCase {
 		$args       = rest_get_endpoint_args_for_schema( $controller->get_item_schema() );
 
 		$this->assertFalse( $args['someargoptions']['required'] );
-		$this->assertTrue( $args['someargoptions']['sanitize_callback'] );
+		$this->assertSame( '__return_true', $args['someargoptions']['sanitize_callback'] );
 	}
 
 	public function test_get_endpoint_args_for_item_schema_default_value() {
