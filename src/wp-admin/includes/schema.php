@@ -543,6 +543,11 @@ function populate_options( array $options = array() ) {
 			? $wp_current_db_version : $wp_db_version;
 	}
 
+	// 5.6.0
+	if ( ! is_multisite() ) {
+		$defaults['WPLANG'] = '';
+	}
+
 	// 3.0.0 multisite.
 	if ( is_multisite() ) {
 		/* translators: %s: Network title. */
