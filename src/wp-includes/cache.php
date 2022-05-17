@@ -2,7 +2,7 @@
 /**
  * Object Cache API
  *
- * @link https://codex.wordpress.org/Class_Reference/WP_Object_Cache
+ * @link https://developer.wordpress.org/reference/classes/wp_object_cache/
  *
  * @package WordPress
  * @subpackage Cache
@@ -266,6 +266,19 @@ function wp_cache_flush() {
 	global $wp_object_cache;
 
 	return $wp_object_cache->flush();
+}
+
+/**
+ * Removes all cache items from the in-memory runtime cache.
+ *
+ * @since 6.0.0
+ *
+ * @see WP_Object_Cache::flush()
+ *
+ * @return bool True on success, false on failure.
+ */
+function wp_cache_flush_runtime() {
+	return wp_cache_flush();
 }
 
 /**
